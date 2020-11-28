@@ -1,9 +1,11 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.teamcode.MainRobot;
 
 @TeleOp(name="MainTeleOp")
 
@@ -15,6 +17,7 @@ public class MainTeleOp extends OpMode{
     public void init() {
         robot = new MainRobot();
         robot.init(hardwareMap);
+        telemetry.addData("Initialization Complete!","");
     }
 
     @Override
