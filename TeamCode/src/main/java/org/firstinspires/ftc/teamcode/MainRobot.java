@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class MainRobot {
 
+    // Total Motors: 8
+    // Total Servos: 0
     public DcMotor topLeft = null;
     public DcMotor bottomLeft = null;
     public DcMotor topRight = null;
@@ -15,7 +17,8 @@ public class MainRobot {
     public DcMotor jHopper1 = null;
     public DcMotor jHopper2 = null;
     public DcMotor wobbleArm = null;
-    public Servo leftClaw = null;
+    public DcMotor foamWheel = null;
+    // public Servo leftClaw = null;
 
     HardwareMap hwMap = null;
 
@@ -29,6 +32,7 @@ public class MainRobot {
         jHopper1 = hwMap.get(DcMotor.class, "jHopper1");
         jHopper2 = hwMap.get(DcMotor.class, "jHopper2");
         wobbleArm = hwMap.get(DcMotor.class, "wobbleArm");
+        foamWheel = hwMap.get(DcMotor.class, "foamWheel");
         topLeft.setDirection(DcMotor.Direction.REVERSE);
         bottomLeft.setDirection(DcMotor.Direction.REVERSE);
         topRight.setDirection(DcMotor.Direction.FORWARD);
@@ -41,6 +45,7 @@ public class MainRobot {
         jHopper1.setPower(0);
         jHopper2.setPower(0);
         wobbleArm.setPower(0);
+        foamWheel.setPower(0);
 
     }
 }
