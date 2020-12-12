@@ -18,15 +18,15 @@ public class RingDetector {
 
     CustomPipeline pipeline;
 
-    private final Point BLUE_TOP_TL = new Point(90,90);
-    private final Point BLUE_TOP_BR = new Point(140, 120);
+    private final Point BLUE_TOP_TL    = new Point(90,90);
+    private final Point BLUE_TOP_BR    = new Point(140, 120);
     private final Point BLUE_BOTTOM_TL = new Point(185, 90);
     private final Point BLUE_BOTTOM_BR = new Point(235,  120);
 
-    private final Point RED_TOP_TL = new Point(0,135);
-    private final Point RED_TOP_BR = new Point(50, 165);
-    private final Point RED_BOTTOM_TL = new Point(62, 140);
-    private final Point RED_BOTTOM_BR = new Point(125,  170);
+    private final Point RED_TOP_TL     = new Point(0,135);
+    private final Point RED_TOP_BR     = new Point(50, 165);
+    private final Point RED_BOTTOM_TL  = new Point(62, 140);
+    private final Point RED_BOTTOM_BR  = new Point(125,  170);
 
     private Point topTL;
     private Point topBR;
