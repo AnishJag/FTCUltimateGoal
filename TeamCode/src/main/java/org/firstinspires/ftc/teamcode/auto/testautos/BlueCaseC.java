@@ -1,8 +1,10 @@
-package org.firstinspires.ftc.teamcode.auto;
+package org.firstinspires.ftc.teamcode.auto.testautos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import org.firstinspires.ftc.teamcode.auto.RingDetector;
 
 @Autonomous(name="BlueCaseC")
 public class BlueCaseC extends LinearOpMode {
@@ -10,8 +12,10 @@ public class BlueCaseC extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         RingDetector detector = new RingDetector(this, false);
-        int rings = detector.getDecision();
+
         waitForStart();
+
+        int rings = detector.getDecision();
 
         if (rings == 4);
         /*

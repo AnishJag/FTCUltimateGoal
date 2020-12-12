@@ -10,8 +10,10 @@ public class Blue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         RingDetector detector = new RingDetector(this, false);
-        int rings = detector.getDecision();
+
         waitForStart();
+
+        int rings = detector.getDecision();
 
         if (rings == 0);
         /*

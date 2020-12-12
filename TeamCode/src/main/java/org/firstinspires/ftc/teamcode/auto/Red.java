@@ -9,8 +9,10 @@ public class Red extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         RingDetector detector = new RingDetector(this, true);
-        int rings = detector.getDecision();
+
         waitForStart();
+
+        int rings = detector.getDecision();
 
         if (rings == 0);
         /*
