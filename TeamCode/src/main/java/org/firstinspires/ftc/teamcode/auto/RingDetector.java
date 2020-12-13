@@ -68,10 +68,10 @@ public class RingDetector {
         opMode.telemetry.update();
         boolean topRing = false;
         boolean bottomRing = false;
-        if (topValue > 70) {
+        if (topValue > 140) {
             topRing = true;
         }
-        if (bottomValue > 70) {
+        if (bottomValue > 140) {
             bottomRing = true;
         }
         if (topRing && bottomRing)
