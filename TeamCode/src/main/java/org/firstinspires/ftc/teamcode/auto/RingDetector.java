@@ -18,10 +18,10 @@ public class RingDetector {
 
     CustomPipeline pipeline;
 
-    private final Point BLUE_TOP_TL    = new Point(90,90);
-    private final Point BLUE_TOP_BR    = new Point(140, 120);
-    private final Point BLUE_BOTTOM_TL = new Point(185, 90);
-    private final Point BLUE_BOTTOM_BR = new Point(235,  120);
+    private final Point BLUE_TOP_TL    = new Point(150,70);
+    private final Point BLUE_TOP_BR    = new Point(190, 80);
+    private final Point BLUE_BOTTOM_TL = new Point(150, 60);
+    private final Point BLUE_BOTTOM_BR = new Point(190,  70);
 
     private final Point RED_TOP_TL     = new Point(0,135);
     private final Point RED_TOP_BR     = new Point(50, 165);
@@ -89,7 +89,7 @@ public class RingDetector {
             top = getAverageColor(input, topTL, topBR);
             bottom = getAverageColor(input, bottomTL, bottomBR);
 
-            int thickness = 4;
+            int thickness = 3;
             Scalar topColor = new Scalar(255,0,0);
             Scalar bottomColor = new Scalar(255,0,0);
             int position = getDecision();
