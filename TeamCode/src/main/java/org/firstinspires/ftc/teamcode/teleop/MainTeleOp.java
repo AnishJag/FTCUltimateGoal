@@ -57,5 +57,30 @@ public class MainTeleOp extends OpMode{
         robot.topRight.setPower(rightFrontPower);
         robot.bottomRight.setPower(rightBackPower);
 
+        if(gamepad2.a){
+            robot.foamWheel.setPower(1);
+        }
+        else{
+            robot.foamWheel.setPower(0);
+        }
+        if(gamepad2.b){
+            robot.jHopper1.setPower(0.8);
+        }
+        else{
+            robot.jHopper1.setPower(0);
+        }
+        if(gamepad2.y){
+            robot.jHopper2.setPower(1);
+        }
+        else{
+            robot.jHopper2.setPower(0);
+        }
+        double wobbleArm = gamepad2.right_stick_y;
+        if(Math.abs(wobbleArm) < 0.1){
+            robot.wobbleArm.setPower(0);
+        }
+        else{
+            robot.wobbleArm.setPower(wobbleArm);
+        }
     }
 }

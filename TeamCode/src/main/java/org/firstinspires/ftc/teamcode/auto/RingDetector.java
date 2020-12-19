@@ -18,10 +18,10 @@ public class RingDetector {
 
     CustomPipeline pipeline;
 
-    private final Point BLUE_TOP_TL    = new Point(150,30);
-    private final Point BLUE_TOP_BR    = new Point(190, 60);
-    private final Point BLUE_BOTTOM_TL = new Point(150, 60);
-    private final Point BLUE_BOTTOM_BR = new Point(190,  70);
+    private final Point BLUE_TOP_TL    = new Point(120,40);
+    private final Point BLUE_TOP_BR    = new Point(190, 70);
+    private final Point BLUE_BOTTOM_TL = new Point(120, 70);
+    private final Point BLUE_BOTTOM_BR = new Point(190,  85);
 
     private final Point RED_TOP_TL     = new Point(0,135);
     private final Point RED_TOP_BR     = new Point(50, 165);
@@ -68,10 +68,10 @@ public class RingDetector {
         opMode.telemetry.update();
         boolean topRing = false;
         boolean bottomRing = false;
-        if (topValue > 140) {
+        if (topValue > 220) {
             topRing = true;
         }
-        if (bottomValue > 140) {
+        if (bottomValue > 220) {
             bottomRing = true;
         }
         if (topRing && bottomRing)
