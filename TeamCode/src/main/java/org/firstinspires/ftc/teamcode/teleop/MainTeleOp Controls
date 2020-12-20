@@ -6,6 +6,7 @@ LAST UPDATED DATE: 12/19/2020
 ------------------------------------ GAMEPAD-1 ------------------------------------
 
 ------------------- Drivetrain -------------------
+
 left joystick y --------- FORWARD/BACKWARD
 left joystick x --------- LEFT/RIGHT
 left joystick button ---- N/A
@@ -14,6 +15,7 @@ right joystick x -------- TURN LEFT/RIGHT
 right joystick button --- N/A
 
 ---------------- Driver-Controls ----------------
+
 a ----------------------- TOP GOAL ALIGNMENT   (N/A)
 b ----------------------- POWER-SHOT ALIGNMENT (N/A)
 x ----------------------- N/A
@@ -38,6 +40,7 @@ right joystick x -------- N/A
 right joystick button --- N/A
 
 ---------------- Forward-Controls ----------------
+
 a  ---------------------- FOAM WHEEL INTAKE        (HOLD BUTTON)
 b  ---------------------- J-HOPPER WHEEL 1         (HOLD BUTTON)
 x  ---------------------- N/A
@@ -48,7 +51,8 @@ left trigger ------------ N/A
 right trigger ----------- N/A
 
 ---------------- Reverse-Controls ----------------
+
 D-pad left -------------- N/A
-D-pad bottom ------------ FOAM WHEEL OUTTAKE       (HOLD BUTTON) (N/A)
-D-pad right ------------- J-HOPPER WHEEL 1 REVERSE (HOLD BUTTON) (N/A)
-D-pad top --------------- J-HOPPER WHEEL 2 REVERSE (HOLD BUTTON) (N/A)
+D-pad bottom ------------ FOAM WHEEL OUTTAKE       (HOLD BUTTON)
+D-pad right ------------- J-HOPPER WHEEL 1 REVERSE (HOLD BUTTON)
+D-pad top --------------- J-HOPPER WHEEL 2 REVERSE (HOLD BUTTON)

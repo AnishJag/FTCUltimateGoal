@@ -64,7 +64,7 @@ public class MainTeleOp extends OpMode{
             robot.foamWheel.setPower(0);
         }
         if(gamepad2.b){
-            robot.jHopper1.setPower(0.8);
+            robot.jHopper1.setPower(1);
         }
         else{
             robot.jHopper1.setPower(0);
@@ -81,6 +81,46 @@ public class MainTeleOp extends OpMode{
         }
         else{
             robot.wobbleArm.setPower(wobbleArm);
+        }
+
+        // REVERSE CONTROLS
+        if(gamepad2.dpad_down){
+            robot.foamWheel.setPower(-1);
+        }
+        else{
+            robot.foamWheel.setPower(0);
+        }
+        if(gamepad2.dpad_right){
+            robot.jHopper1.setPower(-1);
+        }
+        else{
+            robot.jHopper1.setPower(0);
+        }
+        if(gamepad2.dpad_up){
+            robot.jHopper2.setPower(-1);
+        }
+        else{
+            robot.jHopper2.setPower(0);
+        }
+
+        // BUMPER CONTROLS
+        if(gamepad2.left_bumper){
+            robot.foamWheel.setPower(1);
+            robot.jHopper1.setPower(1);
+            robot.jHopper2.setPower(1);
+        }
+        else{
+            robot.foamWheel.setPower(0);
+            robot.jHopper1.setPower(0);
+            robot.jHopper2.setPower(0);
+        }
+        if(gamepad2.right_bumper){
+            robot.jHopper1.setPower(1);
+            robot.jHopper2.setPower(1);
+        }
+        else{
+            robot.jHopper1.setPower(0);
+            robot.jHopper2.setPower(0);
         }
     }
 }
