@@ -1,46 +1,54 @@
 MAIN TELEOP GAMEPAD CONTROLLER FUNCTIONS
 
-LAST UPDATED DATE: 12/09/2020
-
------------------------------------- Gamepad-1 ------------------------------------
-
-left joystick y ---------
-left joystick x ---------
-left joystick button ----
-right joystick y --------
-right joystick x --------
-right joystick button ---
-a -----------------------
-b -----------------------
-x -----------------------
-y -----------------------
-left bumper (higher up) -
-right bumper (higher up)-
-left trigger ------------
-right trigger -----------
-D-pad left --------------
-D-pad bottom ------------
-D-pad right -------------
-D-pad top ---------------
+LAST UPDATED DATE: 12/19/2020
 
 
------------------------------------- Gamepad-2 ------------------------------------
+------------------------------------ GAMEPAD-1 ------------------------------------
 
-left joystick y ----------
-left joystick x ---------
-left joystick button ----
-right joystick y --------
-right joystick x --------
-right joystick button ---
-a  ----------------------
-b  ----------------------
-x  ----------------------
-y -----------------------
-left bumper (higher up) -
-right bumper (higher up)-
-left trigger ------------
-right trigger -----------
-D-pad left --------------
-D-pad bottom ------------
-D-pad right -------------
-D-pad top ---------------
+------------------- Drivetrain -------------------
+left joystick y --------- FORWARD/BACKWARD
+left joystick x --------- LEFT/RIGHT
+left joystick button ---- N/A
+right joystick y -------- N/A
+right joystick x -------- TURN LEFT/RIGHT
+right joystick button --- N/A
+
+---------------- Driver-Controls ----------------
+a ----------------------- TOP GOAL ALIGNMENT   (N/A)
+b ----------------------- POWER-SHOT ALIGNMENT (N/A)
+x ----------------------- N/A
+y ----------------------- N/A
+left bumper (higher up) - N/A
+right bumper (higher up)- N/A
+left trigger ------------ N/A
+right trigger ----------- N/A
+D-pad left -------------- N/A
+D-pad bottom ------------ N/A
+D-pad right ------------- N/A
+D-pad top --------------- N/A
+
+
+------------------------------------ GAMEPAD-2 ------------------------------------
+
+left joystick y --------- N/A
+left joystick x --------- N/A
+left joystick button ---- N/A
+right joystick y -------- WOBBLE-ARM FORWARD/BACKWARD
+right joystick x -------- N/A
+right joystick button --- N/A
+
+---------------- Forward-Controls ----------------
+a  ---------------------- FOAM WHEEL INTAKE        (HOLD BUTTON)
+b  ---------------------- J-HOPPER WHEEL 1         (HOLD BUTTON)
+x  ---------------------- N/A
+y ----------------------- J-HOPPER WHEEL 2         (HOLD BUTTON)
+left bumper (higher up) - FOAM & J-HOPPER WHEELS   (HOLD BUTTON) (N/A)
+right bumper (higher up)- BOTH J-HOPPER WHEELS     (HOLD BUTTON) (N/A)
+left trigger ------------ N/A
+right trigger ----------- N/A
+
+---------------- Reverse-Controls ----------------
+D-pad left -------------- N/A
+D-pad bottom ------------ FOAM WHEEL OUTTAKE       (HOLD BUTTON) (N/A)
+D-pad right ------------- J-HOPPER WHEEL 1 REVERSE (HOLD BUTTON) (N/A)
+D-pad top --------------- J-HOPPER WHEEL 2 REVERSE (HOLD BUTTON) (N/A)

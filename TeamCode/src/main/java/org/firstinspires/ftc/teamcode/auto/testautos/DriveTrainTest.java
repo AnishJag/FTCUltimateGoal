@@ -7,6 +7,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.MainRobot;
 
+// After testing this program, robot kept curving towards the right.
+
 @Autonomous(name="DriveTrainTest")
 public class DriveTrainTest extends LinearOpMode {
 
