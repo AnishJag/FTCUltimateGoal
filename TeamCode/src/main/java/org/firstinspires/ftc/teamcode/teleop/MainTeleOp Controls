@@ -1,6 +1,6 @@
 MAIN TELEOP GAMEPAD CONTROLLER FUNCTIONS
 
-LAST UPDATED DATE: 12/19/2020
+LAST UPDATED DATE: 12/20/2020
 
 
 ------------------------------------ GAMEPAD-1 ------------------------------------
@@ -16,18 +16,18 @@ right joystick button --- N/A
 
 ---------------- Driver-Controls ----------------
 
-a ----------------------- TOP GOAL ALIGNMENT   (N/A)
-b ----------------------- POWER-SHOT ALIGNMENT (N/A)
-x ----------------------- N/A
-y ----------------------- N/A
-left bumper (higher up) - N/A
-right bumper (higher up)- N/A
-left trigger ------------ N/A
-right trigger ----------- N/A
-D-pad left -------------- N/A
-D-pad bottom ------------ N/A
-D-pad right ------------- N/A
-D-pad top --------------- N/A
+a  ----------------------- TOP GOAL ALIGNMENT   (ONE-TIME HIT) (N/A)
+b  ----------------------- POWER-SHOT ALIGNMENT (ONE-TIME HIT) (N/A)
+x  ----------------------- N/A
+y  ----------------------- N/A
+left bumper (higher up) -- N/A
+right bumper (higher up)-- N/A
+left trigger ------------- N/A
+right trigger ------------ N/A
+D-pad left --------------- N/A
+D-pad bottom ------------- N/A
+D-pad right -------------- N/A
+D-pad top ---------------- N/A
 
 
 ------------------------------------ GAMEPAD-2 ------------------------------------
@@ -44,9 +44,9 @@ right joystick button --- N/A
 a  ---------------------- FOAM WHEEL INTAKE        (HOLD BUTTON)
 b  ---------------------- J-HOPPER WHEEL 1         (HOLD BUTTON)
 x  ---------------------- N/A
-y ----------------------- J-HOPPER WHEEL 2         (HOLD BUTTON)
-left bumper (higher up) - FOAM & J-HOPPER WHEELS   (HOLD BUTTON) (N/A)
-right bumper (higher up)- BOTH J-HOPPER WHEELS     (HOLD BUTTON) (N/A)
+y  ---------------------- J-HOPPER WHEEL 2         (HOLD BUTTON)
+left bumper (higher up) - FOAM & J-HOPPER WHEELS   (HOLD BUTTON)
+right bumper (higher up)- BOTH J-HOPPER WHEELS     (HOLD BUTTON)
 left trigger ------------ N/A
 right trigger ----------- N/A
 

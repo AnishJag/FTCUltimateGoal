@@ -23,6 +23,7 @@ public class MainTeleOp extends OpMode{
     @Override
     public void loop() {
 
+        //--------------------DRIVETRAIN CONTROLS--------------------\\
         double forward = -gamepad1.left_stick_y;
         double right   = gamepad1.left_stick_x;
         double turn    = gamepad1.right_stick_x;
@@ -57,6 +58,29 @@ public class MainTeleOp extends OpMode{
         robot.topRight.setPower(rightFrontPower);
         robot.bottomRight.setPower(rightBackPower);
 
+
+        //--------------------BUMPER CONTROLS--------------------\\
+        if(gamepad2.left_bumper){
+            robot.foamWheel.setPower(1);
+            robot.jHopper1.setPower(1);
+            robot.jHopper2.setPower(1);
+        }
+        else{
+            robot.foamWheel.setPower(0);
+            robot.jHopper1.setPower(0);
+            robot.jHopper2.setPower(0);
+        }
+        if(gamepad2.right_bumper){
+            robot.jHopper1.setPower(1);
+            robot.jHopper2.setPower(1);
+        }
+        else{
+            robot.jHopper1.setPower(0);
+            robot.jHopper2.setPower(0);
+        }
+
+
+        //--------------------BUTTON CONTROLS--------------------\\
         if(gamepad2.a){
             robot.foamWheel.setPower(1);
         }
@@ -83,7 +107,8 @@ public class MainTeleOp extends OpMode{
             robot.wobbleArm.setPower(wobbleArm);
         }
 
-        // REVERSE CONTROLS
+
+        //--------------------REVERSE CONTROLS--------------------\\
         if(gamepad2.dpad_down){
             robot.foamWheel.setPower(-1);
         }
@@ -103,24 +128,6 @@ public class MainTeleOp extends OpMode{
             robot.jHopper2.setPower(0);
         }
 
-        // BUMPER CONTROLS
-        if(gamepad2.left_bumper){
-            robot.foamWheel.setPower(1);
-            robot.jHopper1.setPower(1);
-            robot.jHopper2.setPower(1);
-        }
-        else{
-            robot.foamWheel.setPower(0);
-            robot.jHopper1.setPower(0);
-            robot.jHopper2.setPower(0);
-        }
-        if(gamepad2.right_bumper){
-            robot.jHopper1.setPower(1);
-            robot.jHopper2.setPower(1);
-        }
-        else{
-            robot.jHopper1.setPower(0);
-            robot.jHopper2.setPower(0);
-        }
+
     }
 }
