@@ -24,6 +24,6 @@ public class DriveTrainTest extends LinearOpMode {
         robot.bottomLeft.setPower(0.2);
         robot.bottomRight.setPower(0.2);
 
-        sleep(10000);
+        sleep(6000);
     }
 }
