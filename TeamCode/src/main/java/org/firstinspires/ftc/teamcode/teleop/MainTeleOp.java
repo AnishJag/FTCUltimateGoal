@@ -61,7 +61,7 @@ public class MainTeleOp extends OpMode{
 
         //--------------------BUMPER CONTROLS--------------------\\
         if(gamepad2.left_bumper){
-            robot.foamWheel.setPower(0.6);
+            robot.foamWheel.setPower(1);
             robot.jHopper1.setPower(1);
             robot.jHopper2.setPower(1);
         }
@@ -82,7 +82,7 @@ public class MainTeleOp extends OpMode{
 
         //--------------------BUTTON CONTROLS--------------------\\
         if(gamepad2.a){
-            robot.foamWheel.setPower(0.6);
+            robot.foamWheel.setPower(1);
         }
         else{
             robot.foamWheel.setPower(0);
