@@ -1,10 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
 
 public class MainRobot {
 
@@ -20,6 +24,12 @@ public class MainRobot {
     public DcMotor foamWheel = null;
     // public Servo leftClaw = null;
 
+    // Total Sensors: 3
+    public ModernRoboticsI2cRangeSensor frontRange = null;
+    public ModernRoboticsI2cRangeSensor leftRange  = null;
+    public ModernRoboticsI2cRangeSensor rightRange  = null;
+
+
     HardwareMap hwMap = null;
 
     public void init(HardwareMap ahwMap) {
@@ -33,6 +43,7 @@ public class MainRobot {
         jHopper2 = hwMap.get(DcMotor.class, "jHopper2");
         wobbleArm = hwMap.get(DcMotor.class, "wobbleArm");
         foamWheel = hwMap.get(DcMotor.class, "foamWheel");
+
         topLeft.setDirection(DcMotor.Direction.REVERSE);
         bottomLeft.setDirection(DcMotor.Direction.REVERSE);
         topRight.setDirection(DcMotor.Direction.FORWARD);
@@ -47,5 +58,13 @@ public class MainRobot {
         wobbleArm.setPower(0);
         foamWheel.setPower(0);
 
+        frontRange = hwMap.get(ModernRoboticsI2cRangeSensor.class,"frontRange");
+        frontRange.initialize();
+
+        leftRange  = hwMap.get(ModernRoboticsI2cRangeSensor.class,"leftRange");
+        leftRange.initialize();
+
+        rightRange  = hwMap.get(ModernRoboticsI2cRangeSensor.class,"rightRange");
+        rightRange.initialize();
     }
 }
