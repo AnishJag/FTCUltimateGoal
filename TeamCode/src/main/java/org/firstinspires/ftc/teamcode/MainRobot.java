@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -24,11 +25,17 @@ public class MainRobot {
     public DcMotor foamWheel = null;
     // public Servo leftClaw = null;
 
-    // Total Sensors: 3
-    public ModernRoboticsI2cRangeSensor frontRange = null;
-    public ModernRoboticsI2cRangeSensor leftRange  = null;
+    // Total Sensors: 4
+    public ModernRoboticsI2cRangeSensor frontRange  = null;
+    public ModernRoboticsI2cRangeSensor leftRange   = null;
     public ModernRoboticsI2cRangeSensor rightRange  = null;
+    public ModernRoboticsI2cGyro        gyro        = null;
 
+    static final double     COUNTS_PER_MOTOR_REV    = 386.3;
+    static final double     DRIVE_GEAR_REDUCTION    = 1.0;
+    static final double     WHEEL_DIAMETER_INCHES   = 3.77953;
+    static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION)
+                                                             / (WHEEL_DIAMETER_INCHES * 3.14159265);
 
     HardwareMap hwMap = null;
 
@@ -66,5 +73,9 @@ public class MainRobot {
 
         rightRange  = hwMap.get(ModernRoboticsI2cRangeSensor.class,"rightRange");
         rightRange.initialize();
+
+        gyro = hwMap.get(ModernRoboticsI2cGyro.class,"gyro");
+        gyro.initialize();
+        gyro.calibrate();
     }
 }
