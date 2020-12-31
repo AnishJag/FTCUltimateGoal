@@ -1,0 +1,18 @@
+DISTANCES FROM ROBOT TO WALL, DEPOTS, ETC.
+
+LAST UPDATED DATE: 12/31/2020
+
+
+------------------------------------ CONSTANT DISTANCES ------------------------------------
+AUTOMATED SHOOTING Y-UNITS - 68 IN
+AUTOMATED SHOOTING X-UNITS - 36 IN
+DEPOT A Y-UNITS ------------ # IN
+DEPOT A X-UNITS ------------ # IN
+DEPOT B Y-UNITS ------------ # IN
+DEPOT B X-UNITS ------------ # IN
+DEPOT C Y-UNITS ------------ # IN
+DEPOT C X-UNITS ------------ # IN
+
+------------------- BLUE-SIDE -------------------
+
+left joystick y --------- FORWARD/BACKWARD

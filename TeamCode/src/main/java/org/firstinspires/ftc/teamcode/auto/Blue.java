@@ -5,7 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 @Autonomous(name="Blue")
-public class Blue extends LinearOpMode {
+public class
+Blue extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -15,7 +16,9 @@ public class Blue extends LinearOpMode {
 
         int rings = detector.getDecision();
 
-        if (rings == 0);
+        if (rings == 0){
+
+        }
         /*
         1. Robot deposits first wobble goal into position A.
         2. Trails back to pick up second wobble goal.

@@ -15,8 +15,8 @@ public class MainBlue extends OpMode{
 
     MainRobot robot = null;
 
-    public static final double FRONT_ALIGNMENT = 70;
-    public static final double RIGHT_ALIGNMENT = 70;
+    public static final double FRONT_ALIGNMENT = 68;
+    public static final double RIGHT_ALIGNMENT = 36;
     public static final double MARGIN_OF_ERROR = 1;
 
     @Override
