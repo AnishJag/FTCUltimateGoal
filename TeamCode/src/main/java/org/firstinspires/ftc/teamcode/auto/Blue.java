@@ -46,8 +46,9 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(-1);
             sleep(1000);
             robot.wobbleArm.setPower(0);
-
-
+        }
+        else if(rings == 1){
+            robot.gyroDrive(robot.DRIVE_SPEED,3,3,3,3,0,this);
         }
         /*
         1. Robot deposits first wobble goal into position A.

@@ -226,6 +226,9 @@ public class MainBlue extends OpMode{
         else{
             robot.wobbleArm.setPower(wobbleArm);
         }
+        if(gamepad2.x){
+            robot.wobbleClaw.;
+        }
 
 
         //--------------------REVERSE CONTROLS--------------------\\

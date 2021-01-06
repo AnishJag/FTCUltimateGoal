@@ -26,7 +26,7 @@ public class MainRobot {
     public DcMotor jHopper2 = null;
     public DcMotor wobbleArm = null;
     public DcMotor foamWheel = null;
-    // public Servo leftClaw = null;
+    public Servo wobbleClaw = null;
 
     // Total Sensors: 4
     public ModernRoboticsI2cRangeSensor frontRange  = null;
@@ -55,6 +55,7 @@ public class MainRobot {
         jHopper2 = hwMap.get(DcMotor.class, "jHopper2");
         wobbleArm = hwMap.get(DcMotor.class, "wobbleArm");
         foamWheel = hwMap.get(DcMotor.class, "foamWheel");
+        wobbleClaw = hwMap.get(Servo.class,"wobbleClaw");
 
         topLeft.setDirection(DcMotor.Direction.REVERSE);
         bottomLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -69,6 +70,7 @@ public class MainRobot {
         jHopper2.setPower(0);
         wobbleArm.setPower(0);
         foamWheel.setPower(0);
+        wobbleClaw.setPosition(0);
 
         frontRange = hwMap.get(ModernRoboticsI2cRangeSensor.class,"frontRange");
         frontRange.initialize();
@@ -88,7 +90,7 @@ public class MainRobot {
 
         double robotError;
 
-        // calculate error in -179 to +180 range
+        // Calculates error from angle.
         robotError = angle - gyro.getIntegratedZValue();
         while (robotError > 180)  robotError -= 360;
         while (robotError <= -180) robotError += 360;
