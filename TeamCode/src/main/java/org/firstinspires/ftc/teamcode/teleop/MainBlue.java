@@ -227,7 +227,10 @@ public class MainBlue extends OpMode{
             robot.wobbleArm.setPower(wobbleArm);
         }
         if(gamepad2.x){
-            robot.wobbleClaw.;
+            robot.wobbleClaw.setPower(1);
+        }
+        else{
+            robot.wobbleClaw.setPower(0);
         }
 
 

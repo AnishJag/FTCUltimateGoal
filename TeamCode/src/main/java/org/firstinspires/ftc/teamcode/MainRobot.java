@@ -4,6 +4,7 @@ import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
@@ -26,7 +27,7 @@ public class MainRobot {
     public DcMotor jHopper2 = null;
     public DcMotor wobbleArm = null;
     public DcMotor foamWheel = null;
-    public Servo wobbleClaw = null;
+    public CRServo wobbleClaw = null;
 
     // Total Sensors: 4
     public ModernRoboticsI2cRangeSensor frontRange  = null;
@@ -55,7 +56,7 @@ public class MainRobot {
         jHopper2 = hwMap.get(DcMotor.class, "jHopper2");
         wobbleArm = hwMap.get(DcMotor.class, "wobbleArm");
         foamWheel = hwMap.get(DcMotor.class, "foamWheel");
-        wobbleClaw = hwMap.get(Servo.class,"wobbleClaw");
+        wobbleClaw = hwMap.get(CRServo.class,"wobbleClaw");
 
         topLeft.setDirection(DcMotor.Direction.REVERSE);
         bottomLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -70,7 +71,7 @@ public class MainRobot {
         jHopper2.setPower(0);
         wobbleArm.setPower(0);
         foamWheel.setPower(0);
-        wobbleClaw.setPosition(0);
+        wobbleClaw.setPower(0);
 
         frontRange = hwMap.get(ModernRoboticsI2cRangeSensor.class,"frontRange");
         frontRange.initialize();
