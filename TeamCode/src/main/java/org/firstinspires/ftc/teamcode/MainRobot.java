@@ -18,7 +18,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSenso
 public class MainRobot {
 
     // Total Motors: 8
-    // Total Servos: 0
+    // Total Servos: 1
     public DcMotor topLeft = null;
     public DcMotor bottomLeft = null;
     public DcMotor topRight = null;
@@ -40,8 +40,10 @@ public class MainRobot {
     static final double     WHEEL_DIAMETER_INCHES   = 3.77953;
     public static final double     COUNTS_PER_INCH  = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION)
                                                              / (WHEEL_DIAMETER_INCHES * 3.14159265);
-    public static final double     DRIVE_SPEED      = 1.0;
-    public static final double     TURN_SPEED       = 0.5;
+    public static final double     DRIVE_SPEED        = 1.0;
+    public static final double     TURN_SPEED         = 0.5;
+    public static final double     P_TURN_COEFF       = 0.1;
+    public static final double     HEADING_THRESHOLD  = 1.0;
 
     HardwareMap hwMap = null;
 
@@ -72,6 +74,7 @@ public class MainRobot {
         wobbleArm.setPower(0);
         foamWheel.setPower(0);
         wobbleClaw.setPower(0);
+
 
         frontRange = hwMap.get(ModernRoboticsI2cRangeSensor.class,"frontRange");
         frontRange.initialize();
@@ -150,7 +153,7 @@ public class MainRobot {
             bottomLeft.setPower(speed);
             bottomRight.setPower(speed);
 
-            // keep looping while we are still active, and BOTH motors are running.
+            // keep looping while we are still active, and ALL motors are running.
             while (opmode.opModeIsActive() &&
                     (topLeft.isBusy() && topRight.isBusy() && bottomLeft.isBusy() && bottomRight.isBusy())) {
 
@@ -194,10 +197,10 @@ public class MainRobot {
 
                 // Display drive status for the driver.
                 opmode.telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);
-                opmode.telemetry.addData("Target",  "%7d:%7d:%7d:%7d",      newTLTarget, newTRTarget, newBLTarget, newBRTarget);
-                opmode.telemetry.addData("Actual",  "%7d:%7d:%7d:%7d",      topLeft.getCurrentPosition(),
+                opmode.telemetry.addData("Target",  "%7d:%7d:%7d:%7d", newTLTarget, newTRTarget, newBLTarget, newBRTarget);
+                opmode.telemetry.addData("Actual",  "%7d:%7d:%7d:%7d", topLeft.getCurrentPosition(),
                         topRight.getCurrentPosition(), bottomLeft.getCurrentPosition(), bottomRight.getCurrentPosition() );
-                opmode.telemetry.addData("Speed",   "%5.2f:%5.2f:%5.2f:%5.2f",  speedTL, speedTR, speedBL, speedBR);
+                opmode.telemetry.addData("Speed",   "%5.2f:%5.2f:%5.2f:%5.2f", speedTL, speedTR, speedBL, speedBR);
                 opmode.telemetry.update();
             }
 
@@ -213,5 +216,50 @@ public class MainRobot {
             bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
+    }
+    public void gyroTurn (double speed, double angle, LinearOpMode opmode) {
+
+
+        // keep looping while we are still active, and not on heading.
+        while (opmode.opModeIsActive() && !onHeading(speed, angle, P_TURN_COEFF, opmode)) {
+            // Update telemetry & Allow time for other processes to run.
+            opmode.telemetry.update();
+        }
+    }
+
+    boolean onHeading(double speed, double angle, double PCoeff, LinearOpMode opmode) {
+        double   error ;
+        double   steer ;
+        boolean  onTarget = false ;
+        double leftSpeed;
+        double rightSpeed;
+
+        // determine turn power based on +/- error
+        error = getError(angle);
+
+        if (Math.abs(error) <= HEADING_THRESHOLD) {
+            steer = 0.0;
+            leftSpeed  = 0.0;
+            rightSpeed = 0.0;
+            onTarget = true;
+        }
+        else {
+            steer = getSteer(error, PCoeff);
+            rightSpeed  = speed * steer;
+            leftSpeed   = -rightSpeed;
+        }
+
+        // Send desired speeds to motors.
+        topLeft.setPower(leftSpeed);
+        topRight.setPower(rightSpeed);
+        bottomLeft.setPower(leftSpeed);
+        bottomRight.setPower(rightSpeed);
+
+        // Display it for the driver.
+        opmode.telemetry.addData("Target", "%5.2f", angle);
+        opmode.telemetry.addData("Err/St", "%5.2f/%5.2f", error, steer);
+        opmode.telemetry.addData("Speed ", "%5.2f:%5.2f", leftSpeed, rightSpeed);
+
+        return onTarget;
     }
 }

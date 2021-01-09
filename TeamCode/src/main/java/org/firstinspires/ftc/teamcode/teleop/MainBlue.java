@@ -24,6 +24,7 @@ public class MainBlue extends OpMode{
         robot = new MainRobot();
         robot.init(hardwareMap);
         telemetry.addData("Initialization Complete!","");
+        telemetry.update();
     }
 
     @Override
@@ -65,12 +66,13 @@ public class MainBlue extends OpMode{
         robot.bottomRight.setPower(rightBackPower);
 
         //--------------------AUTOMATION CONTROLS--------------------\\
+        boolean jHopperWheels = false;
+
         if(gamepad1.a){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
             telemetry.addData("Front Range: ", frontRange);
             telemetry.addData("Left Range: ", leftRange);
-            telemetry.update();
 
             double forwardPower = 0;
             double rightPower    = 0;
@@ -91,15 +93,17 @@ public class MainBlue extends OpMode{
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
 
-            robot.jHopper1.setPower(1);
-            robot.jHopper2.setPower(1);
+            jHopperWheels = true;
         }
+        else{
+            jHopperWheels = false;
+        }
+
         if(gamepad1.b){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
             telemetry.addData("Front Range: ", frontRange);
             telemetry.addData("Left Range: ", leftRange);
-            telemetry.update();
 
             double forwardPower = 0;
             double rightPower    = 0;
@@ -120,16 +124,18 @@ public class MainBlue extends OpMode{
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
 
-            robot.jHopper1.setPower(1);
-            robot.jHopper2.setPower(1);
+            jHopperWheels = true;
             //Need to add angle for each turn for power-shots.
         }
+        else{
+            jHopperWheels = false;
+        }
+
         if(gamepad1.x){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
             telemetry.addData("Front Range: ", frontRange);
             telemetry.addData("Left Range: ", leftRange);
-            telemetry.update();
 
             double forwardPower = 0;
             double rightPower    = 0;
@@ -150,12 +156,12 @@ public class MainBlue extends OpMode{
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
         }
+
         if(gamepad1.y){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
             telemetry.addData("Front Range: ", frontRange);
             telemetry.addData("Left Range: ", leftRange);
-            telemetry.update();
 
             double forwardPower = 0;
             double rightPower    = 0;
@@ -179,46 +185,39 @@ public class MainBlue extends OpMode{
         }
 
 
-        //--------------------BUMPER CONTROLS--------------------\\
-        if(gamepad2.left_bumper){
+        //--------------------NON-AUTOMATION CONTROLS--------------------\\
+        if (gamepad2.a || gamepad2.left_bumper || gamepad2.right_bumper){
             robot.foamWheel.setPower(1);
-            robot.jHopper1.setPower(1);
-            robot.jHopper2.setPower(1);
         }
-        else{
-            robot.foamWheel.setPower(0);
-            robot.jHopper1.setPower(0);
-            robot.jHopper2.setPower(0);
-        }
-        if(gamepad2.right_bumper){
-            robot.jHopper1.setPower(1);
-            robot.jHopper2.setPower(1);
-        }
-        else{
-            robot.jHopper1.setPower(0);
-            robot.jHopper2.setPower(0);
-        }
-
-
-        //--------------------BUTTON CONTROLS--------------------\\
-        if(gamepad2.a){
-            robot.foamWheel.setPower(1);
+        else if (gamepad2.dpad_down){
+            robot.foamWheel.setPower(-1);
         }
         else{
             robot.foamWheel.setPower(0);
         }
-        if(gamepad2.b){
+
+        if (gamepad2.b || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
+            robot.jHopper1.setPower(1);
+        }
+        else if (gamepad2.dpad_down){
             robot.jHopper1.setPower(-1);
         }
         else{
             robot.jHopper1.setPower(0);
         }
-        if(gamepad2.y){
+
+        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
+            robot.jHopper2.setPower(1);
+        }
+        else if (gamepad2.dpad_up){
             robot.jHopper2.setPower(-1);
         }
         else{
             robot.jHopper2.setPower(0);
         }
+
+        telemetry.addData("J-Hopper1 Power: ", robot.jHopper1.getPower());
+
         double wobbleArm = gamepad2.right_stick_y;
         if(Math.abs(wobbleArm) < 0.1){
             robot.wobbleArm.setPower(0);
@@ -233,25 +232,6 @@ public class MainBlue extends OpMode{
             robot.wobbleClaw.setPower(0);
         }
 
-
-        //--------------------REVERSE CONTROLS--------------------\\
-        if(gamepad2.dpad_down){
-            robot.foamWheel.setPower(-1);
-        }
-        else{
-            robot.foamWheel.setPower(0);
-        }
-        if(gamepad2.dpad_right){
-            robot.jHopper1.setPower(1);
-        }
-        else{
-            robot.jHopper1.setPower(0);
-        }
-        if(gamepad2.dpad_up){
-            robot.jHopper2.setPower(1);
-        }
-        else{
-            robot.jHopper2.setPower(0);
-        }
+        telemetry.update();
     }
 }

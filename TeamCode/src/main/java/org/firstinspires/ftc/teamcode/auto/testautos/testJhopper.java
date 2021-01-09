@@ -20,5 +20,7 @@ public class testJhopper extends LinearOpMode {
         robot.jHopper1.setPower(-1);
         sleep(10000);
 
+        telemetry.addData("J-Hopper1 Power: ", robot.jHopper1.getPower());
+        telemetry.update();
     }
 }
