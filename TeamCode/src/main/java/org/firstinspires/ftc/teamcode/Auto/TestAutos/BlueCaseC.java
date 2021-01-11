@@ -1,10 +1,10 @@
-package org.firstinspires.ftc.teamcode.auto.testautos;
+package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.auto.RingDetector;
+import org.firstinspires.ftc.teamcode.Auto.RingDetector;
 
 @Autonomous(name="BlueCaseC")
 public class BlueCaseC extends LinearOpMode {

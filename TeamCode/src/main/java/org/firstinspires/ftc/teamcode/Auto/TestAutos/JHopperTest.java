@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.auto.testautos;
+package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,7 +6,7 @@ import org.firstinspires.ftc.teamcode.MainRobot;
 
 
 @Autonomous(name="testJhopper")
-public class testJhopper extends LinearOpMode {
+public class JHopperTest extends LinearOpMode {
 
     MainRobot robot = new MainRobot();
 

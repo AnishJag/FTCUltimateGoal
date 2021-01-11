@@ -1,17 +1,14 @@
-package org.firstinspires.ftc.teamcode.teleop;
+package org.firstinspires.ftc.teamcode.TeleOp;
 
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
-@TeleOp(name="MainTeleOp")
+@TeleOp(name="MainTele-OpRed")
 
-public class MainBlue extends OpMode{
+public class MainRed extends OpMode {
 
     MainRobot robot = null;
 
@@ -30,7 +27,7 @@ public class MainBlue extends OpMode{
     @Override
     public void loop() {
 
-        //--------------------DRIVETRAIN CONTROLS--------------------\\
+        //--------------------DRIVE-TRAIN CONTROLS--------------------\\
         double forward = -gamepad1.left_stick_y;
         double right   = gamepad1.left_stick_x;
         double turn    = gamepad1.right_stick_x;
@@ -223,7 +220,7 @@ public class MainBlue extends OpMode{
         else{
             robot.jHopper2.setPower(0);
         }
-        telemetry.addData("J-Hopper1 Power: ", robot.jHopper1.getPower());
+        telemetry.addData("J-Hopper 1 Power: ", robot.jHopper1.getPower());
 
         //---------------WOBBLE---------------\\
         double wobbleArm = gamepad2.right_stick_y;

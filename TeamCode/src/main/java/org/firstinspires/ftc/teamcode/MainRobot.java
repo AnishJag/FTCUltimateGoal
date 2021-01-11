@@ -178,7 +178,7 @@ public class MainRobot {
                     speedBR  = speed + steer;
                 else speedBR = speed - steer;
 
-                // Normalize speeds if either one exceeds +/- 1.0;
+                // Normalize speeds if either one exceeds +/- 1.0
                 leftMax  = Math.max(Math.abs(speedTL), Math.abs(speedTR));
                 rightMax = Math.max(Math.abs(speedBL), Math.abs(speedBR));
                 max      = Math.max(leftMax,rightMax);
@@ -204,13 +204,11 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
 
-            // Stop all motion;
             topLeft.setPower(0);
             topRight.setPower(0);
             bottomLeft.setPower(0);
             bottomRight.setPower(0);
 
-            // Turn off RUN_TO_POSITION
             topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -218,7 +216,6 @@ public class MainRobot {
         }
     }
     public void gyroTurn (double speed, double angle, LinearOpMode opmode) {
-
 
         // keep looping while we are still active, and not on heading.
         while (opmode.opModeIsActive() && !onHeading(speed, angle, P_TURN_COEFF, opmode)) {

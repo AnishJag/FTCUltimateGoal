@@ -1,9 +1,8 @@
-package org.firstinspires.ftc.teamcode.auto.testautos;
+package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.MainRobot;
 
@@ -25,5 +24,12 @@ public class DriveTrainTest extends LinearOpMode {
         robot.bottomRight.setPower(0.2);
 
         sleep(6000);
+
+        telemetry.addData("Top-Left Power: ", robot.topLeft.getPower());
+        telemetry.addData("Top-Right Power: ", robot.topRight.getPower());
+        telemetry.addData("Back-Right Power: ", robot.bottomRight.getPower());
+        telemetry.addData("Back-Right Power: ", robot.bottomLeft.getPower());
+        telemetry.update();
+
     }
 }
