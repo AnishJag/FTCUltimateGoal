@@ -68,6 +68,7 @@ public class MainBlue extends OpMode{
         //--------------------AUTOMATION CONTROLS--------------------\\
         boolean jHopperWheels = false;
 
+        //---------------TOP-GOAL & SHOOT---------------\\
         if(gamepad1.a){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
@@ -99,6 +100,7 @@ public class MainBlue extends OpMode{
             jHopperWheels = false;
         }
 
+        //---------------POWER-SHOT & SHOOT---------------\\
         if(gamepad1.b){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
@@ -131,6 +133,7 @@ public class MainBlue extends OpMode{
             jHopperWheels = false;
         }
 
+        //---------------TOP-GOAL NO SHOOT---------------\\
         if(gamepad1.x){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
@@ -157,6 +160,7 @@ public class MainBlue extends OpMode{
             robot.bottomRight.setPower(forwardPower + rightPower);
         }
 
+        //---------------POWER-SHOT NO SHOOT---------------\\
         if(gamepad1.y){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
@@ -185,7 +189,9 @@ public class MainBlue extends OpMode{
         }
 
 
-        //--------------------NON-AUTOMATION CONTROLS--------------------\\
+        //--------------------ROBOT CONTROLS--------------------\\
+
+        //---------------FOAM WHEEL---------------\\
         if (gamepad2.a || gamepad2.left_bumper || gamepad2.right_bumper){
             robot.foamWheel.setPower(1);
         }
@@ -196,6 +202,7 @@ public class MainBlue extends OpMode{
             robot.foamWheel.setPower(0);
         }
 
+        //---------------J-HOPPER 1---------------\\
         if (gamepad2.b || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
             robot.jHopper1.setPower(-1);
         }
@@ -206,6 +213,7 @@ public class MainBlue extends OpMode{
             robot.jHopper1.setPower(0);
         }
 
+        //---------------J-HOPPER 2---------------\\
         if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
             robot.jHopper2.setPower(-0.8);
         }
@@ -215,9 +223,9 @@ public class MainBlue extends OpMode{
         else{
             robot.jHopper2.setPower(0);
         }
-
         telemetry.addData("J-Hopper1 Power: ", robot.jHopper1.getPower());
 
+        //---------------WOBBLE---------------\\
         double wobbleArm = gamepad2.right_stick_y;
         if(Math.abs(wobbleArm) < 0.1){
             robot.wobbleArm.setPower(0);
