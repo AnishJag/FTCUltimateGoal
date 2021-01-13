@@ -203,7 +203,7 @@ public class MainBlue extends OpMode{
         if (gamepad2.b || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
             robot.jHopper1.setPower(-1);
         }
-        else if (gamepad2.dpad_down){
+        else if (gamepad2.dpad_right){
             robot.jHopper1.setPower(1);
         }
         else{
@@ -212,7 +212,7 @@ public class MainBlue extends OpMode{
 
         //---------------J-HOPPER 2---------------\\
         if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
-            robot.jHopper2.setPower(-0.8);
+            robot.jHopper2.setPower(-0.9);
         }
         else if (gamepad2.dpad_up){
             robot.jHopper2.setPower(1);
