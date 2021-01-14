@@ -13,27 +13,30 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
 
 public class MainRobot {
 
     // Total Motors: 8
-    // Total Servos: 1
-    public DcMotor topLeft = null;
-    public DcMotor bottomLeft = null;
-    public DcMotor topRight = null;
+    // Total Servos: 2
+    public DcMotor topLeft     = null;
+    public DcMotor bottomLeft  = null;
+    public DcMotor topRight    = null;
     public DcMotor bottomRight = null;
-    public DcMotor jHopper1 = null;
-    public DcMotor jHopper2 = null;
-    public DcMotor wobbleArm = null;
-    public DcMotor foamWheel = null;
-    public CRServo wobbleClaw = null;
+    public DcMotor jHopper1    = null;
+    public DcMotor jHopper2    = null;
+    public DcMotor wobbleArm   = null;
+    public DcMotor foamWheel   = null;
+    public CRServo wobbleClaw  = null;
+    public Servo   jHopStopper = null;
 
-    // Total Sensors: 4
-    public ModernRoboticsI2cRangeSensor frontRange  = null;
-    public ModernRoboticsI2cRangeSensor leftRange   = null;
-    public ModernRoboticsI2cRangeSensor rightRange  = null;
-    public ModernRoboticsI2cGyro        gyro        = null;
+    // Total Sensors: 5
+    public ModernRoboticsI2cRangeSensor frontRange   = null;
+    public ModernRoboticsI2cRangeSensor leftRange    = null;
+    public ModernRoboticsI2cRangeSensor rightRange   = null;
+    public ModernRoboticsI2cGyro        gyro         = null;
+    public SensorDigitalTouch           digitalTouch = null;
 
     static final double     COUNTS_PER_MOTOR_REV    = 386.3;
     static final double     DRIVE_GEAR_REDUCTION    = 1.0;
@@ -88,6 +91,9 @@ public class MainRobot {
         gyro = hwMap.get(ModernRoboticsI2cGyro.class,"gyro");
         gyro.initialize();
         gyro.calibrate();
+
+        /*digitalTouch = hwMap.get(SensorDigitalTouch.class, "touchJHop");
+        digitalTouch.initialize();*/
     }
 
     public double getError (double angle){

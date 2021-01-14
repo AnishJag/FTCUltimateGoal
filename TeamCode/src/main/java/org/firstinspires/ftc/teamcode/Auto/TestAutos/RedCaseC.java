@@ -2,11 +2,13 @@ package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Auto.RingDetector;
 
 @Autonomous(name="RedCaseC")
+@Disabled
 public class RedCaseC extends LinearOpMode {
 
     @Override
