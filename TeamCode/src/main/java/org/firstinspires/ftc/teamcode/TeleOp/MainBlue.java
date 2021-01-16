@@ -212,15 +212,15 @@ public class MainBlue extends OpMode{
 
         //---------------J-HOPPER 2---------------\\
         if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
-            robot.jHopper2.setPower(-0.9);
+            robot.jHopper2.setPower(-1.0);
         }
         else if (gamepad2.dpad_up){
-            robot.jHopper2.setPower(1);
+            robot.jHopper2.setPower(0.3);
         }
         else{
             robot.jHopper2.setPower(0);
         }
-        telemetry.addData("J-Hopper1 Power: ", robot.jHopper1.getPower());
+
 
         //---------------WOBBLE---------------\\
         double wobbleArm = gamepad2.right_stick_y;

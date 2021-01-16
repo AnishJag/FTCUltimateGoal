@@ -29,7 +29,7 @@ public class MainRobot {
     public DcMotor wobbleArm   = null;
     public DcMotor foamWheel   = null;
     public CRServo wobbleClaw  = null;
-    public Servo   jHopStopper = null;
+
 
     // Total Sensors: 5
     public ModernRoboticsI2cRangeSensor frontRange   = null;
