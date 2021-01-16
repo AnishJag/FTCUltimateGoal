@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
-@TeleOp(name="MainTele-OpRed")
+@TeleOp(name="MainTeleOp RED")
 
 public class MainRed extends OpMode {
 
