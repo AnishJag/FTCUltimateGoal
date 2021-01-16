@@ -6,6 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
+import java.lang.reflect.Field;
+
 @TeleOp(name="MainTeleOp BLUE")
 
 public class MainBlue extends OpMode{
@@ -17,6 +19,8 @@ public class MainBlue extends OpMode{
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
     public boolean                 SlowMode    = false;
+    public boolean               FieldRelative = true;
+    public boolean                 GP1_LB_Held = false;
 
     @Override
     public void init() {
@@ -32,6 +36,18 @@ public class MainBlue extends OpMode{
         //--------------------DRIVE-TRAIN CONTROLS--------------------\\
         double forward = -gamepad1.left_stick_y;
         double right   = gamepad1.left_stick_x;
+
+        if(FieldRelative){
+            double angle = robot.gyro.getHeading();
+            angle = Math.toRadians(angle);
+
+            double relativeForward = (Math.cos(angle)*right) + (Math.sin(angle)*forward);
+            double relativeRight = (Math.sin(angle)*right) - (Math.cos(angle)*forward);
+
+            forward = relativeForward;
+            right   = relativeRight;
+        }
+
         double turn    = gamepad1.right_stick_x;
 
         double leftFrontPower = forward + right + turn;
@@ -59,6 +75,16 @@ public class MainBlue extends OpMode{
             rightFrontPower /= greatest;
             rightBackPower /= greatest;
         }
+
+        //--------------------FIELD-RELATIVE DRIVE--------------------\\
+        if(gamepad1.left_bumper && !GP1_LB_Held){
+            FieldRelative = !FieldRelative;
+            GP1_LB_Held = true;
+        }
+        if(!gamepad1.left_bumper){
+            GP1_LB_Held = false;
+        }
+
 
         //--------------------SLOW-MODE--------------------\\
         if(gamepad1.right_bumper && !GP1_RB_Held){
