@@ -15,6 +15,8 @@ public class MainBlue extends OpMode{
     public static final double FRONT_ALIGNMENT = 68;
     public static final double RIGHT_ALIGNMENT = 36;
     public static final double MARGIN_OF_ERROR = 1;
+    public boolean                 GP1_RB_Held = false;
+    public boolean                 SlowMode    = false;
 
     @Override
     public void init() {
@@ -57,10 +59,29 @@ public class MainBlue extends OpMode{
             rightFrontPower /= greatest;
             rightBackPower /= greatest;
         }
-        robot.topLeft.setPower(leftFrontPower);
-        robot.bottomLeft.setPower(leftBackPower);
-        robot.topRight.setPower(rightFrontPower);
-        robot.bottomRight.setPower(rightBackPower);
+
+        //--------------------SLOW-MODE--------------------\\
+        if(gamepad1.right_bumper && !GP1_RB_Held){
+            GP1_RB_Held = true;
+            SlowMode    =  !SlowMode;
+        }
+        if(!gamepad1.right_bumper){
+            GP1_RB_Held = false;
+        }
+
+        if(SlowMode) {
+            robot.topLeft.setPower(0.3 * leftFrontPower);
+            robot.bottomLeft.setPower(0.3 * leftBackPower);
+            robot.topRight.setPower(0.3 * rightFrontPower);
+            robot.bottomRight.setPower(0.3 * rightBackPower);
+        }
+        else{
+            robot.topLeft.setPower(leftFrontPower);
+            robot.bottomLeft.setPower(leftBackPower);
+            robot.topRight.setPower(rightFrontPower);
+            robot.bottomRight.setPower(rightBackPower);
+        }
+
 
         //--------------------AUTOMATION CONTROLS--------------------\\
         boolean jHopperWheels = false;
