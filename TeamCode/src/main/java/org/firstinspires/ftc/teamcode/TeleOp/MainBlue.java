@@ -21,6 +21,7 @@ public class MainBlue extends OpMode{
     public boolean                 SlowMode    = false;
     public boolean               FieldRelative = true;
     public boolean                 GP1_LB_Held = false;
+    public boolean                GP2_DPL_Held = false;
 
     @Override
     public void init() {
@@ -284,6 +285,19 @@ public class MainBlue extends OpMode{
             robot.wobbleClaw.setPower(0);
         }
 
+        //---------------J-HOPPER FLAP---------------\\
+        if(gamepad2.dpad_left && !GP2_DPL_Held) {
+            GP2_DPL_Held = true;
+            if(robot.JHopFlap.getPosition() == 0.5){
+                robot.JHopFlap.setPosition(0);
+            }
+            else{
+                robot.JHopFlap.setPosition(0.5);
+            }
+        }
+        if(!gamepad2.dpad_left) {
+            GP2_DPL_Held = false; //Back Open
+        }
         telemetry.update();
     }
 }

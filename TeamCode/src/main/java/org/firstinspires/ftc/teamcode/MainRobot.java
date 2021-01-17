@@ -17,6 +17,7 @@ import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class MainRobot {
 
@@ -31,14 +32,15 @@ public class MainRobot {
     public DcMotor wobbleArm   = null;
     public DcMotor foamWheel   = null;
     public CRServo wobbleClaw  = null;
+    public Servo   JHopFlap    = null;
 
 
-    // Total Sensors: 5
+    // Total Sensors: 4
     public ModernRoboticsI2cRangeSensor frontRange   = null;
     public ModernRoboticsI2cRangeSensor leftRange    = null;
     public ModernRoboticsI2cRangeSensor rightRange   = null;
     public ModernRoboticsI2cGyro        gyro         = null;
-    public SensorDigitalTouch           digitalTouch = null;
+
 
     static final double     COUNTS_PER_MOTOR_REV    = 386.3;
     static final double     DRIVE_GEAR_REDUCTION    = 1.0;
@@ -64,6 +66,7 @@ public class MainRobot {
         wobbleArm = hwMap.get(DcMotor.class, "wobbleArm");
         foamWheel = hwMap.get(DcMotor.class, "foamWheel");
         wobbleClaw = hwMap.get(CRServo.class,"wobbleClaw");
+        JHopFlap = hwMap.get(Servo.class, "JHopperFlap");
 
         topLeft.setDirection(DcMotor.Direction.REVERSE);
         bottomLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -79,6 +82,7 @@ public class MainRobot {
         wobbleArm.setPower(0);
         foamWheel.setPower(0);
         wobbleClaw.setPower(0);
+        JHopFlap.setPosition(0.5);
 
 
         frontRange = hwMap.get(ModernRoboticsI2cRangeSensor.class,"frontRange");
@@ -94,8 +98,6 @@ public class MainRobot {
         gyro.initialize();
         gyro.calibrate();
 
-        /*digitalTouch = hwMap.get(SensorDigitalTouch.class, "touchJHop");
-        digitalTouch.initialize();*/
     }
 
     public double getError (double angle){
@@ -115,7 +117,7 @@ public class MainRobot {
 
     //Autonomous Blue & Red
     public void gyroDrive (double speed, double distanceTL, double distanceTR,
-                           double distanceBL, double distanceBR, double angle, LinearOpMode opmode) {
+                           double distanceBL, double distanceBR, double angle, double frontDistance, double leftDistance, double rightDistance, LinearOpMode opmode) {
 
         int     newTLTarget;
         int     newTRTarget;
@@ -212,15 +214,64 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
 
-            topLeft.setPower(0);
-            topRight.setPower(0);
-            bottomLeft.setPower(0);
-            bottomRight.setPower(0);
-
             topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+            //Utilization of Range Sensors in Autonomous
+            if(frontDistance != -1) {
+                while (frontRange.getDistance(DistanceUnit.INCH) < frontDistance){
+                    topLeft.setPower(-1);
+                    topRight.setPower(-1);
+                    bottomLeft.setPower(-1);
+                    bottomRight.setPower(-1);
+
+                    opmode.telemetry.addData("Sensor Front Distance: ", frontRange.getDistance(DistanceUnit.INCH));
+                    opmode.telemetry.addData("Target Front Distance: ", frontDistance);
+                    opmode.telemetry.addLine("Moving Backwards");
+                    opmode.telemetry.update();
+                }
+                while (frontRange.getDistance(DistanceUnit.INCH) > frontDistance){
+                    topLeft.setPower(1);
+                    topRight.setPower(1);
+                    bottomLeft.setPower(1);
+                    bottomRight.setPower(1);
+                }
+            }
+            if (leftDistance != -1) {
+                while (leftRange.getDistance(DistanceUnit.INCH) < leftDistance){
+                    topLeft.setPower(1);
+                    topRight.setPower(-1);
+                    bottomLeft.setPower(-1);
+                    bottomRight.setPower(1);
+                }
+                while (leftRange.getDistance(DistanceUnit.INCH) > leftDistance){
+                    topLeft.setPower(-1);
+                    topRight.setPower(1);
+                    bottomLeft.setPower(1);
+                    bottomRight.setPower(-1);
+                }
+            }
+            if (rightDistance != -1){
+                while (rightRange.getDistance(DistanceUnit.INCH) > rightDistance){
+                    topLeft.setPower(1);
+                    topRight.setPower(-1);
+                    bottomLeft.setPower(-1);
+                    bottomRight.setPower(1);
+                }
+                while (rightRange.getDistance(DistanceUnit.INCH) < rightDistance){
+                    topLeft.setPower(-1);
+                    topRight.setPower(1);
+                    bottomLeft.setPower(1);
+                    bottomRight.setPower(-1);
+                }
+            }
+
+            topLeft.setPower(0);
+            topRight.setPower(0);
+            bottomLeft.setPower(0);
+            bottomRight.setPower(0);
         }
     }
     public void gyroTurn (double speed, double angle, LinearOpMode opmode) {
