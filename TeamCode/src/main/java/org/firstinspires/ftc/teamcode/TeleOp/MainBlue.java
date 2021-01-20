@@ -39,7 +39,7 @@ public class MainBlue extends OpMode{
         double right   = gamepad1.left_stick_x;
 
         if(FieldRelative){
-            double angle = robot.gyro.getHeading();
+            double angle = robot.gyro.getHeading() + 180;
             angle = Math.toRadians(angle);
 
             double relativeForward = (Math.cos(angle)*right) + (Math.sin(angle)*forward);
