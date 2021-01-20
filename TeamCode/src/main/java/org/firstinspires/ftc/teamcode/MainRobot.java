@@ -14,8 +14,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.SensorDigitalTouch;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
@@ -66,7 +64,7 @@ public class MainRobot {
         wobbleArm = hwMap.get(DcMotor.class, "wobbleArm");
         foamWheel = hwMap.get(DcMotor.class, "foamWheel");
         wobbleClaw = hwMap.get(CRServo.class,"wobbleClaw");
-        JHopFlap = hwMap.get(Servo.class, "JHopperFlap");
+        JHopFlap = hwMap.get(Servo.class, "JHopFlap");
 
         topLeft.setDirection(DcMotor.Direction.REVERSE);
         bottomLeft.setDirection(DcMotor.Direction.REVERSE);

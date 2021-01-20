@@ -14,8 +14,8 @@ public class MainBlue extends OpMode{
 
     MainRobot robot = null;
 
-    public static final double FRONT_ALIGNMENT = 68;
-    public static final double RIGHT_ALIGNMENT = 36;
+    public static final double FRONT_ALIGNMENT = 70;
+    public static final double RIGHT_ALIGNMENT = 41.5;
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
     public boolean                 SlowMode    = false;
@@ -288,8 +288,8 @@ public class MainBlue extends OpMode{
         //---------------J-HOPPER FLAP---------------\\
         if(gamepad2.dpad_left && !GP2_DPL_Held) {
             GP2_DPL_Held = true;
-            if(robot.JHopFlap.getPosition() == 0.5){
-                robot.JHopFlap.setPosition(0);
+            if(robot.JHopFlap.getPosition() == 0){
+                robot.JHopFlap.setPosition(0.5);
             }
             else{
                 robot.JHopFlap.setPosition(0.5);
