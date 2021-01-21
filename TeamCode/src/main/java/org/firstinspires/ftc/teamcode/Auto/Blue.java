@@ -18,6 +18,7 @@ public class Blue extends LinearOpMode {
 
         RingDetector detector = new RingDetector(this, false);
 
+
         robot.init(hardwareMap);
 
         robot.topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

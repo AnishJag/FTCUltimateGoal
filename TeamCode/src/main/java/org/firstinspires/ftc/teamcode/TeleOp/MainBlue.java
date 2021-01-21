@@ -4,12 +4,12 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 import java.lang.reflect.Field;
 
 @TeleOp(name="MainTeleOp BLUE")
-
 public class
 MainBlue extends OpMode{
 
@@ -23,6 +23,8 @@ MainBlue extends OpMode{
     public boolean               FieldRelative = true;
     public boolean                 GP1_LB_Held = false;
     public boolean                GP2_DPL_Held = false;
+
+    //RingDetectorJHop detectorJHop = new RingDetectorJHop(this);
 
     @Override
     public void init() {
