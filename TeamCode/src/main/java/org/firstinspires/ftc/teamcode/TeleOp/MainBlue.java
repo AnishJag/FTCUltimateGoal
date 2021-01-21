@@ -37,7 +37,7 @@ MainBlue extends OpMode{
 
         //--------------------DRIVE-TRAIN CONTROLS--------------------\\
         double forward = -gamepad1.left_stick_y;
-        double right   = gamepad1.left_stick_x;
+        double right   =  gamepad1.left_stick_x;
 
         if(FieldRelative){
             double angle = robot.gyro.getHeading() + 180;
@@ -115,7 +115,7 @@ MainBlue extends OpMode{
         boolean jHopperWheels = false;
 
         //---------------TOP-GOAL & SHOOT---------------\\
-        if(gamepad1.a){
+        /*if(gamepad1.a){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
             telemetry.addData("Front Range: ", frontRange);
@@ -232,7 +232,7 @@ MainBlue extends OpMode{
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
             //Need to add angle for each turn for power-shots.
-        }
+        }*/
 
 
         //--------------------ROBOT CONTROLS--------------------\\

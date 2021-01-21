@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 
 @TeleOp(name="RangeSensor Test")
 
+// After testing this, no sensor inputs returned.
 public class RangeSensorTest extends OpMode{
 
     MainRobot robot = null;
