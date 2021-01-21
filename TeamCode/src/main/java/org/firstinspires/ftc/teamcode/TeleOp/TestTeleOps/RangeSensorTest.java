@@ -27,7 +27,7 @@ public class RangeSensorTest extends OpMode{
         double frontDistance = robot.frontRange.getDistance(DistanceUnit.INCH);
         double leftDistance  = robot.leftRange.getDistance(DistanceUnit.INCH);
         double rightDistance = robot.rightRange.getDistance(DistanceUnit.INCH);
-        double gyroAngle     = robot.gyro.getHeading();
+        double gyroAngle     = robot.gyro.getIntegratedZValue();
 
         telemetry.addData("Front Distance: ", frontDistance);
         telemetry.addData("Left Distance: ", leftDistance);
