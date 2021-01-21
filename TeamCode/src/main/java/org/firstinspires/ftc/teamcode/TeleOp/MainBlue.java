@@ -10,7 +10,8 @@ import java.lang.reflect.Field;
 
 @TeleOp(name="MainTeleOp BLUE")
 
-public class MainBlue extends OpMode{
+public class
+MainBlue extends OpMode{
 
     MainRobot robot = null;
 
