@@ -271,8 +271,6 @@ MainBlue extends OpMode{
         else{
             robot.jHopper2.setPower(0);
         }
-        telemetry.addData("J-Hopper 2 Power: ", robot.jHopper2.getPower());
-        telemetry.update();
 
         //---------------WOBBLE---------------\\
         double wobbleArm = gamepad2.right_stick_y;
