@@ -235,6 +235,11 @@ public class MainRobot {
                     topRight.setPower(1);
                     bottomLeft.setPower(1);
                     bottomRight.setPower(1);
+
+                    opmode.telemetry.addData("Sensor Front Distance: ", frontRange.getDistance(DistanceUnit.INCH));
+                    opmode.telemetry.addData("Target Front Distance: ", frontDistance);
+                    opmode.telemetry.addLine("Moving Forwards");
+                    opmode.telemetry.update();
                 }
             }
             if (leftDistance != -1) {
@@ -243,12 +248,22 @@ public class MainRobot {
                     topRight.setPower(-1);
                     bottomLeft.setPower(-1);
                     bottomRight.setPower(1);
+
+                    opmode.telemetry.addData("Sensor Left Distance: ", frontRange.getDistance(DistanceUnit.INCH));
+                    opmode.telemetry.addData("Target Left Distance: ", frontDistance);
+                    opmode.telemetry.addLine("Moving Right");
+                    opmode.telemetry.update();
                 }
                 while (leftRange.getDistance(DistanceUnit.INCH) > leftDistance){
                     topLeft.setPower(-1);
                     topRight.setPower(1);
                     bottomLeft.setPower(1);
                     bottomRight.setPower(-1);
+
+                    opmode.telemetry.addData("Sensor Left Distance: ", frontRange.getDistance(DistanceUnit.INCH));
+                    opmode.telemetry.addData("Target Left Distance: ", frontDistance);
+                    opmode.telemetry.addLine("Moving Left");
+                    opmode.telemetry.update();
                 }
             }
             if (rightDistance != -1){
@@ -257,12 +272,22 @@ public class MainRobot {
                     topRight.setPower(-1);
                     bottomLeft.setPower(-1);
                     bottomRight.setPower(1);
+
+                    opmode.telemetry.addData("Sensor Right Distance: ", frontRange.getDistance(DistanceUnit.INCH));
+                    opmode.telemetry.addData("Target Right Distance: ", frontDistance);
+                    opmode.telemetry.addLine("Moving Right");
+                    opmode.telemetry.update();
                 }
                 while (rightRange.getDistance(DistanceUnit.INCH) < rightDistance){
                     topLeft.setPower(-1);
                     topRight.setPower(1);
                     bottomLeft.setPower(1);
                     bottomRight.setPower(-1);
+
+                    opmode.telemetry.addData("Sensor Right Distance: ", frontRange.getDistance(DistanceUnit.INCH));
+                    opmode.telemetry.addData("Target Right Distance: ", frontDistance);
+                    opmode.telemetry.addLine("Moving Left");
+                    opmode.telemetry.update();
                 }
             }
 
