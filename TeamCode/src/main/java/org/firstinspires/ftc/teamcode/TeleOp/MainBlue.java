@@ -15,8 +15,8 @@ MainBlue extends OpMode{
 
     MainRobot robot = null;
 
-    public static final double FRONT_ALIGNMENT = 70;
-    public static final double RIGHT_ALIGNMENT = 41.5;
+    public static final double BACK_ALIGNMENT = 51;
+    public static final double LEFT_ALIGNMENT = 39;
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
     public boolean                 SlowMode    = false;
@@ -117,7 +117,7 @@ MainBlue extends OpMode{
         boolean jHopperWheels = false;
 
         //---------------TOP-GOAL & SHOOT---------------\\
-        /*if(gamepad1.a){
+        if(gamepad1.a){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
             telemetry.addData("Front Range: ", frontRange);
@@ -125,16 +125,16 @@ MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
-            if(leftRange < RIGHT_ALIGNMENT - MARGIN_OF_ERROR){
+            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
                 rightPower = 1;
             }
-            else if(leftRange > RIGHT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
                 rightPower = -1;
             }
             robot.topLeft.setPower(forwardPower + rightPower);
@@ -157,16 +157,16 @@ MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
-            if(leftRange < RIGHT_ALIGNMENT - MARGIN_OF_ERROR){
+            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
                 rightPower = 1;
             }
-            else if(leftRange > RIGHT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
                 rightPower = -1;
             }
             robot.topLeft.setPower(forwardPower + rightPower);
@@ -190,16 +190,16 @@ MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
-            if(leftRange < RIGHT_ALIGNMENT - MARGIN_OF_ERROR){
+            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
                 rightPower = 1;
             }
-            else if(leftRange > RIGHT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
                 rightPower = -1;
             }
             robot.topLeft.setPower(forwardPower + rightPower);
@@ -217,16 +217,16 @@ MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
-            if(leftRange < RIGHT_ALIGNMENT - MARGIN_OF_ERROR){
+            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
                 rightPower = 1;
             }
-            else if(leftRange > RIGHT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
                 rightPower = -1;
             }
             robot.topLeft.setPower(forwardPower + rightPower);
@@ -234,7 +234,7 @@ MainBlue extends OpMode{
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
             //Need to add angle for each turn for power-shots.
-        }*/
+        }
 
 
         //--------------------ROBOT CONTROLS--------------------\\
@@ -263,7 +263,7 @@ MainBlue extends OpMode{
 
         //---------------J-HOPPER 2---------------\\
         if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
-            robot.jHopper2.setPower(-1.0);
+            robot.jHopper2.setPower(-0.95);
         }
         else if (gamepad2.dpad_up){
             robot.jHopper2.setPower(0.3);
@@ -271,7 +271,8 @@ MainBlue extends OpMode{
         else{
             robot.jHopper2.setPower(0);
         }
-
+        telemetry.addData("J-Hopper 2 Power: ", robot.jHopper2.getPower());
+        telemetry.update();
 
         //---------------WOBBLE---------------\\
         double wobbleArm = gamepad2.right_stick_y;
