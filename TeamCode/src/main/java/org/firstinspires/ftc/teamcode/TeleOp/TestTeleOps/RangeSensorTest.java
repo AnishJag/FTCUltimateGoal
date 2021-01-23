@@ -29,13 +29,14 @@ public class RangeSensorTest extends OpMode{
         double leftDistance  = robot.leftRange.getDistance(DistanceUnit.INCH);
         double rightDistance = robot.rightRange.getDistance(DistanceUnit.INCH);
         double gyroAngle     = robot.gyro.getHeading();
-        double castedFront   = frontDistance * 1000;
-        int   intCastedFront = (int) (castedFront / 1000);
+        double castedFront   = Math.round(frontDistance * 1000) / 1000;
+        double castedLeft    = Math.round(leftDistance * 1000) / 1000;
+        double castedRight   = Math.round(rightDistance * 1000) / 1000;
 
 
-        telemetry.addData("Front Distance: ", intCastedFront); // Testing to see if this type of casting works.
-        telemetry.addData("Left Distance: ", leftDistance);
-        telemetry.addData("Right Distance: ", rightDistance);
+        telemetry.addData("Front Distance: ", castedFront);
+        telemetry.addData("Left Distance: ", castedLeft);
+        telemetry.addData("Right Distance: ", castedRight);
         telemetry.addData("Gyro Angle: ", gyroAngle);
         telemetry.update();
     }

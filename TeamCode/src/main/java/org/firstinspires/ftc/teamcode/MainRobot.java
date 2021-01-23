@@ -80,7 +80,7 @@ public class MainRobot {
         wobbleArm.setPower(0);
         foamWheel.setPower(0);
         wobbleClaw.setPower(0);
-        JHopFlap.setPosition(0.5);
+        JHopFlap.setPosition(0.4);
 
 
         frontRange = hwMap.get(ModernRoboticsI2cRangeSensor.class,"frontRange");

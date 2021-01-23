@@ -290,11 +290,11 @@ MainBlue extends OpMode{
         //---------------J-HOPPER FLAP---------------\\
         if(gamepad2.dpad_left && !GP2_DPL_Held) {
             GP2_DPL_Held = true;
-            if(robot.JHopFlap.getPosition() == 0){
-                robot.JHopFlap.setPosition(0.5);
+            if(robot.JHopFlap.getPosition() == 0.4){
+                robot.JHopFlap.setPosition(0.1);
             }
             else{
-                robot.JHopFlap.setPosition(0.5);
+                robot.JHopFlap.setPosition(0.4);
             }
         }
         if(!gamepad2.dpad_left) {
