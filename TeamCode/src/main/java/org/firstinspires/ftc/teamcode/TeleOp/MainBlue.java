@@ -23,19 +23,25 @@ MainBlue extends OpMode{
     public boolean               FieldRelative = true;
     public boolean                 GP1_LB_Held = false;
     public boolean                GP2_DPL_Held = false;
+    public double                 FLAP_OPEN    = 0.4;
+    public double               FLAP_CLOSED    = 0.1;
 
-    //RingDetectorJHop detectorJHop = new RingDetectorJHop(this);
+    RingDetectorJHop detectorJHop = null;
 
     @Override
     public void init() {
         robot = new MainRobot();
         robot.init(hardwareMap);
+        detectorJHop = new RingDetectorJHop(this);
+
         telemetry.addData("Initialization Complete!","");
         telemetry.update();
     }
 
     @Override
     public void loop() {
+        int rings = detectorJHop.getDecision();
+        telemetry.addData("Ring Number: ", rings);
 
         //--------------------DRIVE-TRAIN CONTROLS--------------------\\
         double forward = -gamepad1.left_stick_y;
@@ -80,6 +86,7 @@ MainBlue extends OpMode{
             rightBackPower /= greatest;
         }
 
+
         //--------------------FIELD-RELATIVE DRIVE--------------------\\
         if(gamepad1.left_bumper && !GP1_LB_Held){
             FieldRelative = !FieldRelative;
@@ -111,7 +118,6 @@ MainBlue extends OpMode{
             robot.topRight.setPower(rightFrontPower);
             robot.bottomRight.setPower(rightBackPower);
         }
-
 
         //--------------------AUTOMATION CONTROLS--------------------\\
         boolean jHopperWheels = false;
@@ -236,7 +242,6 @@ MainBlue extends OpMode{
             //Need to add angle for each turn for power-shots.
         }
 
-
         //--------------------ROBOT CONTROLS--------------------\\
 
         //---------------FOAM WHEEL---------------\\
@@ -262,7 +267,7 @@ MainBlue extends OpMode{
         }
 
         //---------------J-HOPPER 2---------------\\
-        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
+        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels || rings > 0){
             robot.jHopper2.setPower(-0.95);
         }
         else if (gamepad2.dpad_up){
@@ -290,16 +295,21 @@ MainBlue extends OpMode{
         //---------------J-HOPPER FLAP---------------\\
         if(gamepad2.dpad_left && !GP2_DPL_Held) {
             GP2_DPL_Held = true;
-            if(robot.JHopFlap.getPosition() == 0.4){
-                robot.JHopFlap.setPosition(0.1);
+            if(Math.abs(robot.JHopFlap.getPosition() - FLAP_CLOSED) < 0.01){
+                robot.JHopFlap.setPosition(FLAP_OPEN);
             }
             else{
-                robot.JHopFlap.setPosition(0.4);
+                robot.JHopFlap.setPosition(FLAP_CLOSED);
             }
         }
+
         if(!gamepad2.dpad_left) {
-            GP2_DPL_Held = false; //Back Open
+            GP2_DPL_Held = false;
         }
         telemetry.update();
+
+        if((Math.abs(robot.JHopFlap.getPosition() - FLAP_CLOSED) < 0.01) && rings == 0){
+            robot.JHopFlap.setPosition(FLAP_CLOSED);
+        }
     }
 }

@@ -50,11 +50,10 @@ public class RingDetectorJHop {
     }
 
     public int getDecision(){
-        int boxValue = box.getValue(); //meddle with the box.getValue();
+        int boxValue = box.getValue();
         opMode.telemetry.addData("Value: ", boxValue);
         opMode.telemetry.update();
-        boolean topRing = false;
-        boolean bottomRing = false;
+
         if (boxValue < 200 /*If sees 1 ring*/) {
             return 1;
         } else if (boxValue < 280 /*If sees 2 rings*/){
@@ -79,10 +78,9 @@ public class RingDetectorJHop {
             int position = getDecision();
             if (position == 0){
                 boxColor = new Scalar(0,255,0);
-                //removed bottomColor
             }
-            else if (position == 1){
-                //removed bottomColor
+            else if (position == 1 || position == 2 || position == 3){
+                boxColor = new Scalar(255,0,0);
             }
 
             Imgproc.rectangle(input, TL, BR, boxColor, thickness);
@@ -114,7 +112,6 @@ public class RingDetectorJHop {
 
         private void sendTelemetry(){
             opMode.telemetry.addLine("Box Values :" + " R " + box.getRed() + " G " + box.getGreen() + " B " + box.getBlue());
-            opMode.telemetry.update();
         }
 
     }
