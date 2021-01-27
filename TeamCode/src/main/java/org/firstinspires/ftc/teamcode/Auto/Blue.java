@@ -59,7 +59,7 @@ public class Blue extends LinearOpMode {
 
         }
 
-        robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall...
+        robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.....
     }
 
 }
