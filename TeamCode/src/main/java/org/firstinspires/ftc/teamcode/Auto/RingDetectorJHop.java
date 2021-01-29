@@ -12,6 +12,7 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 
+/*
 public class RingDetectorJHop {
     OpMode opMode;
     OpenCvCamera camera;
@@ -54,14 +55,14 @@ public class RingDetectorJHop {
         opMode.telemetry.addData("Value: ", boxValue);
         opMode.telemetry.update();
 
-        if (boxValue < 200 /*If sees 1 ring*/) {
+        if (boxValue < 200 ) {
             return 1;
-        } else if (boxValue < 280 /*If sees 2 rings*/){
+        } else if (boxValue < 280 /){
             return 2;
-        } else if (boxValue < 300 /*If sees 3 rings*/) {
+        } else if (boxValue < 300 ) {
             return 3;
         } else {
-            return 0; // If it sees 0 rings.
+            return 0;
         }
     }
 
@@ -116,3 +117,4 @@ public class RingDetectorJHop {
 
     }
 }
+*/

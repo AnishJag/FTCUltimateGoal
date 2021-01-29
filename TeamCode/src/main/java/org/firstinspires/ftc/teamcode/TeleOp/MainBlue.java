@@ -4,35 +4,34 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
+//import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 import java.lang.reflect.Field;
 
-@TeleOp(name="MainTeleOp BLUE")
-public class
-MainBlue extends OpMode{
+@TeleOp(name="Main BLUE")
+public class MainBlue extends OpMode{
 
     MainRobot robot = null;
 
-    public static final double BACK_ALIGNMENT = 51;
-    public static final double LEFT_ALIGNMENT = 39;
+    public static final double  BACK_ALIGNMENT = 51;
+    public static final double  LEFT_ALIGNMENT = 39;
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
-    public boolean                 SlowMode    = false;
+    public boolean                    SlowMode = false;
     public boolean               FieldRelative = true;
     public boolean                 GP1_LB_Held = false;
     public boolean                GP2_DPL_Held = false;
-    public double                 FLAP_OPEN    = 0.4;
-    public double               FLAP_CLOSED    = 0.1;
+    public double                    FLAP_OPEN = 0.5;
+    public double                  FLAP_CLOSED = 0.1;
 
-    RingDetectorJHop detectorJHop = null;
+    //RingDetectorJHop detectorJHop = null;
 
     @Override
     public void init() {
         robot = new MainRobot();
         robot.init(hardwareMap);
-        detectorJHop = new RingDetectorJHop(this);
+        //detectorJHop = new RingDetectorJHop(this);
 
         telemetry.addData("Initialization Complete!","");
         telemetry.update();
@@ -40,8 +39,8 @@ MainBlue extends OpMode{
 
     @Override
     public void loop() {
-        int rings = detectorJHop.getDecision();
-        telemetry.addData("Ring Number: ", rings);
+        //int rings = detectorJHop.getDecision();
+        //telemetry.addData("Ring Number: ", rings);
 
         //--------------------DRIVE-TRAIN CONTROLS--------------------\\
         double forward = -gamepad1.left_stick_y;
@@ -267,7 +266,7 @@ MainBlue extends OpMode{
         }
 
         //---------------J-HOPPER 2---------------\\
-        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels || rings > 0){
+        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels /* || rings > 0*/){
             robot.jHopper2.setPower(-0.95);
         }
         else if (gamepad2.dpad_up){
@@ -308,8 +307,18 @@ MainBlue extends OpMode{
         }
         telemetry.update();
 
-        if((Math.abs(robot.JHopFlap.getPosition() - FLAP_CLOSED) < 0.01) && rings == 0){
+        if((Math.abs(robot.JHopFlap.getPosition() - FLAP_CLOSED) < 0.01) /* && rings == 0*/){
             robot.JHopFlap.setPosition(FLAP_CLOSED);
         }
+        double castedFront   = Math.round((robot.frontRange.getDistance(DistanceUnit.INCH) * 1000) / 1000.0);
+        double castedLeft    = Math.round((robot.leftRange.getDistance(DistanceUnit.INCH) * 1000) / 1000.0);
+        double castedRight   = Math.round((robot.rightRange.getDistance(DistanceUnit.INCH) * 1000) / 1000.0);
+        double castedJHop    = Math.round((robot.jHopper2.getPower() * 1000) / 1000.0);
+
+        telemetry.addData("Front Distance: ", castedFront);
+        telemetry.addData("Right Distance: ", castedRight);
+        telemetry.addData("Left Distance: ", castedLeft);
+        telemetry.addData("J-Hopper 2 Power: ", castedJHop);
+        telemetry.update();
     }
 }
