@@ -291,10 +291,10 @@ public class MainRobot {
                 }
             }
 
-            /*topLeft.setPower(0); REMOVED TO TEST SMOOTHNESS ON GYRO DRIVE & TURN FUNCTIONS.
+            topLeft.setPower(0);
             topRight.setPower(0);
             bottomLeft.setPower(0);
-            bottomRight.setPower(0);*/
+            bottomRight.setPower(0);
         }
     }
     public void gyroTurn (double speed, double angle, LinearOpMode opmode) {

@@ -40,22 +40,41 @@ public class Blue extends LinearOpMode {
 
         if (rings == 0){
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,3,3,3,3,0,5,5,-1,this);
-            //robot.gyroTurn(robot.TURN_SPEED,3,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-60,-60,-60,-60,0,-1,-1,-1,this);
+            //robot.gyroTurn(robot.TURN_SPEED,4,this);
             robot.wobbleArm.setPower(1);
+            sleep(1500);
+
+            robot.wobbleClaw.setPower(1);
             sleep(1000);
+
             robot.wobbleArm.setPower(-1);
-            sleep(1000);
+            sleep(1500);
+
             robot.wobbleArm.setPower(0);
+            robot.wobbleClaw.setPower(0);
 
         }
         else if(rings == 1){
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,3,3,3,3,0,5,5,-1,this);
+            /*robot.gyroDrive(MainRobot.DRIVE_SPEED,10,10,10,10,0,-1,-1,-1,this);
+            //robot.gyroTurn(robot.TURN_SPEED,4,this);
+            robot.wobbleArm.setPower(1);
+            sleep(2000);
+            robot.wobbleArm.setPower(-1);
+            sleep(2000);
+            robot.wobbleArm.setPower(0);*/
+
         }
         else if(rings == 4) {
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED, 3, 3, 3, 3, 0, 5,5,-1,this);
+            /*robot.gyroDrive(MainRobot.DRIVE_SPEED,10,10,10,10,0,-1,-1,-1,this);
+            //robot.gyroTurn(robot.TURN_SPEED,4,this);
+            robot.wobbleArm.setPower(1);
+            sleep(2000);
+            robot.wobbleArm.setPower(-1);
+            sleep(2000);
+            robot.wobbleArm.setPower(0);*/
 
         }
 

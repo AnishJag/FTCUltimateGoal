@@ -18,23 +18,18 @@ public class RingDetector {
 
     CustomPipeline pipeline;
 
-    private final Point BLUE_TOP_TL    = new Point(120,40);
-    private final Point BLUE_TOP_BR    = new Point(190, 70);
-    private final Point BLUE_BOTTOM_TL = new Point(120, 70);
-    private final Point BLUE_BOTTOM_BR = new Point(190,  85);
+    private final Point BLUE_TOP_TL    = new Point(130,40);
+    private final Point BLUE_TOP_BR    = new Point(185, 85);
+
 
     private final Point RED_TOP_TL     = new Point(0,135);
     private final Point RED_TOP_BR     = new Point(50, 165);
-    private final Point RED_BOTTOM_TL  = new Point(62, 140);
-    private final Point RED_BOTTOM_BR  = new Point(125,  170);
+
 
     private Point topTL;
     private Point topBR;
-    private Point bottomTL;
-    private Point bottomBR;
 
-    private RGBColor top;
-    private RGBColor bottom;
+    private RGBColor box;
 
     public RingDetector(OpMode op, boolean isRed){
 
@@ -52,8 +47,6 @@ public class RingDetector {
 
         topTL = (isRed) ? RED_TOP_TL : BLUE_TOP_TL;
         topBR = (isRed) ? RED_TOP_BR : BLUE_TOP_BR;
-        bottomTL = (isRed) ? RED_BOTTOM_TL : BLUE_BOTTOM_TL;
-        bottomBR = (isRed) ? RED_BOTTOM_BR : BLUE_BOTTOM_BR;
     }
 
     public void stopStreaming(){
@@ -61,23 +54,17 @@ public class RingDetector {
     }
 
     public int getDecision(){
-        int topValue = top.getValue();
-        int bottomValue = bottom.getValue();
-        opMode.telemetry.addData("Top Value: ", topValue);
-        opMode.telemetry.addData("Bottom Value: ", bottomValue);
+
+        int boxValue = box.getYellow();
+
+        opMode.telemetry.addData("Box Value: ", boxValue);
         opMode.telemetry.update();
-        boolean topRing = false;
-        boolean bottomRing = false;
-        if (topValue > 220) {
-            topRing = true;
-        }
-        if (bottomValue > 220) {
-            bottomRing = true;
-        }
-        if (topRing && bottomRing)
+        if (boxValue < 180) {
             return 4;
-        else if (bottomRing)
+        }
+        else if (boxValue < 285) {
             return 1;
+        }
         else return 0;
     }
 
@@ -86,23 +73,20 @@ public class RingDetector {
         @Override
         public Mat processFrame(Mat input){
 
-            top = getAverageColor(input, topTL, topBR);
-            bottom = getAverageColor(input, bottomTL, bottomBR);
+            box = getAverageColor(input, topTL, topBR);
 
             int thickness = 3;
+
             Scalar topColor = new Scalar(255,0,0);
-            Scalar bottomColor = new Scalar(255,0,0);
             int position = getDecision();
             if (position == 4){
                 topColor = new Scalar(0,255,0);
-                bottomColor = new Scalar(0,255,0);
             }
             else if (position == 1){
-                bottomColor = new Scalar(0,255,0);
+                topColor = new Scalar(0,255,0);
             }
 
             Imgproc.rectangle(input, topTL, topBR, topColor, thickness);
-            Imgproc.rectangle(input, bottomTL, bottomBR, bottomColor, thickness);
 
             //sendTelemetry();
 
@@ -132,8 +116,7 @@ public class RingDetector {
         }
 
         private void sendTelemetry(){
-            opMode.telemetry.addLine("Top :" + " R " + top.getRed() + " G " + top.getGreen() + " B " + top.getBlue());
-            opMode.telemetry.addLine("Bottom :" + " R " + bottom.getRed() + " G " + bottom.getGreen() + " B " + bottom.getBlue());
+            opMode.telemetry.addLine("Top :" + " R " + box.getRed() + " G " + box.getGreen() + " B " + box.getBlue());
             opMode.telemetry.update();
         }
 

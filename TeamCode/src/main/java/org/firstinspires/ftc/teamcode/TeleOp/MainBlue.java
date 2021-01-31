@@ -319,6 +319,7 @@ public class MainBlue extends OpMode{
         telemetry.addData("Right Distance: ", castedRight);
         telemetry.addData("Left Distance: ", castedLeft);
         telemetry.addData("J-Hopper 2 Power: ", castedJHop);
+        telemetry.addData("Gyro Angle: ", robot.gyro.getHeading());
         telemetry.update();
     }
 }

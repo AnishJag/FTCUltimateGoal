@@ -36,7 +36,7 @@ public class RGBColor {
     public int getBlue(){
         return blue;
     }
-    public int getValue(){
-        return red + green - blue;
+    public int getYellow(){
+        return green + blue;
     }
 }
