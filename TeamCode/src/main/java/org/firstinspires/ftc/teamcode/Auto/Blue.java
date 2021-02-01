@@ -54,6 +54,8 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
 
+            robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.....
+
         }
         else if(rings == 1){
 
@@ -64,6 +66,8 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(-1);
             sleep(2000);
             robot.wobbleArm.setPower(0);*/
+
+            robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.....
 
         }
         else if(rings == 4) {
@@ -76,9 +80,11 @@ public class Blue extends LinearOpMode {
             sleep(2000);
             robot.wobbleArm.setPower(0);*/
 
+            robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.....
+
         }
 
-        robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.....
+
     }
 
 }
