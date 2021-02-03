@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.MainRobot;
 
 
 @Autonomous(name="Blue")
+
 public class Blue extends LinearOpMode {
 
     MainRobot robot = new MainRobot();
@@ -41,7 +42,7 @@ public class Blue extends LinearOpMode {
         if (rings == 0){
 
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-60,-60,-60,-60,0,-1,-1,-1,this);
-            //robot.gyroTurn(robot.TURN_SPEED,4,this);
+            robot.gyroTurn(robot.TURN_SPEED,4,this);
             robot.wobbleArm.setPower(1);
             sleep(1500);
 
@@ -54,7 +55,7 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
 
-            robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.....
+            robot.gyroTurn(MainRobot.TURN_SPEED,180,this); // Ensures the robot is perpendicular from left wall.
 
         }
         else if(rings == 1){
