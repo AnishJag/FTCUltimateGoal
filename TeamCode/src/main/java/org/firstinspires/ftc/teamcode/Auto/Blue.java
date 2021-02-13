@@ -42,7 +42,7 @@ public class Blue extends LinearOpMode {
         if (rings == 0){
 
             //NOT FINISHED
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-96,-96,-96,-96,0,-1,-1,-1,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,this);
 
             robot.gyroTurn(robot.TURN_SPEED,87,this);
 
@@ -50,9 +50,9 @@ public class Blue extends LinearOpMode {
             sleep(75);
 
             robot.wobbleClaw.setPower(0.5);
-            sleep(1000);
+            sleep(1600);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,3,3,3,3,0,-1,-1,-1,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,6,6,6,6,0,-1,-1,-1,this);
 
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
@@ -62,7 +62,7 @@ public class Blue extends LinearOpMode {
 
             //NOT FINISHED
             robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-60,-60,0,this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-90,-90,-90,-90,0,-1,-1,-1,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-94,-94,-94,-94,0,-1,-1,-1,this);
 
             robot.gyroTurn(robot.TURN_SPEED,-87,this);
 
@@ -70,9 +70,9 @@ public class Blue extends LinearOpMode {
             sleep(75);
 
             robot.wobbleClaw.setPower(0.5);
-            sleep(1300);
+            sleep(1600);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-20,20,20,-20,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-23,23,23,-23,this);
 
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
@@ -86,12 +86,12 @@ public class Blue extends LinearOpMode {
 
 
             robot.wobbleArm.setPower(0.40);
-            sleep(75);
+            sleep(90);
 
-            robot.wobbleClaw.setPower(0.5);
-            sleep(1000);
+            robot.wobbleClaw.setPower(0.8);
+            sleep(1200);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,32,32,32,32,0,-1,-1,-1,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,29,29,29,29,0,-1,-1,-1,this);
 
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
