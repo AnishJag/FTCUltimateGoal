@@ -45,6 +45,7 @@ public class MainRobot {
     static final double     WHEEL_DIAMETER_INCHES   = 3.77953;
     public static final double     COUNTS_PER_INCH  = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION)
                                                              / (WHEEL_DIAMETER_INCHES * 3.14159265);
+    public double amountError = 0.64;
     public static final double     DRIVE_SPEED        = 1.0;
     public static final double     TURN_SPEED         = 0.5;
     public static final double     P_TURN_COEFF       = 0.1;
@@ -163,7 +164,7 @@ public class MainRobot {
 
             // keep looping while we are still active, and ALL motors are running.
             while (opmode.opModeIsActive() &&
-                    (topLeft.isBusy() && topRight.isBusy() && bottomLeft.isBusy() && bottomRight.isBusy())) {
+                    (topLeft.isBusy() || topRight.isBusy() || bottomLeft.isBusy() || bottomRight.isBusy())) {
 
                 // adjust relative speed based on heading error.
                 error = getError(angle);
@@ -291,12 +292,97 @@ public class MainRobot {
                 }
             }
 
-            topLeft.setPower(0);
-            topRight.setPower(0);
-            bottomLeft.setPower(0);
-            bottomRight.setPower(0);
+            topLeft.setPower(0.2);
+            topRight.setPower(0.2);
+            bottomLeft.setPower(0.2);
+            bottomRight.setPower(0.2);
         }
     }
+
+    public void encoderDrive ( double speed,
+                               double topLeftInches, double topRightInches, double bottomLeftInches,
+                               double bottomRightInches, LinearOpMode opMode){
+        int newtopLeftTarget;
+        int newtopRightTarget;
+        int newbottomLeftTarget;
+        int newbottomRightTarget;
+
+        double ErrorAmount;
+        boolean goodEnough = false;
+        // Ensure that the opmode is still active
+        if (opMode.opModeIsActive()) {
+
+            // Determine new target position, and pass to motor controller
+            newtopLeftTarget = topLeft.getCurrentPosition() + (int) (topLeftInches * COUNTS_PER_INCH);
+            newtopRightTarget = topRight.getCurrentPosition() + (int) (topRightInches * COUNTS_PER_INCH);
+            newbottomLeftTarget = bottomLeft.getCurrentPosition() + (int) (bottomLeftInches * COUNTS_PER_INCH);
+            newbottomRightTarget = bottomRight.getCurrentPosition() + (int) (bottomRightInches * COUNTS_PER_INCH);
+            topLeft.setTargetPosition(newtopLeftTarget);
+            topRight.setTargetPosition(newtopRightTarget);
+            bottomLeft.setTargetPosition(newbottomLeftTarget);
+            bottomRight.setTargetPosition(newbottomRightTarget);
+
+            // Turn On RUN_TO_POSITION
+            topLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            topRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bottomLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            bottomRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+
+            topLeft.setPower(Math.abs(speed));
+            topRight.setPower(Math.abs(speed));
+            bottomLeft.setPower(Math.abs(speed));
+            bottomRight.setPower(Math.abs(speed));
+
+            // keep looping while we are still active, and there is time left, and both motors are running.
+            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
+            // its target position, the motion will stop.  This is "safer" in the event that the robot will
+            // always end the motion as soon as possible.
+            // However, if you require that BOTH motors have finished their moves before the robot continues
+            // onto the next step, use (isBusy() || isBusy()) in the loop test.
+            while (opMode.opModeIsActive() &&
+                    ((topLeft.isBusy() || topRight.isBusy()) || (bottomLeft.isBusy() || bottomRight.isBusy())) && !goodEnough) {
+
+                // Display it for the driver.
+               opMode.telemetry.addData("Path1", "Running to %7d :%7d", newtopLeftTarget, newbottomLeftTarget, newtopRightTarget, newbottomRightTarget);
+                opMode.telemetry.addData("Path2", "Running at %7d :%7d",
+
+                        topLeft.getCurrentPosition(),
+                        topRight.getCurrentPosition(),
+                        bottomLeft.getCurrentPosition(),
+                        bottomRight.getCurrentPosition());
+                opMode.telemetry.addData("topLeft", topLeft.getCurrentPosition());
+                opMode.telemetry.addData("bottomLeft", bottomLeft.getCurrentPosition());
+                opMode.telemetry.addData("topRight", topRight.getCurrentPosition());
+                opMode.telemetry.addData("bottomRight", bottomRight.getCurrentPosition());
+
+                opMode.telemetry.update();
+
+                ErrorAmount = ((Math.abs(((newbottomLeftTarget) - (bottomLeft.getCurrentPosition())))
+                        + (Math.abs(((newtopLeftTarget) - (topLeft.getCurrentPosition()))))
+                        + (Math.abs((newbottomRightTarget) - (bottomRight.getCurrentPosition())))
+                        + (Math.abs(((newtopRightTarget) - (topRight.getCurrentPosition()))))) / COUNTS_PER_INCH);
+                if (ErrorAmount < amountError) {
+                    goodEnough = true;
+                }
+            }
+
+            // Stop all motion;
+
+            topLeft.setPower(0.3);
+            topRight.setPower(0.3);
+            bottomLeft.setPower(0.3);
+            bottomRight.setPower(0.3);
+
+            // Turn off RUN_TO_POSITION
+            topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
+    }
+
+
     public void gyroTurn (double speed, double angle, LinearOpMode opmode) {
 
         // keep looping while we are still active, and not on heading.

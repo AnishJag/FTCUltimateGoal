@@ -59,10 +59,10 @@ public class RingDetector {
 
         opMode.telemetry.addData("Box Value: ", boxValue);
         opMode.telemetry.update();
-        if (boxValue < 180) {
+        if (boxValue < 200) {
             return 4;
         }
-        else if (boxValue < 285) {
+        else if (boxValue < 290) {
             return 1;
         }
         else return 0;

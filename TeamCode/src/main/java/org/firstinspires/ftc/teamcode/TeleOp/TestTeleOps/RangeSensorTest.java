@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOp.TestTeleOps;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -9,7 +10,7 @@ import org.firstinspires.ftc.teamcode.MainRobot;
 import java.lang.reflect.Field;
 
 @TeleOp(name="RangeSensor Test")
-
+@Disabled
 // After testing this, no sensor inputs returned.
 public class RangeSensorTest extends OpMode{
 
