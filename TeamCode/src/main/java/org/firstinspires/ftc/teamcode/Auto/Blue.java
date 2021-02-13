@@ -40,15 +40,17 @@ public class Blue extends LinearOpMode {
 
         if (rings == 0){
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-60,-60,-60,-60,0,-1,-1,-1,this);
-            //robot.gyroTurn(robot.TURN_SPEED,4,this);
-            robot.wobbleArm.setPower(1);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-93,-93,-93,-93,0,-1,-1,-1,this);
+            robot.gyroTurn(robot.TURN_SPEED,4,this);
+            robot.gyroTurn(MainRobot.TURN_SPEED,87,this);
+
+            robot.wobbleArm.setPower(0.5);
             sleep(1500);
 
-            robot.wobbleClaw.setPower(1);
+            robot.wobbleClaw.setPower(0.5);
             sleep(1000);
 
-            robot.wobbleArm.setPower(-1);
+            robot.wobbleArm.setPower(-0.5);
             sleep(1500);
 
             robot.wobbleArm.setPower(0);
