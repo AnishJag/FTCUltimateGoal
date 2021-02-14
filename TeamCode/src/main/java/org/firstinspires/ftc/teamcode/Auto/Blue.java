@@ -38,7 +38,6 @@ public class Blue extends LinearOpMode {
         robot.gyro.resetZAxisIntegrator();
 
         int rings = detector.getDecision();
-
         if (rings == 0){
 
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,this);
@@ -51,28 +50,29 @@ public class Blue extends LinearOpMode {
             robot.wobbleClaw.setPower(0.5);
             sleep(1600);
 
+            robot.wobbleArm.setPower(0);
+            robot.wobbleClaw.setPower(0);
+
             //SHOOTING & PARK
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,15,0,0,15,this); //STRAFES DIAGONALLY RIGHT
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,3,3,3,3,0,-1,-1,-1,this); //DRIVES TO SHOOTING POSITION
-            robot.gyroTurn(robot.TURN_SPEED,0,this); //TURNS TO SHOOTING ANGLE
-            robot.gyroDrive(0.5,0,0,0,0,0,28.0,42.0,-1,this);
+            telemetry.addData("Got To Shooting","PLZ work");
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,70,0,0,70,this); //STRAFES DIAGONALLY RIGHT
+            robot.gyroTurn(robot.TURN_SPEED,174,this); //TURNS TO SHOOTING ANGLE
+            robot.gyroDrive(0.5,0,0,0,0,0,67,42,-1,this);
 
             robot.jHopper2.setPower(-0.95);
-            sleep(4000);
+            sleep(2000);
             robot.JHopFlap.setPosition(0.5);
-            robot.jHopper1.setPower(1);
+            robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
-            sleep(8000);
+            sleep(7000);
 
             robot.jHopper1.setPower(0);
             robot.jHopper2.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
             //REVERT POWERS BACK TO ZERO
-            robot.wobbleArm.setPower(0);
-            robot.wobbleClaw.setPower(0);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,6,6,6,6,0,-1,-1,-1,this); //PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,this); //PARKING
         }
         else if(rings == 1){
 

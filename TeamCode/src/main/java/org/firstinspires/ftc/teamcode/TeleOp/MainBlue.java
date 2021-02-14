@@ -22,8 +22,10 @@ public class MainBlue extends OpMode{
     public boolean               FieldRelative = true;
     public boolean                 GP1_LB_Held = false;
     public boolean                GP2_DPL_Held = false;
+    public boolean                 GP2_RT_Held = false;
     public double                    FLAP_OPEN = 0.5;
     public double                  FLAP_CLOSED = 0.1;
+    public double speedJHop = -.95;
 
     //RingDetectorJHop detectorJHop = null;
 
@@ -267,7 +269,7 @@ public class MainBlue extends OpMode{
 
         //---------------J-HOPPER 2---------------\\
         if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels /* || rings > 0*/){
-            robot.jHopper2.setPower(-0.95);
+            robot.jHopper2.setPower(speedJHop);
         }
         else if (gamepad2.dpad_up){
             robot.jHopper2.setPower(0.3);
@@ -276,6 +278,18 @@ public class MainBlue extends OpMode{
             robot.jHopper2.setPower(0);
         }
 
+        if((gamepad2.right_trigger > .5) && !GP2_RT_Held){
+            if(speedJHop == -.95){
+                speedJHop = -.8;
+            }
+            else {
+                speedJHop = -.95;
+            }
+            GP2_RT_Held = true;
+        }
+            if(gamepad2.right_trigger < .5){
+                GP2_RT_Held = false;
+            }
         //---------------WOBBLE---------------\\
         double wobbleArm = gamepad2.right_stick_y;
         if(Math.abs(wobbleArm) < 0.1){
@@ -310,11 +324,11 @@ public class MainBlue extends OpMode{
         if((Math.abs(robot.JHopFlap.getPosition() - FLAP_CLOSED) < 0.01) /* && rings == 0*/){
             robot.JHopFlap.setPosition(FLAP_CLOSED);
         }
-        double origVal       = robot.frontRange.getDistance(DistanceUnit.INCH);
-        double castedFront   = Math.round((origVal * 100.0) / 100.0);
-        double castedLeft    = Math.round((robot.leftRange.getDistance(DistanceUnit.INCH) * 100.0) / 100.0);
-        double castedRight   = Math.round((robot.rightRange.getDistance(DistanceUnit.INCH) * 100.0) / 100.0);
-        double castedJHop    = Math.round((robot.jHopper2.getPower() * 100.0) / 100.0);
+
+        double castedFront   = Math.round((robot.frontRange.getDistance(DistanceUnit.INCH) * 1000)) / 1000.0;
+        double castedLeft    = Math.round((robot.leftRange.getDistance(DistanceUnit.INCH) * 1000)) / 1000.0;
+        double castedRight   = Math.round((robot.rightRange.getDistance(DistanceUnit.INCH) * 1000)) / 1000.0;
+        double castedJHop    = Math.round((robot.jHopper2.getPower() * 1000) / 1000.0);
 
         telemetry.addData("Front Distance: ", castedFront);
         telemetry.addData("Right Distance: ", castedRight);
