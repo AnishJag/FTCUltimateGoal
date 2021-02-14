@@ -43,7 +43,7 @@ public class Blue extends LinearOpMode {
 
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,this);
 
-            robot.gyroTurn(robot.TURN_SPEED,90,this);
+            robot.gyroTurn(robot.TURN_SPEED,83,this);
 
             robot.wobbleArm.setPower(0.40);
             sleep(75);
@@ -52,32 +52,34 @@ public class Blue extends LinearOpMode {
             sleep(1600);
 
             //SHOOTING & PARK
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,20,0,0,20,this); //STRAFES DIAGONALLY RIGHT
-            //robot.gyroDrive(MainRobot.DRIVE_SPEED,6,6,6,6,0,-1,-1,-1,this); //DRIVES TO SHOOTING POSITION
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,15,0,0,15,this); //STRAFES DIAGONALLY RIGHT
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,3,3,3,3,0,-1,-1,-1,this); //DRIVES TO SHOOTING POSITION
             robot.gyroTurn(robot.TURN_SPEED,0,this); //TURNS TO SHOOTING ANGLE
+            robot.gyroDrive(0.5,0,0,0,0,0,28.0,42.0,-1,this);
 
-            /*robot.jHopper2.setPower(-0.95);
-            sleep(8000);
+            robot.jHopper2.setPower(-0.95);
+            sleep(4000);
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(1);
             robot.foamWheel.setPower(1);
-            sleep(8000);*/
+            sleep(8000);
+
+            robot.jHopper1.setPower(0);
+            robot.jHopper2.setPower(0);
+            robot.JHopFlap.setPosition(0.1);
 
             //REVERT POWERS BACK TO ZERO
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
-            /*robot.jHopper1.setPower(0);
-            robot.jHopper2.setPower(0);
-            robot.JHopFlap.setPosition(0.1);*/
 
             robot.gyroDrive(MainRobot.DRIVE_SPEED,6,6,6,6,0,-1,-1,-1,this); //PARKING
         }
         else if(rings == 1){
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-60,-60,0,this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-94,-94,-94,-94,0,-1,-1,-1,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-101,-101,-101,-101,0,-1,-1,-1,this);
 
-            robot.gyroTurn(robot.TURN_SPEED,-90,this);
+            robot.gyroTurn(robot.TURN_SPEED,-82,this);
 
             robot.wobbleArm.setPower(0.40);
             sleep(75);
@@ -87,7 +89,7 @@ public class Blue extends LinearOpMode {
 
             //SHOOTING & PARK
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-23,23,23,-23,this); //STRAFES LEFT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-30,30,30,-30,this); //STRAFES LEFT
 
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);

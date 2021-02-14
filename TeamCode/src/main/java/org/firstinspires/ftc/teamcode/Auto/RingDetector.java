@@ -62,7 +62,7 @@ public class RingDetector {
         if (boxValue < 200) {
             return 4;
         }
-        else if (boxValue < 290) {
+        else if (boxValue < 270) {
             return 1;
         }
         else return 0;

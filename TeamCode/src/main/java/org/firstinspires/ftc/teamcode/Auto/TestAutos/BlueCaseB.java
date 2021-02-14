@@ -17,6 +17,8 @@ public class BlueCaseB extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        RingDetector detector = new RingDetector(this, false);
+
         robot.init(hardwareMap);
 
         robot.topLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -32,7 +34,27 @@ public class BlueCaseB extends LinearOpMode {
 
         waitForStart();
 
+        robot.gyro.resetZAxisIntegrator();
 
-        robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -65, -65, 0,this);
+        robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
+        robot.gyroDrive(MainRobot.DRIVE_SPEED,-98,-98,-98,-98,0,-1,-1,-1,this);
+
+        robot.gyroTurn(robot.TURN_SPEED,-90,this);
+
+        robot.wobbleArm.setPower(0.40);
+        sleep(75);
+
+        robot.wobbleClaw.setPower(0.5);
+        sleep(1600);
+
+        //SHOOTING & PARK
+
+        robot.encoderDrive(MainRobot.DRIVE_SPEED,-27,27,27,-27,this); //STRAFES LEFT
+
+        robot.wobbleArm.setPower(0);
+        robot.wobbleClaw.setPower(0);
+        //robot.jhopper1.setPower(0);
+        //robot.jhopper2.setPower(0);
+        //robot.JHopFlap.setPosition(0.1);
     }
 }

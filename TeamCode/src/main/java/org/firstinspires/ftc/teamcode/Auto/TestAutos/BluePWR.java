@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Auto.RingDetector;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 
-@Autonomous(name="Blue")
+@Autonomous(name="BluePWR")
 @Disabled
 public class BluePWR extends LinearOpMode {
 

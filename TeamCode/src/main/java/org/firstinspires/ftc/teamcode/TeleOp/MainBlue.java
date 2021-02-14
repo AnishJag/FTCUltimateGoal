@@ -310,10 +310,11 @@ public class MainBlue extends OpMode{
         if((Math.abs(robot.JHopFlap.getPosition() - FLAP_CLOSED) < 0.01) /* && rings == 0*/){
             robot.JHopFlap.setPosition(FLAP_CLOSED);
         }
-        double castedFront   = Math.round((robot.frontRange.getDistance(DistanceUnit.INCH) * 1000) / 1000.0);
-        double castedLeft    = Math.round((robot.leftRange.getDistance(DistanceUnit.INCH) * 1000) / 1000.0);
-        double castedRight   = Math.round((robot.rightRange.getDistance(DistanceUnit.INCH) * 1000) / 1000.0);
-        double castedJHop    = Math.round((robot.jHopper2.getPower() * 1000) / 1000.0);
+        double origVal       = robot.frontRange.getDistance(DistanceUnit.INCH);
+        double castedFront   = Math.round((origVal * 100.0) / 100.0);
+        double castedLeft    = Math.round((robot.leftRange.getDistance(DistanceUnit.INCH) * 100.0) / 100.0);
+        double castedRight   = Math.round((robot.rightRange.getDistance(DistanceUnit.INCH) * 100.0) / 100.0);
+        double castedJHop    = Math.round((robot.jHopper2.getPower() * 100.0) / 100.0);
 
         telemetry.addData("Front Distance: ", castedFront);
         telemetry.addData("Right Distance: ", castedRight);
