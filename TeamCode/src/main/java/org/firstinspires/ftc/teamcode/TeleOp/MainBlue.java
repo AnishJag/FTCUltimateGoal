@@ -7,14 +7,12 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 //import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
-import java.lang.reflect.Field;
-
 @TeleOp(name="Main BLUE")
 public class MainBlue extends OpMode{
 
     MainRobot robot = null;
 
-    public static final double  BACK_ALIGNMENT = 51;
+    public static final double FRONT_ALIGNMENT = 51;
     public static final double  LEFT_ALIGNMENT = 39;
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
@@ -132,10 +130,10 @@ public class MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
             if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
@@ -164,10 +162,10 @@ public class MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
             if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
@@ -197,10 +195,10 @@ public class MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
             if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
@@ -224,10 +222,10 @@ public class MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < BACK_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > BACK_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
             if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){

@@ -18,6 +18,7 @@ public class Blue extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
 
         RingDetector detector = new RingDetector(this, false);
+        //RingDetectorJHop detectorJHop = new RingDetectorJHop(this,false);
 
 
         robot.init(hardwareMap);
@@ -38,6 +39,8 @@ public class Blue extends LinearOpMode {
         robot.gyro.resetZAxisIntegrator();
 
         int rings = detector.getDecision();
+        //int jHopRings = detectorJHop.getDecision();
+
         if (rings == 0){
 
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,this);
@@ -54,13 +57,17 @@ public class Blue extends LinearOpMode {
             robot.wobbleClaw.setPower(0);
 
             //SHOOTING & PARK
-            telemetry.addData("Got To Shooting","PLZ work");
             robot.encoderDrive(MainRobot.DRIVE_SPEED,70,0,0,70,this); //STRAFES DIAGONALLY RIGHT
             robot.gyroTurn(robot.TURN_SPEED,174,this); //TURNS TO SHOOTING ANGLE
             robot.gyroDrive(0.5,0,0,0,0,0,67,42,-1,this);
 
             robot.jHopper2.setPower(-0.95);
             sleep(2000);
+            /*while (detectorJHop.getDecision() > 0){
+                robot.JHopFlap.setPosition(0.5);
+                robot.jHopper1.setPower(-1);
+                robot.foamWheel.setPower(1);
+            }*/
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
