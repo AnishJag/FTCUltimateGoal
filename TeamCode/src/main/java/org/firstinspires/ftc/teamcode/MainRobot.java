@@ -390,6 +390,11 @@ public class MainRobot {
             // Update telemetry & Allow time for other processes to run.
             opmode.telemetry.update();
         }
+        //TEST TO SEE IF THERE IS A PAUSE AFTER TURN
+        topLeft.setPower(0.2);
+        topRight.setPower(0.2);
+        bottomLeft.setPower(0.2);
+        bottomRight.setPower(0.2);
     }
 
     boolean onHeading(double speed, double angle, double PCoeff, LinearOpMode opmode) {
