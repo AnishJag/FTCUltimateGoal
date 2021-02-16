@@ -275,7 +275,7 @@ public class MainBlue extends OpMode{
         else{
             robot.jHopper2.setPower(0);
         }
-
+        //SPEED TOGGLING
         if((gamepad2.right_trigger > .5) && !GP2_RT_Held){
             if(speedJHop == -.95){
                 speedJHop = -.8;

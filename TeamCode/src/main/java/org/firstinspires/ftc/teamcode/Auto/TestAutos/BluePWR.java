@@ -1,16 +1,16 @@
-package org.firstinspires.ftc.teamcode.Auto;
+package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.robotcore.internal.android.dx.command.Main;
+import org.firstinspires.ftc.teamcode.Auto.RingDetector;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 
-@Autonomous(name="Blue")
-public class Blue extends LinearOpMode {
+@Autonomous(name="BluePWR")
+public class BluePWR extends LinearOpMode {
 
     MainRobot robot = new MainRobot();
 
@@ -58,27 +58,39 @@ public class Blue extends LinearOpMode {
             robot.wobbleClaw.setPower(0);
 
             //SHOOTING & PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,70,0,0,70,this); //STRAFES DIAGONALLY RIGHT
-            robot.gyroTurn(robot.TURN_SPEED,174,this); //TURNS TO SHOOTING ANGLE
-            robot.gyroDrive(0.6,0,0,0,0,0,67,42,-1,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,30,0,0,30,this); //STRAFES DIAGONALLY RIGHT
+            robot.gyroDrive(0.6,0,0,0,0,0,50,60,-1,this); //CONFIRMS SHOOTING POSITION
+            robot.gyroTurn(robot.TURN_SPEED,160,this); //TURNS TO PWR SHOT 3
 
-            robot.jHopper2.setPower(-0.95);
+            robot.jHopper2.setPower(-0.8);
             sleep(2000);
             /*while (detectorJHop.getDecision() > 0){
                 robot.JHopFlap.setPosition(0.5);
                 robot.jHopper1.setPower(-1);
                 robot.foamWheel.setPower(1);
             }*/
-            robot.JHopFlap.setPosition(0.5);
+            robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
-            sleep(7000);
+            sleep(1000);
+
+            robot.gyroTurn(robot.TURN_SPEED,165,this); //TURNS TO PWR SHOT 2
+            robot.jHopper1.setPower(-1);
+            robot.foamWheel.setPower(1);
+            sleep(1000);
+
+            robot.gyroTurn(robot.TURN_SPEED,170,this); //TURNS TO PWR SHOT 1
+            robot.jHopper1.setPower(-1);
+            robot.foamWheel.setPower(1);
+            sleep(1500);
 
             robot.jHopper1.setPower(0);
             robot.jHopper2.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,this); //PARKING
+            robot.gyroTurn(robot.TURN_SPEED,180,this); //PERPENDICULAR TO LEFT WALL
+
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,5,5,5,5,0,-1,-1,-1,this); //PARKING
         }
 
         //---------------- CASE ONE RING ----------------
