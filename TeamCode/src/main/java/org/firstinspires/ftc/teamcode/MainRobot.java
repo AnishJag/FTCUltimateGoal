@@ -292,10 +292,10 @@ public class MainRobot {
                 }
             }
 
-            topLeft.setPower(0.2);
-            topRight.setPower(0.2);
-            bottomLeft.setPower(0.2);
-            bottomRight.setPower(0.2);
+            topLeft.setPower(0.3);
+            topRight.setPower(0.3);
+            bottomLeft.setPower(0.3);
+            bottomRight.setPower(0.3);
         }
     }
 
