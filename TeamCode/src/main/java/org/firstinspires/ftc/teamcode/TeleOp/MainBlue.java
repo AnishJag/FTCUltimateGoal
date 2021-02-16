@@ -12,8 +12,8 @@ public class MainBlue extends OpMode{
 
     MainRobot robot = null;
 
-    public static final double FRONT_ALIGNMENT = 51;
-    public static final double  LEFT_ALIGNMENT = 39;
+    public static final double FRONT_ALIGNMENT = 67;
+    public static final double  LEFT_ALIGNMENT = 42;
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
     public boolean                    SlowMode = false;
@@ -23,7 +23,7 @@ public class MainBlue extends OpMode{
     public boolean                 GP2_RT_Held = false;
     public double                    FLAP_OPEN = 0.5;
     public double                  FLAP_CLOSED = 0.1;
-    public double speedJHop = -.95;
+    public double                    speedJHop = -.95;
 
     //RingDetectorJHop detectorJHop = null;
 
