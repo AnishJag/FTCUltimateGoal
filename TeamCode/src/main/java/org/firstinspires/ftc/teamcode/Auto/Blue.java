@@ -48,11 +48,11 @@ public class Blue extends LinearOpMode {
 
             robot.gyroTurn(robot.TURN_SPEED,83,this);
 
-            robot.wobbleArm.setPower(0.40);
-            sleep(75);
+            robot.wobbleArm.setPower(0.6);
+            sleep(100);
 
             robot.wobbleClaw.setPower(0.5);
-            sleep(1600);
+            sleep(1000);
 
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
@@ -60,15 +60,9 @@ public class Blue extends LinearOpMode {
             //SHOOTING & PARKING
             robot.encoderDrive(MainRobot.DRIVE_SPEED,70,0,0,70,this); //STRAFES DIAGONALLY RIGHT
             robot.gyroTurn(robot.TURN_SPEED,174,this); //TURNS TO SHOOTING ANGLE
-            robot.gyroDrive(0.6,0,0,0,0,0,67,42,-1,this);
 
             robot.jHopper2.setPower(-0.95);
             sleep(2000);
-            /*while (detectorJHop.getDecision() > 0){
-                robot.JHopFlap.setPosition(0.5);
-                robot.jHopper1.setPower(-1);
-                robot.foamWheel.setPower(1);
-            }*/
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
@@ -78,7 +72,7 @@ public class Blue extends LinearOpMode {
             robot.jHopper2.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,this); //PARKING
+            //robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,this); //PARKING
         }
 
         //---------------- CASE ONE RING ----------------

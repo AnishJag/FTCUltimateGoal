@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 //import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
+import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 @TeleOp(name="Main BLUE")
@@ -31,7 +32,7 @@ public class MainBlue extends OpMode{
     public void init() {
         robot = new MainRobot();
         robot.init(hardwareMap);
-        //detectorJHop = new RingDetectorJHop(this);
+        //detectorJHop = new RingDetectorJHop(this,false);
 
         telemetry.addData("Initialization Complete!","");
         telemetry.update();

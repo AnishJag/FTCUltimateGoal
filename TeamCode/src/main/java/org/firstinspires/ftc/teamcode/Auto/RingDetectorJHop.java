@@ -33,7 +33,7 @@ public class RingDetectorJHop {
         int cameraMonitorViewId = opMode.hardwareMap.appContext.getResources().getIdentifier(
                 "cameraMonitorViewId", "id", opMode.hardwareMap.appContext.getPackageName());
 
-        camera = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, "JHOP CAM"), cameraMonitorViewId);
+        camera = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, "JHopCAM"), cameraMonitorViewId);
 
         pipeline = new CustomPipeline();
         camera.openCameraDevice();
