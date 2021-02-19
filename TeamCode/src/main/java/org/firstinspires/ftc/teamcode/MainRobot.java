@@ -116,7 +116,8 @@ public class MainRobot {
 
     //Autonomous Blue & Red
     public void gyroDrive (double speed, double distanceTL, double distanceTR,
-                           double distanceBL, double distanceBR, double angle, double frontDistance, double leftDistance, double rightDistance, LinearOpMode opmode) {
+                           double distanceBL, double distanceBR, double angle, double frontDistance, double leftDistance, double rightDistance, double endFLPower, double endFRPower, double endBLPower,
+                           double endBRPower, LinearOpMode opmode) {
 
         int     newTLTarget;
         int     newTRTarget;
@@ -292,10 +293,10 @@ public class MainRobot {
                 }
             }
 
-            topLeft.setPower(0.3);
-            topRight.setPower(0.3);
-            bottomLeft.setPower(0.3);
-            bottomRight.setPower(0.3);
+            topLeft.setPower(endFLPower);
+            topRight.setPower(endFRPower);
+            bottomLeft.setPower(endBLPower);
+            bottomRight.setPower(endBRPower);
         }
     }
 
@@ -390,11 +391,6 @@ public class MainRobot {
             // Update telemetry & Allow time for other processes to run.
             opmode.telemetry.update();
         }
-        //TEST TO SEE IF THERE IS A PAUSE AFTER TURN
-        topLeft.setPower(0.2);
-        topRight.setPower(0.2);
-        bottomLeft.setPower(0.2);
-        bottomRight.setPower(0.2);
     }
 
     boolean onHeading(double speed, double angle, double PCoeff, LinearOpMode opmode) {
