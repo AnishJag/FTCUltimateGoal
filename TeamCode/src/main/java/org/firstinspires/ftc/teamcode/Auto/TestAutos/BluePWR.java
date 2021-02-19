@@ -44,7 +44,7 @@ public class BluePWR extends LinearOpMode {
         //---------------- CASE ZERO RINGS ----------------
         if (rings == 0){
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,0,0,0,0,this);
 
             robot.gyroTurn(robot.TURN_SPEED,83,this);
 
@@ -59,7 +59,7 @@ public class BluePWR extends LinearOpMode {
 
             //SHOOTING & PARKING
             robot.encoderDrive(MainRobot.DRIVE_SPEED,30,0,0,30,this); //STRAFES DIAGONALLY RIGHT
-            robot.gyroDrive(0.6,0,0,0,0,0,50,60,-1,this); //CONFIRMS SHOOTING POSITION
+            robot.gyroDrive(0.6,0,0,0,0,0,50,60,-1,0,0,0,0,this); //CONFIRMS SHOOTING POSITION
             robot.gyroTurn(robot.TURN_SPEED,160,this); //TURNS TO PWR SHOT 3
 
             robot.jHopper2.setPower(-0.8);
@@ -90,14 +90,14 @@ public class BluePWR extends LinearOpMode {
 
             robot.gyroTurn(robot.TURN_SPEED,180,this); //PERPENDICULAR TO LEFT WALL
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,5,5,5,5,0,-1,-1,-1,this); //PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,5,5,5,5,0,-1,-1,-1,0,0,0,0,this); //PARKING
         }
 
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-101,-101,-101,-101,0,-1,-1,-1,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-101,-101,-101,-101,0,-1,-1,-1,0,0,0,0,this);
 
             robot.gyroTurn(robot.TURN_SPEED,-82,this);
 
@@ -112,9 +112,9 @@ public class BluePWR extends LinearOpMode {
 
             //SHOOTING & PARKING
             robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-100,-100,0,this); //STRAFES DIAGONALLY BACK-LEFT
-            robot.gyroDrive(0.8,-10,-10,-10,-10,0,-1,-1,-1,this);
+            robot.gyroDrive(0.8,-10,-10,-10,-10,0,-1,-1,-1,0,0,0,0,this);
             robot.gyroTurn(robot.TURN_SPEED,90,this);
-            robot.gyroDrive(0.6,0,0,0,0,0,67,42,-1,this);
+            robot.gyroDrive(0.6,0,0,0,0,0,67,42,-1,0,0,0,0,this);
 
             robot.jHopper2.setPower(-0.95);
             sleep(2000);
@@ -132,14 +132,14 @@ public class BluePWR extends LinearOpMode {
             robot.jHopper2.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,this); //PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,0,0,0,0,this); //PARKING
         }
 
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -60, -60, 0, this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED, -115, -115, -115, -115, 0, -1, -1, -1, this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED, -115, -115, -115, -115, 0, -1, -1, -1,0,0,0,0,this);
 
             robot.wobbleArm.setPower(0.40);
             sleep(90);
@@ -154,7 +154,7 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, 150, 150, 0, this); //STRAFES DIAGONALLY LEFT
             //robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-60,-60,0,this); //STRAFES LEFT TO SHOOTING POSITION
             robot.gyroTurn(robot.TURN_SPEED, 174, this);
-            robot.gyroDrive(0.6, 0, 0, 0, 0, 0, 67, 42, -1, this);
+            robot.gyroDrive(0.6, 0, 0, 0, 0, 0, 67, 42, -1,0,0,0,0,this);
 
             robot.jHopper2.setPower(-0.95);
             sleep(2000);
@@ -172,7 +172,7 @@ public class BluePWR extends LinearOpMode {
             robot.jHopper2.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED, 8, 8, 8, 8, 0, -1, -1, -1, this); //PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED, 8, 8, 8, 8, 0, -1, -1, -1,0,0,0,0,this); //PARKING
         }
     }
 }
