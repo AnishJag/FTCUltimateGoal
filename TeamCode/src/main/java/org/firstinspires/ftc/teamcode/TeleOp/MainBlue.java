@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -9,12 +10,15 @@ import org.firstinspires.ftc.teamcode.Auto.RingDetectorJHop;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 @TeleOp(name="Main BLUE")
-public class MainBlue extends OpMode{
+public class MainBlue extends LinearOpMode {
 
     MainRobot robot = null;
 
     public static final double FRONT_ALIGNMENT = 67;
     public static final double  LEFT_ALIGNMENT = 42;
+    public static final double PWR_FRONT_ALIGNMENT = 55.9;
+    public static final double PWR_LEFT_ALIGNMENT = 66.9;
+    public static final double PWR_LEFT_SHIFT = 5;
     public static final double MARGIN_OF_ERROR = 1;
     public boolean                 GP1_RB_Held = false;
     public boolean                    SlowMode = false;
@@ -22,14 +26,22 @@ public class MainBlue extends OpMode{
     public boolean                 GP1_LB_Held = false;
     public boolean                GP2_DPL_Held = false;
     public boolean                 GP2_RT_Held = false;
+    public boolean                  GP1_X_Held = false;
     public double                    FLAP_OPEN = 0.5;
     public double                  FLAP_CLOSED = 0.1;
     public double                    speedJHop = -0.95;
 
     //RingDetectorJHop detectorJHop = null;
-
     @Override
-    public void init() {
+    public void runOpMode(){
+        custom_init();
+        waitForStart();
+        while(opModeIsActive()){
+            custom_loop();
+        }
+    }
+
+    public void custom_init() {
         robot = new MainRobot();
         robot.init(hardwareMap);
         //detectorJHop = new RingDetectorJHop(this,false);
@@ -38,8 +50,7 @@ public class MainBlue extends OpMode{
         telemetry.update();
     }
 
-    @Override
-    public void loop() {
+    public void custom_loop() {
         //int rings = detectorJHop.getDecision();
         //telemetry.addData("Ring Number: ", rings);
 
@@ -120,9 +131,8 @@ public class MainBlue extends OpMode{
         }
 
         //--------------------AUTOMATION CONTROLS--------------------\\
-        boolean jHopperWheels = false;
 
-        //---------------TOP-GOAL & SHOOT---------------\\
+        //---------------TOP-GOAL LINEUP---------------\\
         if(gamepad1.a){
             double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
             double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
@@ -147,11 +157,6 @@ public class MainBlue extends OpMode{
             robot.topRight.setPower(forwardPower - rightPower);
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
-
-            jHopperWheels = true;
-        }
-        else{
-            jHopperWheels = false;
         }
 
         //---------------POWER-SHOT & SHOOT---------------\\
@@ -163,49 +168,16 @@ public class MainBlue extends OpMode{
 
             double forwardPower = 0;
             double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
+            if (frontRange < PWR_FRONT_ALIGNMENT - MARGIN_OF_ERROR){
                 forwardPower = -1;
             }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(frontRange > PWR_FRONT_ALIGNMENT + MARGIN_OF_ERROR){
                 forwardPower = 1;
             }
-            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
+            if(leftRange < PWR_LEFT_ALIGNMENT - MARGIN_OF_ERROR){
                 rightPower = 1;
             }
-            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
-                rightPower = -1;
-            }
-            robot.topLeft.setPower(forwardPower + rightPower);
-            robot.topRight.setPower(forwardPower - rightPower);
-            robot.bottomLeft.setPower(forwardPower - rightPower);
-            robot.bottomRight.setPower(forwardPower + rightPower);
-
-            jHopperWheels = true;
-            //Need to add angle for each turn for power-shots.
-        }
-        else{
-            jHopperWheels = false;
-        }
-
-        //---------------TOP-GOAL NO SHOOT---------------\\
-        if(gamepad1.x){
-            double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
-            double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
-            telemetry.addData("Front Range: ", frontRange);
-            telemetry.addData("Left Range: ", leftRange);
-
-            double forwardPower = 0;
-            double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
-                forwardPower = -1;
-            }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
-                forwardPower = 1;
-            }
-            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
-                rightPower = 1;
-            }
-            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
+            else if(leftRange > PWR_LEFT_ALIGNMENT + MARGIN_OF_ERROR){
                 rightPower = -1;
             }
             robot.topLeft.setPower(forwardPower + rightPower);
@@ -213,33 +185,12 @@ public class MainBlue extends OpMode{
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
         }
-
-        //---------------POWER-SHOT NO SHOOT---------------\\
-        if(gamepad1.y){
-            double frontRange = robot.frontRange.getDistance(DistanceUnit.INCH);
-            double leftRange   = robot.leftRange.getDistance(DistanceUnit.INCH);
-            telemetry.addData("Front Range: ", frontRange);
-            telemetry.addData("Left Range: ", leftRange);
-
-            double forwardPower = 0;
-            double rightPower    = 0;
-            if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
-                forwardPower = -1;
-            }
-            else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
-                forwardPower = 1;
-            }
-            if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
-                rightPower = 1;
-            }
-            else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
-                rightPower = -1;
-            }
-            robot.topLeft.setPower(forwardPower + rightPower);
-            robot.topRight.setPower(forwardPower - rightPower);
-            robot.bottomLeft.setPower(forwardPower - rightPower);
-            robot.bottomRight.setPower(forwardPower + rightPower);
-            //Need to add angle for each turn for power-shots.
+        if(gamepad1.x && !GP1_X_Held){
+            GP1_X_Held = true;
+            robot.gyroDrive(0.6, -PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, -PWR_LEFT_SHIFT, 0, -1,-1,-1,0,0,0,0,this);
+        }
+        if (!gamepad1.x){
+            GP1_X_Held = false;
         }
 
         //--------------------ROBOT CONTROLS--------------------\\
@@ -256,7 +207,7 @@ public class MainBlue extends OpMode{
         }
 
         //---------------J-HOPPER 1---------------\\
-        if (gamepad2.b || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels){
+        if (gamepad2.b || gamepad2.left_bumper || gamepad2.right_bumper){
             robot.jHopper1.setPower(-1);
         }
         else if (gamepad2.dpad_right){
@@ -267,7 +218,7 @@ public class MainBlue extends OpMode{
         }
 
         //---------------J-HOPPER 2---------------\\
-        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper || jHopperWheels /* || rings > 0*/){
+        if (gamepad2.y || gamepad2.left_bumper || gamepad2.right_bumper /* || rings > 0*/){
             robot.jHopper2.setPower(speedJHop);
         }
         else if (gamepad2.dpad_up){

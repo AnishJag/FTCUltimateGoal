@@ -15,6 +15,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorMRRangeSensor;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class MainRobot {
@@ -206,11 +207,16 @@ public class MainRobot {
                 bottomRight.setPower(speedBR);
 
                 // Display drive status for the driver.
-                opmode.telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);
+                /*opmode.telemetry.addData("Err/St",  "%5.1f/%5.1f",  error, steer);
                 opmode.telemetry.addData("Target",  "%7d:%7d:%7d:%7d", newTLTarget, newTRTarget, newBLTarget, newBRTarget);
                 opmode.telemetry.addData("Actual",  "%7d:%7d:%7d:%7d", topLeft.getCurrentPosition(),
                         topRight.getCurrentPosition(), bottomLeft.getCurrentPosition(), bottomRight.getCurrentPosition() );
-                opmode.telemetry.addData("Speed",   "%5.2f:%5.2f:%5.2f:%5.2f", speedTL, speedTR, speedBL, speedBR);
+                opmode.telemetry.addData("Speed",   "%5.2f:%5.2f:%5.2f:%5.2f", speedTL, speedTR, speedBL, speedBR);*/
+
+                opmode.telemetry.addData("FL: ", topLeft.isBusy());
+                opmode.telemetry.addData("FR: ", topRight.isBusy());
+                opmode.telemetry.addData("BL: ", bottomLeft.isBusy());
+                opmode.telemetry.addData("BR: ", bottomRight.isBusy());
                 opmode.telemetry.update();
             }
 
@@ -394,7 +400,9 @@ public class MainRobot {
     }
     public void sleepV2(double wait, LinearOpMode opmode){
         double finalTime = opmode.time + wait;
-        while(finalTime > opmode.time);
+        while(finalTime > opmode.time){
+            opmode.telemetry.update();
+        }
     }
 
     boolean onHeading(double speed, double angle, double PCoeff, LinearOpMode opmode) {

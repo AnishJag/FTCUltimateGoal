@@ -30,6 +30,7 @@ public class RingDetector {
     private Point topBR;
 
     private RGBColor box;
+    private boolean show_value = true;
 
     public RingDetector(OpMode op, boolean isRed){
 
@@ -57,8 +58,11 @@ public class RingDetector {
 
         int boxValue = box.getYellow();
 
-        opMode.telemetry.addData("Box Value: ", boxValue);
-        opMode.telemetry.update();
+        if (show_value){
+            opMode.telemetry.addData("Box Value: ", boxValue);
+            opMode.telemetry.update();
+        }
+
         if (boxValue < 200) {
             return 4;
         }
@@ -120,5 +124,9 @@ public class RingDetector {
             opMode.telemetry.update();
         }
 
+    }
+
+    public void setTelemShow(boolean show){
+        this.show_value = show;
     }
 }
