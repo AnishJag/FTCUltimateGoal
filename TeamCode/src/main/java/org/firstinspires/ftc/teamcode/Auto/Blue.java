@@ -48,10 +48,10 @@ public class Blue extends LinearOpMode {
 
             robot.gyroTurn(robot.TURN_SPEED,83,this);
 
-            robot.wobbleArm.setPower(0.40);
-            sleep(75);
+            robot.wobbleArm.setPower(0.5);
+            sleep(45);
 
-            robot.wobbleClaw.setPower(0.5);
+            robot.wobbleClaw.setPower(0.8);
             sleep(1200);
 
             robot.wobbleArm.setPower(0);
@@ -61,74 +61,32 @@ public class Blue extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,75,0,0,75,this); //STRAFES DIAGONALLY RIGHT
 
             robot.gyroTurn(robot.TURN_SPEED,174,this); //TURNS TO SHOOTING ANGLE
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,1,1,1,1,0,-1,-1,-1,0,0,0,0,this);
 
             robot.jHopper2.setPower(-0.95);
             sleep(2500);
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
-            sleep(3800);
+            robot.sleepV2(3.4, this);
 
-            telemetry.addLine("ONE CATCH");
             robot.jHopper1.setPower(0);
-            telemetry.addLine("CATCH TWO");
             robot.jHopper2.setPower(0);
+            robot.foamWheel.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,0,0,0,0,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,this); //PARKING
         }
 
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-101,-101,-101,-101,0,-1,-1,-1,0,0,0,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-47,-47,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-105,-105,-105,-105,this);
 
-            robot.gyroTurn(robot.TURN_SPEED,-82,this);
+            robot.gyroTurn(robot.TURN_SPEED,-80,this);
 
-            robot.wobbleArm.setPower(0.40);
-            sleep(75);
-
-            robot.wobbleClaw.setPower(0.5);
-            sleep(1200);
-
-            robot.wobbleArm.setPower(0);
-            robot.wobbleClaw.setPower(0);
-
-            //SHOOTING & PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-100,-100,0,this); //STRAFES DIAGONALLY BACK-LEFT
-            robot.gyroDrive(0.8,-10,-10,-10,-10,0,-1,-1,-1,0,0,0,0,this);
-            robot.gyroTurn(robot.TURN_SPEED,90,this);
-            robot.gyroDrive(0.6,0,0,0,0,0,67,42,-1,0,0,0,0,this);
-
-            robot.jHopper2.setPower(-0.95);
-            sleep(2000);
-            /*while (detectorJHop.getDecision() > 0){
-                robot.JHopFlap.setPosition(0.5);
-                robot.jHopper1.setPower(-1);
-                robot.foamWheel.setPower(1);
-            }*/
-            robot.JHopFlap.setPosition(0.5);
-            robot.jHopper1.setPower(-1);
-            robot.foamWheel.setPower(1);
-            sleep(7000);
-
-            robot.jHopper1.setPower(0);
-            robot.jHopper2.setPower(0);
-            robot.JHopFlap.setPosition(0.1);
-
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,8,8,8,8,0,-1,-1,-1,0,0,0,0,this); //PARKING
-        }
-
-        //---------------- CASE FOUR RINGS ----------------
-        else if(rings == 4) {
-
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -60, -60, 0, this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED, -115, -115, -115, -115, 0, -1, -1, -1,0,0,0,0,this);
-
-            robot.wobbleArm.setPower(0.40);
-            sleep(90);
+            robot.wobbleArm.setPower(0.5);
+            sleep(45);
 
             robot.wobbleClaw.setPower(0.8);
             sleep(1200);
@@ -136,14 +94,12 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
             robot.wobbleClaw.setPower(0);
 
-            //SHOOTING AND PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, 150, 150, 0, this); //STRAFES DIAGONALLY LEFT
-            //robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-60,-60,0,this); //STRAFES LEFT TO SHOOTING POSITION
-            robot.gyroTurn(robot.TURN_SPEED, 174, this);
-            robot.gyroDrive(0.6, 0, 0, 0, 0, 0, 67, 42, -1,0,0,0,0,this);
+            //SHOOTING & PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-127,0,0,-127,this); //STRAFES DIAGONALLY BACK-LEFT
+            robot.gyroTurn(robot.TURN_SPEED,189,this);
 
             robot.jHopper2.setPower(-0.95);
-            sleep(2000);
+            sleep(2500);
             /*while (detectorJHop.getDecision() > 0){
                 robot.JHopFlap.setPosition(0.5);
                 robot.jHopper1.setPower(-1);
@@ -152,13 +108,64 @@ public class Blue extends LinearOpMode {
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
-            sleep(7000);
+            robot.sleepV2(3.4, this);
 
             robot.jHopper1.setPower(0);
             robot.jHopper2.setPower(0);
+            robot.foamWheel.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED, 8, 8, 8, 8, 0, -1, -1, -1,0,0,0,0,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,this); //PARKING
+        }
+
+        //---------------- CASE FOUR RINGS ----------------
+        else if(rings == 4) {
+
+            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -50, -50, 0, this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-112,-112,-112,-112,0,-1,-1,-1,0,0,0,0,this);
+            robot.gyroTurn(MainRobot.TURN_SPEED,-4,this);
+
+            robot.wobbleArm.setPower(0.5);
+            robot.sleepV2(0.045,this);
+
+            robot.wobbleClaw.setPower(0.8);
+            robot.sleepV2(1.2,this);
+
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,-1,-1,-1,0,0,0,0,this); //PARKING
+
+            telemetry.addLine("I'M STUCK");
+            telemetry.update();
+
+            robot.wobbleArm.setPower(0);
+            robot.wobbleClaw.setPower(0);
+
+            //SHOOTING AND PARKING
+            /*telemetry.addLine("I SHOULD START STRAFING!");
+            telemetry.update();
+            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, 150, 150, 0, this); //STRAFES DIAGONALLY LEFT
+            telemetry.addLine("I SHOULD TURN");
+            telemetry.update();
+            robot.gyroTurn(robot.TURN_SPEED, 178, this);
+            robot.gyroDrive(0.6, 1, 1, 1, 1, 0, 67, 42, -1,0,0,0,0,this);
+
+            robot.jHopper2.setPower(-0.95);
+            sleep(2500);
+            /*while (detectorJHop.getDecision() > 0){
+                robot.JHopFlap.setPosition(0.5);
+                robot.jHopper1.setPower(-1);
+                robot.foamWheel.setPower(1);
+            }*/
+            /*robot.JHopFlap.setPosition(0.5);
+            robot.jHopper1.setPower(-1);
+            robot.foamWheel.setPower(1);
+            robot.sleepV2(3.4, this);
+
+            robot.jHopper1.setPower(0);
+            robot.jHopper2.setPower(0);
+            robot.foamWheel.setPower(0);
+            robot.JHopFlap.setPosition(0.1);*/
+
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,-1,-1,-1,0,0,0,0,this); //PARKING
         }
     }
 }

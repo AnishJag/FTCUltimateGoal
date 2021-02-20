@@ -392,6 +392,10 @@ public class MainRobot {
             opmode.telemetry.update();
         }
     }
+    public void sleepV2(double wait, LinearOpMode opmode){
+        double finalTime = opmode.time + wait;
+        while(finalTime > opmode.time);
+    }
 
     boolean onHeading(double speed, double angle, double PCoeff, LinearOpMode opmode) {
         double   error ;
