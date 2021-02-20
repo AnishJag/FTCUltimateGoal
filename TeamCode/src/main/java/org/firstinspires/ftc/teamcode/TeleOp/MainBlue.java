@@ -24,7 +24,7 @@ public class MainBlue extends OpMode{
     public boolean                 GP2_RT_Held = false;
     public double                    FLAP_OPEN = 0.5;
     public double                  FLAP_CLOSED = 0.1;
-    public double                    speedJHop = -.95;
+    public double                    speedJHop = -0.95;
 
     //RingDetectorJHop detectorJHop = null;
 
