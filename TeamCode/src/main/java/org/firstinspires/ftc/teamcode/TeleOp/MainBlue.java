@@ -18,8 +18,10 @@ public class MainBlue extends LinearOpMode {
     public static final double  LEFT_ALIGNMENT = 42;
     public static final double PWR_FRONT_ALIGNMENT = 55.9;
     public static final double PWR_LEFT_ALIGNMENT = 66.9;
-    public static final double PWR_LEFT_SHIFT = 5;
-    public static final double MARGIN_OF_ERROR = 5;
+    public static final double PWR_LEFT_SHIFT = 7;
+    public static final double MARGIN_OF_ERROR = 1;
+    public static final double SLOWDOWN_DISTANCE = 5;
+    public static final double SLOWDOWN_POWER  = 0.5;
     public boolean                 GP1_RB_Held = false;
     public boolean                    SlowMode = false;
     public boolean               FieldRelative = true;
@@ -69,7 +71,7 @@ public class MainBlue extends LinearOpMode {
             right   = relativeRight;
         }
 
-        double turn    = gamepad1.right_stick_x;
+        double turn = gamepad1.right_stick_x;
 
         double leftFrontPower = forward + right + turn;
         double leftBackPower = forward - right + turn;
@@ -141,17 +143,38 @@ public class MainBlue extends LinearOpMode {
 
             double forwardPower = 0;
             double rightPower    = 0;
+
             if (frontRange < FRONT_ALIGNMENT - MARGIN_OF_ERROR){
-                forwardPower = -1;
+                if((FRONT_ALIGNMENT - frontRange) <= SLOWDOWN_DISTANCE) {
+                    forwardPower = -SLOWDOWN_POWER;
+                }
+                else{
+                    forwardPower = -1;
+                }
             }
             else if(frontRange > FRONT_ALIGNMENT + MARGIN_OF_ERROR){
-                forwardPower = 1;
+                if((frontRange - FRONT_ALIGNMENT) <= SLOWDOWN_DISTANCE){
+                    forwardPower = SLOWDOWN_POWER;
+                }
+                else {
+                    forwardPower = 1;
+                }
             }
             if(leftRange < LEFT_ALIGNMENT - MARGIN_OF_ERROR){
-                rightPower = 1;
+                if((LEFT_ALIGNMENT - leftRange) <= SLOWDOWN_DISTANCE){
+                    rightPower = SLOWDOWN_POWER;
+                }
+                else{
+                    rightPower = 1;
+                }
             }
             else if(leftRange > LEFT_ALIGNMENT + MARGIN_OF_ERROR){
-                rightPower = -1;
+                if((leftRange - LEFT_ALIGNMENT) <= SLOWDOWN_DISTANCE){
+                    rightPower = -SLOWDOWN_POWER;
+                }
+                else {
+                    rightPower = -1;
+                }
             }
             robot.topLeft.setPower(forwardPower + rightPower);
             robot.topRight.setPower(forwardPower - rightPower);
@@ -168,23 +191,45 @@ public class MainBlue extends LinearOpMode {
 
             double forwardPower = 0;
             double rightPower    = 0;
+
             if (frontRange < PWR_FRONT_ALIGNMENT - MARGIN_OF_ERROR){
-                forwardPower = -1;
+                if((PWR_FRONT_ALIGNMENT - frontRange) <= SLOWDOWN_DISTANCE) {
+                    forwardPower = -SLOWDOWN_POWER;
+                }
+                else{
+                    forwardPower = -1;
+                }
             }
             else if(frontRange > PWR_FRONT_ALIGNMENT + MARGIN_OF_ERROR){
-                forwardPower = 1;
+                if((frontRange - PWR_FRONT_ALIGNMENT) <= SLOWDOWN_DISTANCE){
+                     forwardPower = SLOWDOWN_POWER;
+                }
+                else {
+                     forwardPower = 1;
+                }
             }
             if(leftRange < PWR_LEFT_ALIGNMENT - MARGIN_OF_ERROR){
-                rightPower = 1;
+                if((PWR_LEFT_ALIGNMENT - leftRange) <= SLOWDOWN_DISTANCE){
+                    rightPower = SLOWDOWN_POWER;
+                }
+                else{
+                    rightPower = 1;
+                }
             }
             else if(leftRange > PWR_LEFT_ALIGNMENT + MARGIN_OF_ERROR){
-                rightPower = -1;
+                if((leftRange - PWR_LEFT_ALIGNMENT) <= SLOWDOWN_DISTANCE){
+                    rightPower = -SLOWDOWN_POWER;
+                }
+                else {
+                    rightPower = -1;
+                }
             }
             robot.topLeft.setPower(forwardPower + rightPower);
             robot.topRight.setPower(forwardPower - rightPower);
             robot.bottomLeft.setPower(forwardPower - rightPower);
             robot.bottomRight.setPower(forwardPower + rightPower);
         }
+
         if(gamepad1.x && !GP1_X_Held){
             GP1_X_Held = true;
             robot.gyroDrive(0.6, -PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, -PWR_LEFT_SHIFT, 0, -1,-1,-1,0,0,0,0,this);
