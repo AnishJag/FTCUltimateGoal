@@ -45,26 +45,27 @@ public class Blue extends LinearOpMode {
         //---------------- CASE ZERO RINGS ----------------
         if (rings == 0){
 
+            robot.wobbleArm.setPower(0.1);
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,0,0.2,0,0.2,this);
 
             robot.gyroTurn(robot.TURN_SPEED,83,this);
 
-            robot.wobbleArm.setPower(0.5);
-            sleep(45);
-
-            robot.wobbleClaw.setPower(0.8);
-            sleep(1200);
+            /*robot.wobbleArm.setPower(0.5);
+            sleep(45);*/
 
             robot.wobbleArm.setPower(0);
+
+            robot.wobbleClaw.setPower(0.8);
+            sleep(600);
+
             robot.wobbleClaw.setPower(0);
 
             //SHOOTING & PARKING
             robot.encoderDrive(MainRobot.DRIVE_SPEED,73,0,0,73,this); //STRAFES DIAGONALLY RIGHT
 
-            robot.gyroTurn(robot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
-
             robot.jHopper2.setPower(-0.95);
-            sleep(2500);
+            robot.gyroTurn(robot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
+            sleep(500);
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
