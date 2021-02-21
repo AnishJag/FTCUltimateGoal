@@ -44,7 +44,7 @@ public class BluePWR extends LinearOpMode {
         //---------------- CASE ZERO RINGS ----------------
         if (rings == 0){
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,0,-1,-1,-1,0,0,0,0,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,0,0,0,0,0,this);
 
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-1);
@@ -88,7 +88,7 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
 
             robot.wobbleArm.setPower(0.1);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-85,-85,-85,-85,0,-1,-1,-1,0,0,0,0,this); //MOVES TO DEPOT/PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-85,-85,-85,-85,0,0,0,0,0,this); //MOVES TO DEPOT/PARKING
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);
@@ -101,7 +101,7 @@ public class BluePWR extends LinearOpMode {
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,0,-1,-1,-1,0,0,0,0,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,0,0,0,0,0,this);
 
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-1);
@@ -144,7 +144,7 @@ public class BluePWR extends LinearOpMode {
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-50,-50,-50,-50,0,-1,-1,-1,0,0,0,0,this); //MOVES TO DEPOT
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-50,-50,-50,-50,0,0,0,0,0,this); //MOVES TO DEPOT
 
             robot.wobbleArm.setPower(0.1);
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-60,0,0,-60,this); //STRAFES BACK LEFT
@@ -162,7 +162,7 @@ public class BluePWR extends LinearOpMode {
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,0,-1,-1,-1,0,0,0,0,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,0,0,0,0,0,this);
 
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-1);
@@ -206,7 +206,7 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
 
             robot.wobbleArm.setPower(0.1);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,0,-1,-1,-1,0,0,0,0,this); //MOVES TO DEPOT/PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,0,0,-0,0,0,this); //MOVES TO DEPOT/PARKING
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);

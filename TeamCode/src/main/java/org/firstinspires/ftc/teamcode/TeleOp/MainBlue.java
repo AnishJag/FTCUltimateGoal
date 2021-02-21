@@ -232,7 +232,7 @@ public class MainBlue extends LinearOpMode {
 
         if(gamepad1.x && !GP1_X_Held){
             GP1_X_Held = true;
-            robot.gyroDrive(0.6, -PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, -PWR_LEFT_SHIFT, 0, -1,-1,-1,0,0,0,0,this);
+            robot.gyroDrive(0.6, -PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, -PWR_LEFT_SHIFT, 0, 0,0,0,0,this);
         }
         if (!gamepad1.x){
             GP1_X_Held = false;

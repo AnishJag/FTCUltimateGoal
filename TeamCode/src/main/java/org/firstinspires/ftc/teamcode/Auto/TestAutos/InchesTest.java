@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -10,16 +9,13 @@ import org.firstinspires.ftc.teamcode.Auto.RingDetector;
 import org.firstinspires.ftc.teamcode.MainRobot;
 
 
-@Autonomous(name="BlueCaseB")
-@Disabled
-public class BlueCaseB extends LinearOpMode {
+@Autonomous(name="INCH Test")
+public class InchesTest extends LinearOpMode {
 
     MainRobot robot = new MainRobot();
 
     @Override
     public void runOpMode() throws InterruptedException {
-
-        RingDetector detector = new RingDetector(this, false);
 
         robot.init(hardwareMap);
 
@@ -38,25 +34,10 @@ public class BlueCaseB extends LinearOpMode {
 
         robot.gyro.resetZAxisIntegrator();
 
-        robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
-        robot.gyroDrive(MainRobot.DRIVE_SPEED,-98,-98,-98,-98,0,0,0,0,0,this);
+        //TO GO 10 INCHES
+        robot.encoderDrive(0.5,15,15,15,15,this);
 
-        robot.gyroTurn(robot.TURN_SPEED,-90,this);
+        //robot.gyroDrive(0.5,10,10,10,10,0,-1,-1,-1,0,0,0,0,this);
 
-        robot.wobbleArm.setPower(0.40);
-        sleep(75);
-
-        robot.wobbleClaw.setPower(0.5);
-        sleep(1600);
-
-        //SHOOTING & PARK
-
-        robot.encoderDrive(MainRobot.DRIVE_SPEED,-27,27,27,-27,this); //STRAFES LEFT
-
-        robot.wobbleArm.setPower(0);
-        robot.wobbleClaw.setPower(0);
-        //robot.jhopper1.setPower(0);
-        //robot.jhopper2.setPower(0);
-        //robot.JHopFlap.setPosition(0.1);
     }
 }

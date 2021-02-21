@@ -36,7 +36,7 @@ public class BlueCaseC extends LinearOpMode {
 
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -50, -50, 0, this);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-112,-112,-112,-112,0,-1,-1,-1,0,0,0,0,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-112,-112,-112,-112,0,0,0,0,0,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,-4,this);
 
             robot.wobbleArm.setPower(0.5);
@@ -45,7 +45,7 @@ public class BlueCaseC extends LinearOpMode {
             robot.wobbleClaw.setPower(0.8);
             robot.sleepV2(1.2,this);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,-1,-1,-1,0,0,0,0,this); //PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,0,0,0,0,this); //PARKING
 
             telemetry.addLine("I'M STUCK");
             telemetry.update();
@@ -79,6 +79,6 @@ public class BlueCaseC extends LinearOpMode {
             robot.foamWheel.setPower(0);
             robot.JHopFlap.setPosition(0.1);*/
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,-1,-1,-1,0,0,0,0,this); //PARKING
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,0,0,0,0,this); //PARKING
     }
 }

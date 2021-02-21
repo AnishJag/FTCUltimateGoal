@@ -46,7 +46,7 @@ public class Blue extends LinearOpMode {
         if (rings == 0){
 
             robot.wobbleArm.setPower(0.1);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,-1,-1,-1,0,0.2,0,0.2,this);
+            robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,0,0.2,0,0.2,this);
 
             robot.gyroTurn(robot.TURN_SPEED,83,this);
 
@@ -125,7 +125,7 @@ public class Blue extends LinearOpMode {
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -47, -47, 0, this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-125,-125,-125,-125,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-121,-121,-121,-121,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.5);
@@ -135,14 +135,13 @@ public class Blue extends LinearOpMode {
             robot.sleepV2(1.2,this);
 
             robot.wobbleArm.setPower(0);
-            robot.wobbleClaw.setPower(0);
 
             //SHOOTING AND PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, 150, 150, 0, this); //STRAFES DIAGONALLY LEFT
-            robot.gyroTurn(robot.TURN_SPEED, 170, this);
-            robot.encoderDrive(0.7,10,10,10,10,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,136,136,0,this); //STRAFES DIAGONALLY LEFT
+            //robot.rangeDrive(0.3,-1,28.7,-1,this);
+            robot.gyroTurn(robot.TURN_SPEED, 173, this);
 
-            robot.jHopper2.setPower(-0.95);
+            robot.jHopper2.setPower(-0.94);
             sleep(2500);
             /*while (detectorJHop.getDecision() > 0){
                 robot.JHopFlap.setPosition(0.5);
@@ -159,7 +158,8 @@ public class Blue extends LinearOpMode {
             robot.foamWheel.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,-1,-1,-1,0,0,0,0,this); //PARKING
+            robot.wobbleClaw.setPower(0);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED, 25, 25, 25, 25, this);
         }
     }
 }
