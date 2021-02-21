@@ -19,7 +19,7 @@ public class MainBlue extends LinearOpMode {
     public static final double PWR_FRONT_ALIGNMENT = 55.9;
     public static final double PWR_LEFT_ALIGNMENT = 66.9;
     public static final double PWR_LEFT_SHIFT = 5;
-    public static final double MARGIN_OF_ERROR = 1;
+    public static final double MARGIN_OF_ERROR = 5;
     public boolean                 GP1_RB_Held = false;
     public boolean                    SlowMode = false;
     public boolean               FieldRelative = true;
