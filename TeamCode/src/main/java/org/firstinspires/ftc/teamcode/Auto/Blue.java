@@ -55,7 +55,7 @@ public class Blue extends LinearOpMode {
 
             robot.wobbleArm.setPower(0);
 
-            robot.wobbleClaw.setPower(0.8);
+            robot.wobbleClaw.setPower(1);
             sleep(600);
 
             robot.wobbleClaw.setPower(0);
@@ -65,7 +65,7 @@ public class Blue extends LinearOpMode {
 
             robot.jHopper2.setPower(-0.95);
             robot.gyroTurn(robot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
-            sleep(500);
+            sleep(800);
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
@@ -90,7 +90,7 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0.5);
             sleep(45);
 
-            robot.wobbleClaw.setPower(0.8);
+            robot.wobbleClaw.setPower(1);
             sleep(1200);
 
             robot.wobbleArm.setPower(0);
@@ -126,13 +126,12 @@ public class Blue extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -47, -47, 0, this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-125,-125,-125,-125,this);
-            //robot.gyroDrive(MainRobot.DRIVE_SPEED,-114,-114,-114,-114,0,-1,-1,-1,0,0,0,0,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.5);
             robot.sleepV2(0.045,this);
 
-            robot.wobbleClaw.setPower(0.8);
+            robot.wobbleClaw.setPower(1);
             robot.sleepV2(1.2,this);
 
             robot.wobbleArm.setPower(0);
