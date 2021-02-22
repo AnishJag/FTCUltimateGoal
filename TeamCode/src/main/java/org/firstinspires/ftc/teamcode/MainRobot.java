@@ -136,6 +136,8 @@ public class MainRobot {
         double  speedTR;
         double  speedBL;
         double  speedBR;
+        double  ErrorAmount;
+        boolean goodEnough = false;
 
         // Ensure that the Op-mode is still active
         if (opmode.opModeIsActive()) {
@@ -166,7 +168,7 @@ public class MainRobot {
 
             // keep looping while we are still active, and ALL motors are running.
             while (opmode.opModeIsActive() &&
-                    (topLeft.isBusy() || topRight.isBusy() || bottomLeft.isBusy() || bottomRight.isBusy())) {
+                    (topLeft.isBusy() || topRight.isBusy() || bottomLeft.isBusy() || bottomRight.isBusy()) && !goodEnough) {
 
                 // adjust relative speed based on heading error.
                 error = getError(angle);
@@ -199,6 +201,14 @@ public class MainRobot {
                     speedTR /= max;
                     speedBL /= max;
                     speedBR /= max;
+                }
+
+                ErrorAmount = ((Math.abs(((newBLTarget) - (bottomLeft.getCurrentPosition())))
+                        + (Math.abs(((newTLTarget) - (topLeft.getCurrentPosition()))))
+                        + (Math.abs((newBRTarget) - (bottomRight.getCurrentPosition())))
+                        + (Math.abs(((newTRTarget) - (topRight.getCurrentPosition()))))) / COUNTS_PER_INCH);
+                if (ErrorAmount < amountError) {
+                    goodEnough = true;
                 }
 
                 topLeft.setPower(speedTL);
@@ -318,18 +328,14 @@ public class MainRobot {
     public void rangeDrive (double speed, double frontDistance, double leftDistance, double rightDistance, LinearOpMode opmode) {
 
         speed = Range.clip(Math.abs(speed), 0.0, 1.0);
-        topLeft.setPower(speed);
-        topRight.setPower(speed);
-        bottomLeft.setPower(speed);
-        bottomRight.setPower(speed);
 
         //Utilization of Range Sensors in Autonomous
         if(frontDistance != -1) {
             while (frontRange.getDistance(DistanceUnit.INCH) < frontDistance){
-                topLeft.setPower(-1);
-                topRight.setPower(-1);
-                bottomLeft.setPower(-1);
-                bottomRight.setPower(-1);
+                topLeft.setPower(-speed);
+                topRight.setPower(-speed);
+                bottomLeft.setPower(-speed);
+                bottomRight.setPower(-speed);
 
                 opmode.telemetry.addData("Sensor Front Distance: ", frontRange.getDistance(DistanceUnit.INCH));
                 opmode.telemetry.addData("Target Front Distance: ", frontDistance);
@@ -337,10 +343,10 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
             while (frontRange.getDistance(DistanceUnit.INCH) > frontDistance){
-                topLeft.setPower(1);
-                topRight.setPower(1);
-                bottomLeft.setPower(1);
-                bottomRight.setPower(1);
+                topLeft.setPower(speed);
+                topRight.setPower(speed);
+                bottomLeft.setPower(speed);
+                bottomRight.setPower(speed);
 
                 opmode.telemetry.addData("Sensor Front Distance: ", frontRange.getDistance(DistanceUnit.INCH));
                 opmode.telemetry.addData("Target Front Distance: ", frontDistance);
@@ -350,10 +356,10 @@ public class MainRobot {
         }
         if (leftDistance != -1) {
             while (leftRange.getDistance(DistanceUnit.INCH) < leftDistance){
-                topLeft.setPower(1);
-                topRight.setPower(-1);
-                bottomLeft.setPower(-1);
-                bottomRight.setPower(1);
+                topLeft.setPower(speed);
+                topRight.setPower(-speed);
+                bottomLeft.setPower(-speed);
+                bottomRight.setPower(speed);
 
                 opmode.telemetry.addData("Sensor Left Distance: ", frontRange.getDistance(DistanceUnit.INCH));
                 opmode.telemetry.addData("Target Left Distance: ", frontDistance);
@@ -361,10 +367,10 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
             while (leftRange.getDistance(DistanceUnit.INCH) > leftDistance){
-                topLeft.setPower(-1);
-                topRight.setPower(1);
-                bottomLeft.setPower(1);
-                bottomRight.setPower(-1);
+                topLeft.setPower(-speed);
+                topRight.setPower(speed);
+                bottomLeft.setPower(speed);
+                bottomRight.setPower(-speed);
 
                 opmode.telemetry.addData("Sensor Left Distance: ", frontRange.getDistance(DistanceUnit.INCH));
                 opmode.telemetry.addData("Target Left Distance: ", frontDistance);
@@ -374,10 +380,10 @@ public class MainRobot {
         }
         if (rightDistance != -1){
             while (rightRange.getDistance(DistanceUnit.INCH) > rightDistance){
-                topLeft.setPower(1);
-                topRight.setPower(-1);
-                bottomLeft.setPower(-1);
-                bottomRight.setPower(1);
+                topLeft.setPower(speed);
+                topRight.setPower(-speed);
+                bottomLeft.setPower(-speed);
+                bottomRight.setPower(speed);
 
                 opmode.telemetry.addData("Sensor Right Distance: ", frontRange.getDistance(DistanceUnit.INCH));
                 opmode.telemetry.addData("Target Right Distance: ", frontDistance);
@@ -385,10 +391,10 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
             while (rightRange.getDistance(DistanceUnit.INCH) < rightDistance){
-                topLeft.setPower(-1);
-                topRight.setPower(1);
-                bottomLeft.setPower(1);
-                bottomRight.setPower(-1);
+                topLeft.setPower(-speed);
+                topRight.setPower(speed);
+                bottomLeft.setPower(speed);
+                bottomRight.setPower(-speed);
 
                 opmode.telemetry.addData("Sensor Right Distance: ", frontRange.getDistance(DistanceUnit.INCH));
                 opmode.telemetry.addData("Target Right Distance: ", frontDistance);

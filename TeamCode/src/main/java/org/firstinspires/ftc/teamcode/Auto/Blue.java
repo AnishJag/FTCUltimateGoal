@@ -48,7 +48,7 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0.1);
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-99,-99,-99,-99,0,0,0.2,0,0.2,this);
 
-            robot.gyroTurn(robot.TURN_SPEED,83,this);
+            robot.gyroTurn(MainRobot.TURN_SPEED,83,this);
 
             /*robot.wobbleArm.setPower(0.5);
             sleep(45);*/
@@ -64,7 +64,7 @@ public class Blue extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,73,0,0,73,this); //STRAFES DIAGONALLY RIGHT
 
             robot.jHopper2.setPower(-0.95);
-            robot.gyroTurn(robot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
+            robot.gyroTurn(MainRobot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
             sleep(800);
             robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
@@ -85,7 +85,7 @@ public class Blue extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-105,-105,-105,-105,this);
 
-            robot.gyroTurn(robot.TURN_SPEED,-80,this);
+            robot.gyroTurn(MainRobot.TURN_SPEED,-80,this);
 
             robot.wobbleArm.setPower(0.5);
             sleep(45);
@@ -98,7 +98,7 @@ public class Blue extends LinearOpMode {
 
             //SHOOTING & PARKING
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-127,0,0,-127,this); //STRAFES DIAGONALLY BACK-LEFT
-            robot.gyroTurn(robot.TURN_SPEED,189,this);
+            robot.gyroTurn(MainRobot.TURN_SPEED,189,this);
 
             robot.jHopper2.setPower(-0.95);
             sleep(2500);
@@ -139,7 +139,7 @@ public class Blue extends LinearOpMode {
             //SHOOTING AND PARKING
             robot.encoderDrive(MainRobot.DRIVE_SPEED,0,136,136,0,this); //STRAFES DIAGONALLY LEFT
             //robot.rangeDrive(0.3,-1,28.7,-1,this);
-            robot.gyroTurn(robot.TURN_SPEED, 173, this);
+            robot.gyroTurn(MainRobot.TURN_SPEED, 173, this);
 
             robot.jHopper2.setPower(-0.94);
             sleep(2500);
