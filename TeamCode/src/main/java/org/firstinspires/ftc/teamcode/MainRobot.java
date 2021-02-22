@@ -312,10 +312,10 @@ public class MainRobot {
 
             // Stop all motion;
 
-            topLeft.setPower(0.3);
-            topRight.setPower(0.3);
-            bottomLeft.setPower(0.3);
-            bottomRight.setPower(0.3);
+            topLeft.setPower(0.2);
+            topRight.setPower(0.2);
+            bottomLeft.setPower(0.2);
+            bottomRight.setPower(0.2);
 
             // Turn off RUN_TO_POSITION
             topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);

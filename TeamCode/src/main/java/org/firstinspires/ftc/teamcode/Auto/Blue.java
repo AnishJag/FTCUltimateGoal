@@ -125,7 +125,7 @@ public class Blue extends LinearOpMode {
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -47, -47, 0, this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-121,-121,-121,-121,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.5);
@@ -137,18 +137,20 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
 
             //SHOOTING AND PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,136,136,0,this); //STRAFES DIAGONALLY LEFT
-            //robot.rangeDrive(0.3,-1,28.7,-1,this);
-            robot.gyroTurn(MainRobot.TURN_SPEED, 173, this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,134.5,134.5,0,this); //STRAFES DIAGONALLY LEFT
+            //robot.gyroDrive(MainRobot.DRIVE_SPEED,0,140,140,0,0,0,0,0,0,this); //DOESN'T WORK
+            //robot.rangeDrive(0.3,-1,28.5,-1,this);
+            robot.gyroTurn(MainRobot.TURN_SPEED, 177, this);
+            //robot.rangeDrive(0.3,65.4,45.3,-1,this);
 
-            robot.jHopper2.setPower(-0.94);
-            sleep(2500);
+            //robot.jHopper2.setPower(-0.94);
+            //sleep(2500);
             /*while (detectorJHop.getDecision() > 0){
                 robot.JHopFlap.setPosition(0.5);
                 robot.jHopper1.setPower(-1);
                 robot.foamWheel.setPower(1);
             }*/
-            robot.JHopFlap.setPosition(0.5);
+            /*robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
             robot.sleepV2(3.4, this);
@@ -159,7 +161,7 @@ public class Blue extends LinearOpMode {
             robot.JHopFlap.setPosition(0.1);
 
             robot.wobbleClaw.setPower(0);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 25, 25, 25, 25, this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED, 25, 25, 25, 25, this);*/
         }
     }
 }
