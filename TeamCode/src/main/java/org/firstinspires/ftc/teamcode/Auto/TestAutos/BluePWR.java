@@ -85,7 +85,7 @@ public class BluePWR extends LinearOpMode {
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,0,this); //STRAFES RIGHT
 
             robot.wobbleArm.setPower(0.1);
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-85,-85,-85,-85,0,0,0,0,0,this); //MOVES TO DEPOT/PARKING
@@ -142,19 +142,19 @@ public class BluePWR extends LinearOpMode {
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,0,this); //STRAFES RIGHT
 
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-50,-50,-50,-50,0,0,0,0,0,this); //MOVES TO DEPOT
 
             robot.wobbleArm.setPower(0.1);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-60,0,0,-60,this); //STRAFES BACK LEFT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-60,0,0,-60,0,this); //STRAFES BACK LEFT
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);
             sleep(600);
             robot.wobbleClaw.setPower(0);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,180,this); //PERPENDICULAR TO LEFT WALL
         }
@@ -203,7 +203,7 @@ public class BluePWR extends LinearOpMode {
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,0,this); //STRAFES RIGHT
 
             robot.wobbleArm.setPower(0.1);
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,0,0,-0,0,0,this); //MOVES TO DEPOT/PARKING
@@ -213,7 +213,7 @@ public class BluePWR extends LinearOpMode {
             sleep(600);
             robot.wobbleClaw.setPower(0);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,70,70,70,70,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,70,70,70,70,0,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,180,this); //PERPENDICULAR TO LEFT WALL
         }

@@ -61,7 +61,7 @@ public class Blue extends LinearOpMode {
             robot.wobbleClaw.setPower(0);
 
             //SHOOTING & PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,73,0,0,73,this); //STRAFES DIAGONALLY RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,73,0,0,73,0,this); //STRAFES DIAGONALLY RIGHT
 
             robot.jHopper2.setPower(-0.95);
             robot.gyroTurn(MainRobot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
@@ -76,14 +76,14 @@ public class Blue extends LinearOpMode {
             robot.foamWheel.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,this); //PARKING
         }
 
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-105,-105,-105,-105,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-105,-105,-105,-105,0,this);
 
             robot.gyroTurn(MainRobot.TURN_SPEED,-80,this);
 
@@ -97,7 +97,7 @@ public class Blue extends LinearOpMode {
             robot.wobbleClaw.setPower(0);
 
             //SHOOTING & PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-127,0,0,-127,this); //STRAFES DIAGONALLY BACK-LEFT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-127,0,0,-127,0,this); //STRAFES DIAGONALLY BACK-LEFT
             robot.gyroTurn(MainRobot.TURN_SPEED,189,this);
 
             robot.jHopper2.setPower(-0.95);
@@ -117,15 +117,15 @@ public class Blue extends LinearOpMode {
             robot.foamWheel.setPower(0);
             robot.JHopFlap.setPosition(0.1);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,25,25,25,25,0,this); //PARKING
         }
 
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -47, -47, 0, this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -47, -47, 0, 0,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,0,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.5);
@@ -137,7 +137,7 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
 
             //SHOOTING AND PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,134.5,134.5,0,this); //STRAFES DIAGONALLY LEFT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,134.5,134.5,0,0,this); //STRAFES DIAGONALLY LEFT
             //robot.gyroDrive(MainRobot.DRIVE_SPEED,0,140,140,0,0,0,0,0,0,this); //DOESN'T WORK
             //robot.rangeDrive(0.3,-1,28.5,-1,this);
             robot.gyroTurn(MainRobot.TURN_SPEED, 177, this);

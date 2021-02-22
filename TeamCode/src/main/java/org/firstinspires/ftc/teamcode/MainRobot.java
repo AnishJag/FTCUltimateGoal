@@ -227,6 +227,9 @@ public class MainRobot {
                 opmode.telemetry.addData("FR: ", topRight.isBusy());
                 opmode.telemetry.addData("BL: ", bottomLeft.isBusy());
                 opmode.telemetry.addData("BR: ", bottomRight.isBusy());
+                opmode.telemetry.addData("Good Enough: ", goodEnough);
+                opmode.telemetry.addData("Error Amount: ", ErrorAmount);
+                opmode.telemetry.addData("Amount Error: ", amountError);
                 opmode.telemetry.update();
             }
 
@@ -244,11 +247,19 @@ public class MainRobot {
 
     public void encoderDrive ( double speed,
                                double topLeftInches, double topRightInches, double bottomLeftInches,
-                               double bottomRightInches, LinearOpMode opMode){
+                               double bottomRightInches, double angle, LinearOpMode opMode){
         int newtopLeftTarget;
         int newtopRightTarget;
         int newbottomLeftTarget;
         int newbottomRightTarget;
+        double  max;
+        double  leftMax;
+        double  rightMax;
+        double  error;
+        double  speedTL;
+        double  speedTR;
+        double  speedBL;
+        double  speedBR;
 
         double ErrorAmount;
         boolean goodEnough = false;
@@ -277,12 +288,6 @@ public class MainRobot {
             bottomLeft.setPower(Math.abs(speed));
             bottomRight.setPower(Math.abs(speed));
 
-            // keep looping while we are still active, and there is time left, and both motors are running.
-            // Note: We use (isBusy() && isBusy()) in the loop test, which means that when EITHER motor hits
-            // its target position, the motion will stop.  This is "safer" in the event that the robot will
-            // always end the motion as soon as possible.
-            // However, if you require that BOTH motors have finished their moves before the robot continues
-            // onto the next step, use (isBusy() || isBusy()) in the loop test.
             while (opMode.opModeIsActive() &&
                     ((topLeft.isBusy() || topRight.isBusy()) || (bottomLeft.isBusy() || bottomRight.isBusy())) && !goodEnough) {
 
@@ -301,6 +306,39 @@ public class MainRobot {
 
                 opMode.telemetry.update();
 
+                // adjust relative speed based on heading error.
+                error = getError(angle);
+                double steer = getSteer(error, 0.15);
+
+                // if driving in reverse, the motor correction also needs to be reversed
+                if (topLeftInches > 0)
+                    speedTL  = speed - steer;
+                else speedTL = speed + steer;
+
+                if (topRightInches > 0)
+                    speedTR  = speed + steer;
+                else speedTR = speed - steer;
+
+                if (bottomLeftInches > 0)
+                    speedBL  = speed - steer;
+                else speedBL = speed + steer;
+
+                if (bottomRightInches > 0)
+                    speedBR  = speed + steer;
+                else speedBR = speed - steer;
+
+                // Normalize speeds if either one exceeds +/- 1.0
+                leftMax  = Math.max(Math.abs(speedTL), Math.abs(speedTR));
+                rightMax = Math.max(Math.abs(speedBL), Math.abs(speedBR));
+                max      = Math.max(leftMax,rightMax);
+                if (max > 1.0)
+                {
+                    speedTL /= max;
+                    speedTR /= max;
+                    speedBL /= max;
+                    speedBR /= max;
+                }
+
                 ErrorAmount = ((Math.abs(((newbottomLeftTarget) - (bottomLeft.getCurrentPosition())))
                         + (Math.abs(((newtopLeftTarget) - (topLeft.getCurrentPosition()))))
                         + (Math.abs((newbottomRightTarget) - (bottomRight.getCurrentPosition())))
@@ -308,9 +346,13 @@ public class MainRobot {
                 if (ErrorAmount < amountError) {
                     goodEnough = true;
                 }
+
+                topLeft.setPower(speedTL);
+                topRight.setPower(speedTR);
+                bottomLeft.setPower(speedBL);
+                bottomRight.setPower(speedBR);
             }
 
-            // Stop all motion;
 
             topLeft.setPower(0.2);
             topRight.setPower(0.2);
