@@ -38,7 +38,7 @@ public class BlueCaseB extends LinearOpMode {
 
         robot.gyro.resetZAxisIntegrator();
 
-        robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,0,this);
+        robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
         robot.gyroDrive(MainRobot.DRIVE_SPEED,-98,-98,-98,-98,0,0,0,0,0,this);
 
         robot.gyroTurn(robot.TURN_SPEED,-90,this);
@@ -51,7 +51,7 @@ public class BlueCaseB extends LinearOpMode {
 
         //SHOOTING & PARK
 
-        robot.encoderDrive(MainRobot.DRIVE_SPEED,-27,27,27,-27,0,this); //STRAFES LEFT
+        robot.encoderDrive(MainRobot.DRIVE_SPEED,-27,27,27,-27,this); //STRAFES LEFT
 
         robot.wobbleArm.setPower(0);
         robot.wobbleClaw.setPower(0);

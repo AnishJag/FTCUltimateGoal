@@ -35,7 +35,7 @@ public class BlueCaseC extends LinearOpMode {
         robot.gyro.resetZAxisIntegrator();
 
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -50, -50, 0, 0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -50, -50, 0, this);
             robot.gyroDrive(MainRobot.DRIVE_SPEED,-112,-112,-112,-112,0,0,0,0,0,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,-4,this);
 

@@ -247,22 +247,14 @@ public class MainRobot {
 
     public void encoderDrive ( double speed,
                                double topLeftInches, double topRightInches, double bottomLeftInches,
-                               double bottomRightInches, double angle, LinearOpMode opMode){
+                               double bottomRightInches, LinearOpMode opMode){
         int newtopLeftTarget;
         int newtopRightTarget;
         int newbottomLeftTarget;
         int newbottomRightTarget;
-        double  max;
-        double  leftMax;
-        double  rightMax;
-        double  error;
-        double  speedTL;
-        double  speedTR;
-        double  speedBL;
-        double  speedBR;
-
         double ErrorAmount;
         boolean goodEnough = false;
+
         // Ensure that the opmode is still active
         if (opMode.opModeIsActive()) {
 
@@ -306,39 +298,6 @@ public class MainRobot {
 
                 opMode.telemetry.update();
 
-                // adjust relative speed based on heading error.
-                error = getError(angle);
-                double steer = getSteer(error, 0.15);
-
-                // if driving in reverse, the motor correction also needs to be reversed
-                if (topLeftInches > 0)
-                    speedTL  = speed - steer;
-                else speedTL = speed + steer;
-
-                if (topRightInches > 0)
-                    speedTR  = speed + steer;
-                else speedTR = speed - steer;
-
-                if (bottomLeftInches > 0)
-                    speedBL  = speed - steer;
-                else speedBL = speed + steer;
-
-                if (bottomRightInches > 0)
-                    speedBR  = speed + steer;
-                else speedBR = speed - steer;
-
-                // Normalize speeds if either one exceeds +/- 1.0
-                leftMax  = Math.max(Math.abs(speedTL), Math.abs(speedTR));
-                rightMax = Math.max(Math.abs(speedBL), Math.abs(speedBR));
-                max      = Math.max(leftMax,rightMax);
-                if (max > 1.0)
-                {
-                    speedTL /= max;
-                    speedTR /= max;
-                    speedBL /= max;
-                    speedBR /= max;
-                }
-
                 ErrorAmount = ((Math.abs(((newbottomLeftTarget) - (bottomLeft.getCurrentPosition())))
                         + (Math.abs(((newtopLeftTarget) - (topLeft.getCurrentPosition()))))
                         + (Math.abs((newbottomRightTarget) - (bottomRight.getCurrentPosition())))
@@ -346,13 +305,7 @@ public class MainRobot {
                 if (ErrorAmount < amountError) {
                     goodEnough = true;
                 }
-
-                topLeft.setPower(speedTL);
-                topRight.setPower(speedTR);
-                bottomLeft.setPower(speedBL);
-                bottomRight.setPower(speedBR);
             }
-
 
             topLeft.setPower(0.2);
             topRight.setPower(0.2);
