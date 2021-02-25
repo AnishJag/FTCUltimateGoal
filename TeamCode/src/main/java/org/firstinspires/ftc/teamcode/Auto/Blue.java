@@ -140,7 +140,7 @@ public class Blue extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,0,134.5,134.5,0,0,this); //STRAFES DIAGONALLY LEFT
             //robot.gyroDrive(MainRobot.DRIVE_SPEED,0,140,140,0,0,0,0,0,0,this); //DOESN'T WORK
             //robot.rangeDrive(0.3,-1,28.5,-1,this);
-            robot.gyroTurn(MainRobot.TURN_SPEED, 177, this);
+            robot.gyroTurn(MainRobot.TURN_SPEED, 170, this);
             //robot.rangeDrive(0.3,65.4,45.3,-1,this);
 
             //robot.jHopper2.setPower(-0.94);
