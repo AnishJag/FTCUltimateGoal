@@ -321,7 +321,7 @@ public class MainRobot {
         }
     }
 
-    private boolean check(ModernRoboticsI2cRangeSensor range_sensor, double desired_distance){
+    private boolean rangeCheck(ModernRoboticsI2cRangeSensor range_sensor, double desired_distance){
         final int TRIES = 3;
         for (int i = 0; i < TRIES; i++){
             if (Math.abs(range_sensor.getDistance(DistanceUnit.INCH) - desired_distance) < MAX_ACCEPTABLE_ERROR){
@@ -344,7 +344,7 @@ public class MainRobot {
         if(frontDistance != -1) {
             while (frontRange.getDistance(DistanceUnit.INCH) < frontDistance){
                 if (Math.abs(frontRange.getDistance(DistanceUnit.INCH) - frontDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!check(frontRange,frontDistance)){
+                    if (!rangeCheck(frontRange,frontDistance)){
                         break;
                     }
                 }
@@ -360,7 +360,7 @@ public class MainRobot {
             }
             while (frontRange.getDistance(DistanceUnit.INCH) > frontDistance){
                 if (Math.abs(frontRange.getDistance(DistanceUnit.INCH) - frontDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!check(frontRange,frontDistance)){
+                    if (!rangeCheck(frontRange,frontDistance)){
                         break;
                     }
                 }
@@ -378,7 +378,7 @@ public class MainRobot {
         if (leftDistance != -1) {
             while (leftRange.getDistance(DistanceUnit.INCH) < leftDistance){
                 if (Math.abs(leftRange.getDistance(DistanceUnit.INCH) - leftDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!check(leftRange,leftDistance)){
+                    if (!rangeCheck(leftRange,leftDistance)){
                         break;
                     }
                 }
@@ -394,7 +394,7 @@ public class MainRobot {
             }
             while (leftRange.getDistance(DistanceUnit.INCH) > leftDistance){
                 if (Math.abs(leftRange.getDistance(DistanceUnit.INCH) - leftDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!check(leftRange,leftDistance)){
+                    if (!rangeCheck(leftRange,leftDistance)){
                         break;
                     }
                 }
@@ -412,7 +412,7 @@ public class MainRobot {
         if (rightDistance != -1){
             while (rightRange.getDistance(DistanceUnit.INCH) > rightDistance){
                 if (Math.abs(rightRange.getDistance(DistanceUnit.INCH) - rightDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!check(rightRange,rightDistance)){
+                    if (!rangeCheck(rightRange,rightDistance)){
                         break;
                     }
                 }
@@ -428,7 +428,7 @@ public class MainRobot {
             }
             while (rightRange.getDistance(DistanceUnit.INCH) < rightDistance){
                 if (Math.abs(rightRange.getDistance(DistanceUnit.INCH) - rightDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!check(rightRange,rightDistance)){
+                    if (!rangeCheck(rightRange,rightDistance)){
                         break;
                     }
                 }
