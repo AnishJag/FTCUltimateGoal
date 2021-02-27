@@ -122,10 +122,11 @@ public class Blue extends LinearOpMode {
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED, 0, -47, -47, 0, this);
+            robot.encoderDrive(0.8, 0, -39, -39, 0, this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-120,-120,-120,-120,this);
+            robot.encoderDrive(0.8,-120,-120,-120,-120,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            //robot.rangeDrive(0.1,-1,11,-1,this);
 
             robot.wobbleArm.setPower(0.5);
             robot.sleepV2(0.045,this);
@@ -136,20 +137,21 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
 
             //SHOOTING AND PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,134.5,134.5,0,this); //STRAFES DIAGONALLY LEFT
-            //robot.gyroDrive(MainRobot.DRIVE_SPEED,0,140,140,0,0,0,0,0,0,this); //DOESN'T WORK
-            //robot.rangeDrive(0.3,-1,28.5,-1,this);
-            robot.gyroTurn(MainRobot.TURN_SPEED, 170, this);
+            robot.encoderDrive(0.7,0,134,134,0,this); //STRAFES DIAGONALLY LEFT
+            robot.gyroTurn(0.2,0,this);
+            sleep(1500);
+            robot.gyroTurn(MainRobot.TURN_SPEED, 171, this);
+
             //robot.rangeDrive(0.3,65.4,45.3,-1,this);
 
-            //robot.jHopper2.setPower(-0.94);
-            //sleep(2500);
+            robot.jHopper2.setPower(-0.94);
+            sleep(2500);
             /*while (detectorJHop.getDecision() > 0){
                 robot.JHopFlap.setPosition(0.5);
                 robot.jHopper1.setPower(-1);
                 robot.foamWheel.setPower(1);
             }*/
-            /*robot.JHopFlap.setPosition(0.5);
+            robot.JHopFlap.setPosition(0.5);
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
             robot.sleepV2(3.4, this);
@@ -161,7 +163,7 @@ public class Blue extends LinearOpMode {
 
             robot.wobbleClaw.setPower(0);
             robot.encoderDrive(MainRobot.DRIVE_SPEED, 25, 25, 25, 25, this);
-            robot.gyroTurn(0.3,180,this);*/ //PERPENDICULAR TO FRONT WALL
+            robot.gyroTurn(0.3,180,this); //PERPENDICULAR TO FRONT WALL
         }
     }
 }
