@@ -74,6 +74,8 @@ public class MainRobot {
         topRight.setDirection(DcMotor.Direction.FORWARD);
         bottomRight.setDirection(DcMotor.Direction.FORWARD);
 
+        jHopper2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+
         topLeft.setPower(0);
         bottomLeft.setPower(0);
         topRight.setPower(0);

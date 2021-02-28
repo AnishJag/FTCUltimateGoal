@@ -122,7 +122,7 @@ public class Blue extends LinearOpMode {
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
 
-            robot.encoderDrive(0.8, 0, -39, -39, 0, this);
+            robot.encoderDrive(0.8, 0, -39, -39, 0, this);//DIAGONAL BACK-RIGHT
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
             robot.encoderDrive(0.8,-120,-120,-120,-120,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
@@ -137,13 +137,13 @@ public class Blue extends LinearOpMode {
             robot.wobbleArm.setPower(0);
 
             //SHOOTING AND PARKING
-            robot.encoderDrive(0.7,0,134,134,0,this); //STRAFES DIAGONALLY LEFT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,132,132,0,this); //STRAFES DIAGONALLY LEFT
             robot.gyroTurn(0.2,0,this);
-            robot.gyroTurn(MainRobot.TURN_SPEED, 170.5, this);
+            robot.gyroTurn(MainRobot.TURN_SPEED, 170.9, this);
 
             //robot.rangeDrive(0.3,65.4,45.3,-1,this);
 
-            robot.jHopper2.setPower(-0.94);
+            robot.jHopper2.setPower(-1);
             sleep(2500);
             /*while (detectorJHop.getDecision() > 0){
                 robot.JHopFlap.setPosition(0.5);
