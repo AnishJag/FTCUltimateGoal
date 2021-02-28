@@ -139,8 +139,7 @@ public class Blue extends LinearOpMode {
             //SHOOTING AND PARKING
             robot.encoderDrive(0.7,0,134,134,0,this); //STRAFES DIAGONALLY LEFT
             robot.gyroTurn(0.2,0,this);
-            sleep(1500);
-            robot.gyroTurn(MainRobot.TURN_SPEED, 171, this);
+            robot.gyroTurn(MainRobot.TURN_SPEED, 170.5, this);
 
             //robot.rangeDrive(0.3,65.4,45.3,-1,this);
 

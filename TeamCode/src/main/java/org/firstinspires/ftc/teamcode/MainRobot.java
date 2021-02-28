@@ -51,7 +51,7 @@ public class MainRobot {
     public static final double     TURN_SPEED         = 0.5;
     public static final double     P_TURN_COEFF       = 0.1;
     public static final double     HEADING_THRESHOLD  = 1.0;
-    public static final double   MAX_ACCEPTABLE_ERROR = 20;
+    public static final double   MAX_ACCEPTABLE_ERROR = 10;
 
     HardwareMap hwMap = null;
 
@@ -321,33 +321,38 @@ public class MainRobot {
         }
     }
 
-    /*private boolean rangeCheck(ModernRoboticsI2cRangeSensor range_sensor, double desired_distance){
+    //3-Check Function for rangeDrive
+    private boolean rangeCheck(ModernRoboticsI2cRangeSensor range_sensor, double desired_distance, LinearOpMode opMode){
         final int TRIES = 3;
         for (int i = 0; i < TRIES; i++){
             if (Math.abs(range_sensor.getDistance(DistanceUnit.INCH) - desired_distance) < MAX_ACCEPTABLE_ERROR){
                 return true;
             }
+            opMode.telemetry.addData("TRY ",i);
+            opMode.telemetry.addData("Range Value: ", range_sensor.getDistance(DistanceUnit.INCH));
+            opMode.telemetry.addData("Target: ", desired_distance);
+            opMode.telemetry.update();
             try {
-                Thread.sleep(500);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         return false;
-    }*/
+    }
 
+    //Utilization of Range Sensors in Autonomous
     public void rangeDrive (double speed, double frontDistance, double leftDistance, double rightDistance, LinearOpMode opmode) {
 
         speed = Range.clip(Math.abs(speed), 0.0, 1.0);
 
-        //Utilization of Range Sensors in Autonomous
         if(frontDistance != -1) {
             while (frontRange.getDistance(DistanceUnit.INCH) < frontDistance){
-                /*if (Math.abs(frontRange.getDistance(DistanceUnit.INCH) - frontDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!rangeCheck(frontRange,frontDistance)){
+                if (Math.abs(frontRange.getDistance(DistanceUnit.INCH) - frontDistance) > MAX_ACCEPTABLE_ERROR){
+                    if (!rangeCheck(frontRange,frontDistance, opmode)){
                         break;
                     }
-                }*/
+                }
                 topLeft.setPower(-speed);
                 topRight.setPower(-speed);
                 bottomLeft.setPower(-speed);
@@ -359,11 +364,11 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
             while (frontRange.getDistance(DistanceUnit.INCH) > frontDistance){
-                /*if (Math.abs(frontRange.getDistance(DistanceUnit.INCH) - frontDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!rangeCheck(frontRange,frontDistance)){
+                if (Math.abs(frontRange.getDistance(DistanceUnit.INCH) - frontDistance) > MAX_ACCEPTABLE_ERROR){
+                    if (!rangeCheck(frontRange,frontDistance,opmode)){
                         break;
                     }
-                }*/
+                }
                 topLeft.setPower(speed);
                 topRight.setPower(speed);
                 bottomLeft.setPower(speed);
@@ -377,11 +382,11 @@ public class MainRobot {
         }
         if (leftDistance != -1) {
             while (leftRange.getDistance(DistanceUnit.INCH) < leftDistance){
-                /*if (Math.abs(leftRange.getDistance(DistanceUnit.INCH) - leftDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!rangeCheck(leftRange,leftDistance)){
+                if (Math.abs(leftRange.getDistance(DistanceUnit.INCH) - leftDistance) > MAX_ACCEPTABLE_ERROR){
+                    if (!rangeCheck(leftRange,leftDistance,opmode)){
                         break;
                     }
-                }*/
+                }
                 topLeft.setPower(speed);
                 topRight.setPower(-speed);
                 bottomLeft.setPower(-speed);
@@ -393,11 +398,11 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
             while (leftRange.getDistance(DistanceUnit.INCH) > leftDistance){
-                /*if (Math.abs(leftRange.getDistance(DistanceUnit.INCH) - leftDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!rangeCheck(leftRange,leftDistance)){
+                if (Math.abs(leftRange.getDistance(DistanceUnit.INCH) - leftDistance) > MAX_ACCEPTABLE_ERROR){
+                    if (!rangeCheck(leftRange,leftDistance,opmode)){
                         break;
                     }
-                }*/
+                }
                 topLeft.setPower(-speed);
                 topRight.setPower(speed);
                 bottomLeft.setPower(speed);
@@ -411,11 +416,11 @@ public class MainRobot {
         }
         if (rightDistance != -1){
             while (rightRange.getDistance(DistanceUnit.INCH) > rightDistance){
-                /*if (Math.abs(rightRange.getDistance(DistanceUnit.INCH) - rightDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!rangeCheck(rightRange,rightDistance)){
+                if (Math.abs(rightRange.getDistance(DistanceUnit.INCH) - rightDistance) > MAX_ACCEPTABLE_ERROR){
+                    if (!rangeCheck(rightRange,rightDistance,opmode)){
                         break;
                     }
-                }*/
+                }
                 topLeft.setPower(speed);
                 topRight.setPower(-speed);
                 bottomLeft.setPower(-speed);
@@ -427,11 +432,11 @@ public class MainRobot {
                 opmode.telemetry.update();
             }
             while (rightRange.getDistance(DistanceUnit.INCH) < rightDistance){
-                /*if (Math.abs(rightRange.getDistance(DistanceUnit.INCH) - rightDistance) > MAX_ACCEPTABLE_ERROR){
-                    if (!rangeCheck(rightRange,rightDistance)){
+                if (Math.abs(rightRange.getDistance(DistanceUnit.INCH) - rightDistance) > MAX_ACCEPTABLE_ERROR){
+                    if (!rangeCheck(rightRange,rightDistance,opmode)){
                         break;
                     }
-                }*/
+                }
                 topLeft.setPower(-speed);
                 topRight.setPower(speed);
                 bottomLeft.setPower(speed);
