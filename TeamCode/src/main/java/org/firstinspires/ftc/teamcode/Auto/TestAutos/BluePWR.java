@@ -84,18 +84,24 @@ public class BluePWR extends LinearOpMode {
 
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            robot.encoderDrive(0.9,45,45,45,45,this); //STRAFES FORWARD
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
-
-            robot.wobbleArm.setPower(0.1);
-            robot.gyroDrive(MainRobot.DRIVE_SPEED,-85,-85,-85,-85,0,0,0,0,0,this); //MOVES TO DEPOT/PARKING
+            robot.wobbleArm.setPower(0.2);
+            robot.encoderDrive(0.9,0,18,18,0,this); //DIAGONALLY FRONT-LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,30,30,30,30,this); //STRAFES FORWARD TO BOX B
+            robot.gyroTurn(MainRobot.TURN_SPEED,-140,this);
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);
             sleep(600);
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
             robot.wobbleClaw.setPower(0);
 
-            robot.gyroTurn(MainRobot.TURN_SPEED,180,this); //PARALLEL TO LEFT WALL
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,this); //PARKING
+
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL
         }
 
         //---------------- CASE ONE RING ----------------
@@ -135,19 +141,21 @@ public class BluePWR extends LinearOpMode {
             sleep(1000);
 
             robot.JHopFlap.setPosition(0.1); //FLAP CLOSES
-            robot.jHopper1.setPower(0);
-            robot.foamWheel.setPower(0);
+            /*robot.jHopper1.setPower(0);
+            robot.foamWheel.setPower(0);*/
             robot.jHopper2.setPower(0);
 
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(0.9,45,45,45,45,this); //DIAGONALLY FRONT-LEFT
+            robot.encoderDrive(0.9,45,45,45,45,this); //STRAFES & COLLECTS RING
             robot.jHopper1.setPower(0);
             robot.foamWheel.setPower(0);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.2);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,120,120,120,120,this);
+            robot.encoderDrive(0.9,0,8,8,0,this); //DIAGONALLY FRONT-LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,67,67,67,67,this); //STRAFES FORWARD TO BOX B
             robot.gyroTurn(MainRobot.TURN_SPEED,33,this);
             robot.wobbleArm.setPower(0);
 

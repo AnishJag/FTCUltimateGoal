@@ -1,6 +1,6 @@
 MAIN TELEOP GAMEPAD CONTROLLER FUNCTIONS
 
-LAST UPDATED DATE: 01/17/2021
+LAST UPDATED DATE: 02/28/2021
 
 
 ------------------------------------ GAMEPAD-1 ------------------------------------
@@ -16,12 +16,12 @@ right joystick button --- N/A
 
 ---------------- Driver-Controls ----------------
 
-a  ----------------------- TOP GOAL ALIGNMENT W/ SHOOTING   (ONE-TIME HIT)
-b  ----------------------- POWER-SHOT ALIGNMENT W/ SHOOTING (ONE-TIME HIT) (N/A)
-x  ----------------------- TOP GOAL ALIGNMENT               (ONE-TIME HIT)
-y  ----------------------- POWER-SHOT ALIGNMENT             (ONE-TIME HIT) (N/A)
-left bumper (higher up) -- FIELD RELATIVE DRIVE             (TOGGLE)
-right bumper (higher up)-- SLOW MODE                        (TOGGLE)
+a  ----------------------- TOP GOAL ALIGNMENT   (HOLD)
+b  ----------------------- POWER-SHOT ALIGNMENT (HOLD)
+x  -----------------------
+y  -----------------------
+left bumper (higher up) -- FIELD RELATIVE DRIVE (TOGGLE)
+right bumper (higher up)-- SLOW MODE            (TOGGLE)
 left trigger ------------- N/A
 right trigger ------------ N/A
 D-pad left --------------- N/A

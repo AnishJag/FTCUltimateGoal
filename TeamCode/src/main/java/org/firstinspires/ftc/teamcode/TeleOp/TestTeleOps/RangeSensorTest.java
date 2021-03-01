@@ -10,8 +10,6 @@ import org.firstinspires.ftc.teamcode.MainRobot;
 import java.lang.reflect.Field;
 
 @TeleOp(name="RangeSensor Test")
-@Disabled
-// After testing this, no sensor inputs returned.
 public class RangeSensorTest extends OpMode{
 
     MainRobot robot = null;

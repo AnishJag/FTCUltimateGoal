@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Auto.TestAutos;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.MainRobot;
 
 
 @Autonomous(name="INCH Test")
+@Disabled
 public class InchesTest extends LinearOpMode {
 
     MainRobot robot = new MainRobot();
