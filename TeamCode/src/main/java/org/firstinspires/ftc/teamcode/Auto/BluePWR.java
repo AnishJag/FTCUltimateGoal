@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Auto.TestAutos;
+package org.firstinspires.ftc.teamcode.Auto;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -102,6 +102,13 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL
+
+            //2ND WOBBLE & PARKING (IN PROGRESS)
+            /*robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-70,-70,0,this); //DIAGONALLY BACK-LEFT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-20,-20,-20,-20,this); //HITS BACK WALL
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,15,-15,-15,15,this); //STRAFES RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,80,80,0,this); //DIAGONALLY FRONT-LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL*/
         }
 
         //---------------- CASE ONE RING ----------------
@@ -167,6 +174,15 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-40,-40,-40,-40,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL
+
+            //2ND WOBBLE & PARKING (IN PROGRESS)
+            /*robot.encoderDrive(MainRobot.DRIVE_SPEED,-135,-135,-135,-135,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,30,-30,-30,30,this); //STRAFES RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,30,30,30,30,this); //STRAFES FORWARD
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,120,120,0,this); //DIAGONALLY FRONT-LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-20,-20,-20,-20,this); //PARKING
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL*/
         }
 
         //---------------- CASE FOUR RINGS ----------------
@@ -228,6 +244,16 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(MainRobot.DRIVE_SPEED,55,55,55,55,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,6.3,this); //PARALLEL TO LEFT WALL
+
+
+            //2ND WOBBLE & PARKING (IN PROGRESS)
+            /*robot.encoderDrive(MainRobot.DRIVE_SPEED,-160,-160,-160,-160,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,40,-40,-40,40,this); //STRAFES RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,35,35,35,35,this); //STRAFES FORWARD
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,130,130,0,this); //DIAGONALLY FRONT-LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-55,-55,-55,-55,this); //PARKING
+            robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL*/
         }
     }
 }
