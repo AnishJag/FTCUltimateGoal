@@ -80,7 +80,7 @@ public class Blue extends LinearOpMode {
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-50,-50,0,this);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,0,-47,-47,0,this);
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-105,-105,-105,-105,this);
 
             robot.gyroTurn(MainRobot.TURN_SPEED,-80,this);

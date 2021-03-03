@@ -43,10 +43,10 @@ public class BluePWR extends LinearOpMode {
 
         //---------------- CASE ZERO RINGS ----------------
         if (rings == 0){
-            robot.jHopper2.setPower(-0.79);
             robot.encoderDrive(0.3,6,6,6,6,this);
 
             //POWER-SHOT ONE
+            robot.jHopper2.setPower(-0.78);
             robot.gyroTurn(MainRobot.TURN_SPEED,-28.6,this); //TURNS TO PWR SHOT RIGHT
             sleep(1400);
 
@@ -113,10 +113,10 @@ public class BluePWR extends LinearOpMode {
 
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
-            robot.jHopper2.setPower(-0.79);
             robot.encoderDrive(0.3,6,6,6,6,this);
 
             //POWER-SHOT ONE
+            robot.jHopper2.setPower(-0.785);
             robot.gyroTurn(MainRobot.TURN_SPEED,-28.6,this); //TURNS TO PWR SHOT RIGHT
             sleep(1400);
 
@@ -187,10 +187,10 @@ public class BluePWR extends LinearOpMode {
 
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
-            robot.jHopper2.setPower(-0.79);
             robot.encoderDrive(0.3,6,6,6,6,this);
 
             //POWER-SHOT ONE
+            robot.jHopper2.setPower(-0.785);
             robot.gyroTurn(MainRobot.TURN_SPEED,-28.6,this); //TURNS TO PWR SHOT RIGHT
             sleep(1400);
 
@@ -204,7 +204,7 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT TWO
-            robot.gyroTurn(MainRobot.TURN_SPEED,-21,this); //TURNS TO PWR SHOT MIDDLE
+            robot.gyroTurn(MainRobot.TURN_SPEED,-20.8,this); //TURNS TO PWR SHOT MIDDLE
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
@@ -215,7 +215,7 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT THREE
-            robot.gyroTurn(MainRobot.TURN_SPEED,-19.8,this); //TURNS TO PWR SHOT LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-19.9,this); //TURNS TO PWR SHOT LEFT
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
