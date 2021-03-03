@@ -48,7 +48,7 @@ public class BluePWR extends LinearOpMode {
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-0.78);
             robot.gyroTurn(MainRobot.TURN_SPEED,-28.6,this); //TURNS TO PWR SHOT RIGHT
-            sleep(1400);
+            sleep(1700);
 
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
@@ -118,7 +118,7 @@ public class BluePWR extends LinearOpMode {
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-0.785);
             robot.gyroTurn(MainRobot.TURN_SPEED,-28.6,this); //TURNS TO PWR SHOT RIGHT
-            sleep(1400);
+            sleep(1700);
 
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
@@ -190,9 +190,9 @@ public class BluePWR extends LinearOpMode {
             robot.encoderDrive(0.3,6,6,6,6,this);
 
             //POWER-SHOT ONE
-            robot.jHopper2.setPower(-0.785);
-            robot.gyroTurn(MainRobot.TURN_SPEED,-28.6,this); //TURNS TO PWR SHOT RIGHT
-            sleep(1400);
+            robot.jHopper2.setPower(-0.782);
+            robot.gyroTurn(MainRobot.TURN_SPEED,-28.3,this); //TURNS TO PWR SHOT RIGHT
+            sleep(1700);
 
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
@@ -204,7 +204,7 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT TWO
-            robot.gyroTurn(MainRobot.TURN_SPEED,-20.8,this); //TURNS TO PWR SHOT MIDDLE
+            robot.gyroTurn(MainRobot.TURN_SPEED,-21,this); //TURNS TO PWR SHOT MIDDLE
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
