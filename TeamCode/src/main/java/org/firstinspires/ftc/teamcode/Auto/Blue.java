@@ -125,7 +125,6 @@ public class Blue extends LinearOpMode {
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
             robot.encoderDrive(0.8,-120,-120,-120,-120,this);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            //robot.rangeDrive(0.1,-1,11,-1,this);
 
             robot.wobbleArm.setPower(0.5);
             robot.sleepV2(0.045,this);

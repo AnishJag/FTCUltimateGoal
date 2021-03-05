@@ -84,21 +84,22 @@ public class BluePWR extends LinearOpMode {
 
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(0.9,45,45,45,45,this); //STRAFES FORWARD
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,45,45,45,45,this); //STRAFES FORWARD
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.2);
             robot.encoderDrive(0.9,0,18,18,0,this); //DIAGONALLY FRONT-LEFT
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,20,20,20,20,this); //STRAFES FORWARD TO BOX B
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,20,20,20,20,this); //STRAFES FORWARD TO BOX A
             robot.gyroTurn(MainRobot.TURN_SPEED,-140,this);
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);
             sleep(300);
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,10,-10,-10,10,this); //STRAFES RIGHT
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-10,-10,-10,-10,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL
 
@@ -153,11 +154,11 @@ public class BluePWR extends LinearOpMode {
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
             robot.encoderDrive(0.9,10,0,0,10,this); //STRAFES DIAGONALLY FRONT-RIGHT
             robot.encoderDrive(0.9,45,45,45,45,this); //STRAFES & COLLECTS RING
-            robot.jHopper1.setPower(0);
             robot.foamWheel.setPower(0);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.2);
+            robot.jHopper1.setPower(0);
             robot.encoderDrive(0.9,0,35,35,0,this); //DIAGONALLY FRONT-LEFT
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
             robot.encoderDrive(MainRobot.DRIVE_SPEED,69,69,69,69,this); //STRAFES FORWARD TO BOX B
@@ -235,7 +236,7 @@ public class BluePWR extends LinearOpMode {
             robot.gyroTurn(MainRobot.TURN_SPEED,-140,this);
 
             robot.wobbleClaw.setPower(1);
-            sleep(600);
+            sleep(300);
             robot.wobbleClaw.setPower(0);
             robot.gyroTurn(MainRobot.TURN_SPEED,-180,this);
 
