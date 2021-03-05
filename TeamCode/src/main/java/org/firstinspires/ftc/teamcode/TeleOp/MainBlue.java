@@ -16,9 +16,9 @@ public class MainBlue extends LinearOpMode {
 
     public static final double FRONT_ALIGNMENT = 67;
     public static final double  LEFT_ALIGNMENT = 42;
-    public static final double PWR_FRONT_ALIGNMENT = 55.9;
+    public static final double PWR_FRONT_ALIGNMENT = 55.5;
     public static final double PWR_LEFT_ALIGNMENT = 66.9;
-    public static final double PWR_LEFT_SHIFT = 7;
+    public static final double PWR_LEFT_SHIFT = 12;
     public static final double MARGIN_OF_ERROR = 1;
     public static final double SLOWDOWN_DISTANCE = 5;
     public static final double SLOWDOWN_POWER  = 0.5;
@@ -232,7 +232,7 @@ public class MainBlue extends LinearOpMode {
 
         if(gamepad1.x && !GP1_X_Held){
             GP1_X_Held = true;
-            robot.gyroDrive(0.6, -PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, -PWR_LEFT_SHIFT, 0, 0,0,0,0,this);
+            robot.encoderDrive(0.6, -PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, PWR_LEFT_SHIFT, -PWR_LEFT_SHIFT, this);
         }
         if (!gamepad1.x){
             GP1_X_Held = false;

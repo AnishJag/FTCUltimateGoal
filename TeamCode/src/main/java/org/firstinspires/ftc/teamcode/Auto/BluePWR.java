@@ -43,11 +43,11 @@ public class BluePWR extends LinearOpMode {
 
         //---------------- CASE ZERO RINGS ----------------
         if (rings == 0){
-            robot.encoderDrive(0.3,6,6,6,6,this);
+            robot.encoderDrive(0.3,7,7,7,7,this);
 
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-0.782);
-            robot.gyroTurn(MainRobot.TURN_SPEED,-28.3,this); //TURNS TO PWR SHOT RIGHT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-27.8,this); //TURNS TO PWR SHOT RIGHT
             sleep(1700);
 
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
@@ -71,7 +71,7 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT THREE
-            robot.gyroTurn(MainRobot.TURN_SPEED,-19.9,this); //TURNS TO PWR SHOT LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-20,this); //TURNS TO PWR SHOT LEFT
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
@@ -90,14 +90,13 @@ public class BluePWR extends LinearOpMode {
             robot.wobbleArm.setPower(0.2);
             robot.encoderDrive(0.9,0,18,18,0,this); //DIAGONALLY FRONT-LEFT
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,30,30,30,30,this); //STRAFES FORWARD TO BOX B
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,20,20,20,20,this); //STRAFES FORWARD TO BOX B
             robot.gyroTurn(MainRobot.TURN_SPEED,-140,this);
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);
-            sleep(600);
+            sleep(300);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.wobbleClaw.setPower(0);
 
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-5,-5,-5,-5,this); //PARKING
 
@@ -113,11 +112,11 @@ public class BluePWR extends LinearOpMode {
 
         //---------------- CASE ONE RING ----------------
         else if(rings == 1){
-            robot.encoderDrive(0.3,6,6,6,6,this);
+            robot.encoderDrive(0.3,7,7,7,7,this);
 
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-0.782);
-            robot.gyroTurn(MainRobot.TURN_SPEED,-28.3,this); //TURNS TO PWR SHOT RIGHT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-27.8,this); //TURNS TO PWR SHOT RIGHT
             sleep(1700);
 
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
@@ -141,38 +140,36 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT THREE
-            robot.gyroTurn(MainRobot.TURN_SPEED,-19.9,this); //TURNS TO PWR SHOT LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-20,this); //TURNS TO PWR SHOT LEFT
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
             sleep(1000);
 
             robot.JHopFlap.setPosition(0.1); //FLAP CLOSES
-            robot.jHopper1.setPower(0);
-            robot.foamWheel.setPower(0);
             robot.jHopper2.setPower(0);
 
             //WOBBLE & PARKING
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
+            robot.encoderDrive(0.9,10,0,0,10,this); //STRAFES DIAGONALLY FRONT-RIGHT
             robot.encoderDrive(0.9,45,45,45,45,this); //STRAFES & COLLECTS RING
             robot.jHopper1.setPower(0);
             robot.foamWheel.setPower(0);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
             robot.wobbleArm.setPower(0.2);
-            robot.encoderDrive(0.9,0,30,30,0,this); //DIAGONALLY FRONT-LEFT
+            robot.encoderDrive(0.9,0,35,35,0,this); //DIAGONALLY FRONT-LEFT
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,77,77,77,77,this); //STRAFES FORWARD TO BOX B
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,69,69,69,69,this); //STRAFES FORWARD TO BOX B
             robot.gyroTurn(MainRobot.TURN_SPEED,60,this);
             robot.wobbleArm.setPower(0);
 
             robot.wobbleClaw.setPower(1);
-            sleep(600);
+            sleep(300);
             robot.encoderDrive(MainRobot.DRIVE_SPEED,-15,15,15,-15,this); //STRAFES LEFT
-            robot.wobbleClaw.setPower(0);
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this);
 
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,-35,-35,-35,-35,this); //PARKING
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,-33,-33,-33,-33,this); //PARKING
 
             robot.gyroTurn(MainRobot.TURN_SPEED,0,this); //PARALLEL TO LEFT WALL
 
@@ -188,11 +185,11 @@ public class BluePWR extends LinearOpMode {
 
         //---------------- CASE FOUR RINGS ----------------
         else if(rings == 4) {
-            robot.encoderDrive(0.3,6,6,6,6,this);
+            robot.encoderDrive(0.3,7,7,7,7,this);
 
             //POWER-SHOT ONE
             robot.jHopper2.setPower(-0.782);
-            robot.gyroTurn(MainRobot.TURN_SPEED,-28.3,this); //TURNS TO PWR SHOT RIGHT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-27.8,this); //TURNS TO PWR SHOT RIGHT
             sleep(1700);
 
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
@@ -216,7 +213,7 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT THREE
-            robot.gyroTurn(MainRobot.TURN_SPEED,-19.9,this); //TURNS TO PWR SHOT LEFT
+            robot.gyroTurn(MainRobot.TURN_SPEED,-20,this); //TURNS TO PWR SHOT LEFT
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
             robot.foamWheel.setPower(1);
