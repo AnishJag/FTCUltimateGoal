@@ -55,10 +55,9 @@ public class Blue extends LinearOpMode {
             sleep(1200);
 
             robot.wobbleArm.setPower(0);
-            robot.wobbleClaw.setPower(0);
 
             //SHOOTING & PARKING
-            robot.encoderDrive(MainRobot.DRIVE_SPEED,73,0,0,73,this); //STRAFES DIAGONALLY RIGHT
+            robot.encoderDrive(MainRobot.DRIVE_SPEED,72,0,0,72,this); //STRAFES DIAGONALLY RIGHT
 
             robot.jHopper2.setPower(-0.95);
             robot.gyroTurn(MainRobot.TURN_SPEED,175,this); //TURNS TO SHOOTING ANGLE
