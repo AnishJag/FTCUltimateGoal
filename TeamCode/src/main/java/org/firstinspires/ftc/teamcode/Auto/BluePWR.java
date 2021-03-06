@@ -71,6 +71,7 @@ public class BluePWR extends LinearOpMode {
             robot.foamWheel.setPower(0);
 
             //POWER-SHOT THREE
+            robot.jHopper2.setPower(-0.785);
             robot.gyroTurn(MainRobot.TURN_SPEED,-20,this); //TURNS TO PWR SHOT LEFT
             robot.JHopFlap.setPosition(0.5); //FLAP OPENS
             robot.jHopper1.setPower(-1);
