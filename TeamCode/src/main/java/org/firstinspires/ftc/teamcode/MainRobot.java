@@ -52,6 +52,7 @@ public class MainRobot {
     public static final double     P_TURN_COEFF       = 0.1;
     public static final double     HEADING_THRESHOLD  = 1.0;
     public static final double   MAX_ACCEPTABLE_ERROR = 10;
+    public double                                 rpm = 0;
 
     HardwareMap hwMap = null;
 
@@ -102,6 +103,25 @@ public class MainRobot {
         gyro.calibrate();
 
     }
+
+    public boolean getCurrentRPM(double initTime, double currentTime, int initPos, int currentPos, LinearOpMode opMode){
+        double differenceInTime = currentTime - initTime;
+        if(differenceInTime > 1){
+            int differenceInPos = currentPos - initPos;
+            double revolutions = differenceInPos / 28;
+            double minutes = differenceInTime / 60;
+            rpm = revolutions / minutes;
+        }
+        opMode.telemetry.addLine("Current RPM: " + rpm);
+        if(differenceInTime > 1) return true;
+        return false;
+    }
+
+    /*public void getToTargetSpeed(int target_rpm){
+        double percentOfTotal = (double)(target_rpm)/((double)5100);
+        jHopper2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        jHopper2.setPower(percentOfTotal);
+    }*/
 
     public double getError (double angle){
 

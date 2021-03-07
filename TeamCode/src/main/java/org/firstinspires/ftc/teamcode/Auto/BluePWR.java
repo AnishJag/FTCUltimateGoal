@@ -27,11 +27,13 @@ public class BluePWR extends LinearOpMode {
         robot.topRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.bottomLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.bottomRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.jHopper2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         robot.topLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.topRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.bottomLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.bottomRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.jHopper2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         waitForStart();
